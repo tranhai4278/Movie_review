@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Userprofile from "./components/Userprofile";
+import Changepassword from "./components/Changepassword";
+import Breadcrumb from "./components/Breadcrumb";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <Breadcrumb />
+        <div className="page-single">
+          <Container>
+            <Row className="ipad-width">
+              <Col md={3} sm={12} xs={12}>
+                <Sidebar />
+              </Col>
+              <Col md={9} sm={12} xs={12}>
+                <Routes>
+                  <Route path="/userprofile" element={<Userprofile />} />
+                  <Route path="/changepassword" element={<Changepassword />} />
+                </Routes>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      </div>
+    </BrowserRouter>
+
   );
 }
 
