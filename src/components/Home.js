@@ -1,4 +1,5 @@
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 function Home() {
     return (
       <>
@@ -357,11 +358,7 @@ function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
-                                  {" "}
-                                  Read more{" "}
-                                  <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                              <Link to={'/moviedetail'}><i className="ion-android-arrow-dropright"></i></Link>
                               </div>
                               <div className="title-in">
                                 <h6>
@@ -385,11 +382,12 @@ function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                {/* <a href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
-                                  <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                  </i>{" "}
+                                </a> */}
+                                <Link to={'/moviedetail'}><i className="ion-android-arrow-dropright"></i></Link>
                               </div>
                               <div className="title-in">
                                 <h6>

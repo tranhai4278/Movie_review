@@ -1,5 +1,5 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
-import {Home, Header, Footer, Login, Signup, ResetPassword, ResetPassword2, Breadcrumb, Sidebar, Changepassword, Userprofile} from './components/Index'
+import {Home, Header, Footer, Login, Signup, ResetPassword, ResetPassword2, Breadcrumb, Sidebar, Changepassword, Userprofile, Filter, Moviegrid, Movielist, Moviedetail} from './components/Index'
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 function App() {
   return (
@@ -7,11 +7,11 @@ function App() {
     <BrowserRouter>
        <div>
     <Header></Header>
-    <Login></Login>
-    <Signup></Signup>
 
     <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/resetpassword2" element={<ResetPassword2 />} />
     </Routes>
@@ -36,6 +36,33 @@ function App() {
                 </Routes>
               </Col>
             </Row>
+          </Container>
+        </div>
+
+        <div className="page-single">
+          <Container>
+            <Row className="ipad-width">
+              <Col md={8} sm={12} xs={12}>
+                <Routes>
+                  <Route path="/moviegrid" element={<Moviegrid />} />
+                  <Route path="/movielist" element={<Movielist />} />
+                </Routes>
+              </Col>
+              <Col md={4} sm={12} xs={12}>
+                <Routes>
+                  <Route path="/moviegrid" element={<Filter />} />
+                  <Route path="/movielist" element={<Filter />} />
+                </Routes>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+
+        <div className="page-single">
+          <Container>
+                <Routes>
+                  <Route path="/moviedetail" element={<Moviedetail />} />
+                </Routes>
           </Container>
         </div>
 

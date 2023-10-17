@@ -9,7 +9,11 @@ import Sidebar from "./Sidebar";
 import Breadcrumb from "./Breadcrumb";
 import Userprofile from "./Userprofile";
 import Changepassword from "./Changepassword";
+import Moviegrid from "./Moviegrid";
+import Filter  from "./Filter";
+import Movielist from "./Movielist";
+import Moviedetail from "./Moviedetail";
 
 export {
-    Home, Header, Footer, Login, Signup, ResetPassword, ResetPassword2, Sidebar, Breadcrumb, Userprofile, Changepassword
+    Home, Header, Footer, Login, Signup, ResetPassword, ResetPassword2, Sidebar, Breadcrumb, Userprofile, Changepassword, Moviegrid, Filter, Movielist, Moviedetail
 }

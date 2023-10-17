@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button,Row,Col} from "react-bootstrap";
-const backgroundImage = "/images/uploads/slider-bg.jpg";
+import backgroundImage from "../image/slider-bg.jpg"; // Đường dẫn đến hình ảnh nền
 
 const ResetPassword2 = () => {
     const [email, setEmail] = useState("");
