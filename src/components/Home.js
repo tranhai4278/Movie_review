@@ -302,11 +302,7 @@ function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
-                                  {" "}
-                                  Read more{" "}
-                                  <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                              <Link to={'/moviedetail'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
                               </div>
                               <div className="title-in">
                                 <h6>
@@ -330,11 +326,7 @@ function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
-                                  {" "}
-                                  Read more{" "}
-                                  <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                              <Link to={'/moviedetail'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
                               </div>
                               <div className="title-in">
                                 <h6>
@@ -358,7 +350,7 @@ function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                              <Link to={'/moviedetail'}><i className="ion-android-arrow-dropright"></i></Link>
+                              <Link to={'/moviedetail'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
                               </div>
                               <div className="title-in">
                                 <h6>
@@ -387,7 +379,7 @@ function Home() {
                                   Read more{" "}
                                   </i>{" "}
                                 </a> */}
-                                <Link to={'/moviedetail'}><i className="ion-android-arrow-dropright"></i></Link>
+                                <Link to={'/moviedetail'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
                               </div>
                               <div className="title-in">
                                 <h6>
@@ -1930,7 +1922,7 @@ function Home() {
           </div>
         </div>
   
-        <div className="trailers">
+        {/* <div className="trailers">
           <div className="container">
             <div className="row ipad-width">
               <div className="col-md-12">
@@ -2081,7 +2073,7 @@ function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </>
     );
   }

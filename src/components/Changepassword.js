@@ -30,7 +30,7 @@ function Changepassword() {
                         placeholder="***************"
                     />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" style={{marginTop: '20px'}}>
                     Change
                 </Button>
             </Form>

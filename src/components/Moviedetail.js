@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Moviedetail = () => {
   return (
+	<div style={{paddingTop: '280px'}}>
     <div class="row ipad-width2">
 			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="movie-img sticky-sb">
@@ -786,6 +787,7 @@ const Moviedetail = () => {
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
   );
 };

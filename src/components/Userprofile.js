@@ -65,7 +65,7 @@ function Userprofile() {
                         </Form.Group>
                     </Col>
                 </Row>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" style={{marginTop: '20px'}}>
                     Save
                 </Button>
             </Form>

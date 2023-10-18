@@ -20,10 +20,10 @@ function Sidebar() {
                         <Link to="/userprofile"><a href="#">Profile</a></Link>
                     </li>
                     <li className="list-group-item">
-                        <a href="userfavoritelist.html">Favorite movies</a>
+                        <Link to="/wishlistgrid"><a href="#">Wish List</a></Link>
                     </li>
                     <li className="list-group-item">
-                        <a href="userrate.html">Rated movies</a>
+                        <Link to="/movierated"><a href="#">Reated Movie</a></Link>
                     </li>
                 </ul>
             </div>

@@ -33,6 +33,7 @@ const Login = () => {
   };
 
   const formStyle = {
+    marginTop: "90px",
     backgroundColor: "rgba(255, 255, 255, 0.8)",
     padding: "50px",
     borderRadius: "10px",
@@ -89,8 +90,8 @@ const Login = () => {
             <Button
               variant="danger"
               type="submit"
-              size="lg"
-              style={{ padding: "10px 100px" }}
+              size="md"
+              style={{ width:'100%' }}
             >
               Login
             </Button>
@@ -102,8 +103,8 @@ const Login = () => {
             <Button
               variant="primary"
               type="submit"
-              size="lg"
-              style={{ padding: "10px 100px" }}
+              size="md"
+              style={{ width:'100%' }}
             >
               Google
             </Button>

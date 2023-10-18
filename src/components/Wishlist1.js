@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
-const Movielist = () => {
+const Wishlist1 = () => {
   return (
-	<div style={{paddingTop:'280px'}}>
+	<div>
 		  <div className="topbar-filter">
 			<p>Found <span>1,608 movies</span> in total</p>
 			<label>Sort by:</label>
@@ -15,10 +15,10 @@ const Movielist = () => {
 			  <option value="date">Release date Descending</option>
 			  <option value="date">Release date Ascending</option>
 			</select>
-			<Link to={'/movielist'} className="list">
+			<Link to={'/wishlist'} className="list">
 			  <i className="ion-ios-list-outline"></i>
 			</Link>
-			<Link to={'/moviegrid'} className="grid">
+			<Link to={'/wishlistgrid'} className="grid">
 			  <i className="ion-grid active"></i>
 			</Link>
 		  </div>
@@ -77,4 +77,4 @@ const Movielist = () => {
   );
 };
 
-export default Movielist;
+export default Wishlist1;

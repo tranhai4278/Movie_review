@@ -1,43 +1,68 @@
 import React from 'react';
-import { Container, Navbar, Nav, NavDropdown, Button, Form, FormControl } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, Button, FormControl, Container, NavItem } from 'react-bootstrap';
 
-const whiteText = { color: 'white' }; // Define a style for white text
+const menuItem = {
+  margin: '10px',
+  padding: '22px 10px 16px',
+  fontSize: '18px',
+  textDecoration: 'none',
+  color:'#75a9d6'
+};
+
+const linkStyle = {
+	textDecoration: 'none'
+};
 
 function Header() {
-    return (
-        <header className="ht-header">
-            <Container>
-                <Navbar expand="lg" className="navbar-custom">
-                    <Navbar.Brand href="index.html">
-                        <img src="images/logo1.png" alt="Logo" width="200" height="58" />
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+  return (
+    <header className="ht-header">
+      <Container>
+        <Navbar bg="light" expand="lg" className="navbar-custom" style={{ margin: '0' }}>
+          <Navbar.Brand href="index.html">
+		  <Link to="/" style={linkStyle}>
+              <img className="logo" src="images/logo1.png" alt="Logo" width="200" height="58" />
+            </Link>
+          </Navbar.Brand>
 
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="flex-child-menu menu-left">
-                            <Nav.Link href="home.html" style={whiteText}>Home</Nav.Link>
-                            <NavDropdown title="Movies" id="basic-nav-dropdown" style={whiteText}>
-                                <NavDropdown.Item href="movielist.html">Latest</NavDropdown.Item>
-                                <NavDropdown.Item href="moviesingle.html">Popular</NavDropdown.Item>
-                                <NavDropdown.Item href="seriessingle.html">Top Rated</NavDropdown.Item>
-                            </NavDropdown>
-                            <Nav.Link href="#" style={whiteText}>Casts</Nav.Link>
-                        </Nav>
-                        <Nav className="flex-child-menu menu-right">
-                            <Nav.Link href="#">Log In</Nav.Link>
-                            <Button variant="primary" className="signupLink" href="#">Sign Up</Button>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
+          <Navbar.Collapse id="bs-example-navbar-collapse-1">
+            <Nav className="flex-child-menu menu-left" style={{ display: 'flex', marginLeft: '12px' }}>
+              <Link to="/home" style={linkStyle}>
+                <NavItem style={menuItem}>Popular</NavItem>
+              </Link>
+              <Link to="/top-rated" style={linkStyle}>
+                <NavItem style={menuItem}>Top Rated</NavItem>
+              </Link>
+              <Link to="/upcoming" style={linkStyle}>
+                <NavItem style={menuItem}>Upcoming</NavItem>
+              </Link>
+            </Nav>
+            <Nav className="flex-child-menu navbar-right">
+              <Link to="/login" style={{ padding: '10px 8px', margin: '8px', textDecoration: 'none' }} >
+                  LOG IN
+              </Link>
+              <Link to="/signup" style={linkStyle}>
+                <Button variant="primary" className="signupLink" style={{ padding: '10px 18px', margin: '21px 8px', borderRadius:'20px' }}>
+                  SIGN UP
+                </Button>
+              </Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
-                <div className="top-search" style={{justifyContent: 'center', border: 'none'}}>
-                    <Form style={{width:'50%'}}>
-                        <FormControl type="text" placeholder="Search for a movie, TV Show, or celebrity that you are looking for" />
-                    </Form>
-                </div>
-            </Container>
-        </header>
-    );
+        <div className="top-search">
+          <FormControl as="select">
+            <option value="united">TV show</option>
+            <option value="saab">Others</option>
+          </FormControl>
+          <FormControl
+            type="text"
+            placeholder="Search for a movie, TV Show, or celebrity that you are looking for"
+          />
+        </div>
+      </Container>
+    </header>
+  );
 }
 
 export default Header;
