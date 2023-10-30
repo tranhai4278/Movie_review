@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
-const Movielist = () => {
+export default function MovieList () {
   return (
 	<div style={{paddingTop:'280px'}}>
 		  <div className="topbar-filter">
@@ -77,4 +77,3 @@ const Movielist = () => {
   );
 };
 
-export default Movielist;

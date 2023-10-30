@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function Breadcrumb() {
+export default function BreadCrumb() {
     return (
         <div className="hero user-hero">
           <Container>
@@ -28,4 +28,3 @@ function Breadcrumb() {
     );
 }
 
-export default Breadcrumb;

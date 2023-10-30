@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
-const Wishlistgrid = () => {
+export default function WishlistGrid() {
   return (
 	
 		<div>
 		  <div className="topbar-filter">
-			<p>Found <span>1,608 movies</span> in total</p>
+		  <p>
+      Found <span>1,608 movies</span> in total
+    </p>
 			<label>Sort by:</label>
 			<select>
 			  <option value="popularity">Popularity Descending</option>
@@ -70,4 +72,3 @@ const Wishlistgrid = () => {
 );
 };
 
-export default Wishlistgrid;

@@ -5,7 +5,7 @@ import { Navbar, Nav, Button, FormControl, Container, NavItem } from 'react-boot
 const menuItem = {
   margin: '10px',
   padding: '22px 10px 16px',
-  fontSize: '18px',
+  fontSize: '17px',
   textDecoration: 'none',
   color:'#75a9d6'
 };
@@ -14,7 +14,7 @@ const linkStyle = {
 	textDecoration: 'none'
 };
 
-function Header() {
+export default function Header() {
   return (
     <header className="ht-header">
       <Container>
@@ -50,7 +50,7 @@ function Header() {
           </Navbar.Collapse>
         </Navbar>
 
-        <div className="top-search">
+        <div className="top-search" style={{border:'none'}}>
           <FormControl as="select">
             <option value="united">TV show</option>
             <option value="saab">Others</option>
@@ -65,4 +65,4 @@ function Header() {
   );
 }
 
-export default Header;
+

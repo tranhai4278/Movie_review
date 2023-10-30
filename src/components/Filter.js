@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Button, Form, InputGroup } from "react-bootstrap";
 
 
-const Filter = () => {
+export default function Filter() {
   return (
 	<div style={{paddingTop:'280px'}}>
 	<div className="sidebar">
@@ -91,4 +91,3 @@ const Filter = () => {
   );
 };
 
-export default Filter;

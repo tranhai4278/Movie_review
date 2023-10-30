@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Form, Card, Image } from "react-bootstrap";
-const Movielist = () => {
+export default function MovieRated() {
   return (
 	<div>
       <div className="topbar-filter">
@@ -97,4 +97,3 @@ const Movielist = () => {
   );
 };
 
-export default Movielist;

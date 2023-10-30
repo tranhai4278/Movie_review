@@ -1,6 +1,6 @@
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-function Home() {
+export default function Home() {
     return (
       <>
         <div className="slider movie-items">
@@ -1861,7 +1861,6 @@ function Home() {
                         <h6>
                           <a href="#">Samuel N. Jack</a>
                         </h6>
-                        <span>Actor</span>
                       </div>
                     </div>
                     <div className="celeb-item">
@@ -1877,7 +1876,6 @@ function Home() {
                         <h6>
                           <a href="#">Benjamin Carroll</a>
                         </h6>
-                        <span>Actor</span>
                       </div>
                     </div>
                     <div className="celeb-item">
@@ -1893,7 +1891,6 @@ function Home() {
                         <h6>
                           <a href="#">Beverly Griffin</a>
                         </h6>
-                        <span>Actor</span>
                       </div>
                     </div>
                     <div className="celeb-item">
@@ -1909,7 +1906,6 @@ function Home() {
                         <h6>
                           <a href="#">Justin Weaver</a>
                         </h6>
-                        <span>Actor</span>
                       </div>
                     </div>
                     <a href="#" className="btn">
@@ -2078,6 +2074,6 @@ function Home() {
     );
   }
   
-  export default Home;
+
   
   

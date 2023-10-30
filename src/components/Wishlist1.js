@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
-const Wishlist1 = () => {
+export default function Wishlist1() {
   return (
 	<div>
 		  <div className="topbar-filter">
@@ -77,4 +77,3 @@ const Wishlist1 = () => {
   );
 };
 
-export default Wishlist1;

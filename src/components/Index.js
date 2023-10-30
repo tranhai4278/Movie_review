@@ -6,18 +6,22 @@ import Signup from "./Signup";
 import ResetPassword from "./ResetPassword";
 import ResetPassword2 from "./ResetPassword2";
 import Sidebar from "./Sidebar";
-import Breadcrumb from "./Breadcrumb";
-import Userprofile from "./Userprofile";
-import Changepassword from "./Changepassword";
-import Moviegrid from "./Moviegrid";
+import BreadCrumb from "./BreadCrumb";
+import UserProfile from "./UserProfile";
+import ChangePassword from "./ChangePassword";
+import MovieGrid from "./MovieGrid";
 import Filter  from "./Filter";
-import Movielist from "./Movielist";
-import Moviedetail from "./Moviedetail";
+import MovieList from "./MovieList";
+import MovieDetail from "./MovieDetail";
 import Wishlist1 from "./Wishlist1";
-import Wishlistgrid from "./Wishlistgrid";
-import Movierated from "./Movierated";
+import WishlistGrid from "./WishlistGrid";
+import MovieRated from "./MovieRated";
+import CastDetail from "./CastDetail";
+import AdminSidebar from "./AdminSidebar";
+import Table from "./Table";
 
 export {
-    Home, Header, Footer, Login, Signup, ResetPassword, ResetPassword2, Sidebar, Breadcrumb, Userprofile, 
-    Changepassword, Moviegrid, Filter, Movielist, Moviedetail, Wishlist1, Wishlistgrid, Movierated
+    Home, Header, Footer, Login, Signup, ResetPassword, ResetPassword2, Sidebar, BreadCrumb, UserProfile, 
+    ChangePassword, MovieGrid, Filter, MovieList, MovieDetail, Wishlist1, WishlistGrid, MovieRated, CastDetail,
+    AdminSidebar, Table
 }

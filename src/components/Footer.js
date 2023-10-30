@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown, Button, Form, Container, Row, Col } from 'react-bootstrap';
 
-const Footer = () => {
+export default function Footer() {
   return (
     <footer className="ht-footer">
       <Container>
@@ -62,4 +62,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+

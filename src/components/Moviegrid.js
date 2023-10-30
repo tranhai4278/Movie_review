@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
-const Moviegrid = () => {
+export default function MovieGrid() {
   return (
 	
 		<div style={{paddingTop:'280px'}}>
@@ -45,7 +45,7 @@ const Moviegrid = () => {
 				  <p className="rate"><i className="ion-android-star"></i><span>7.8</span> /10</p>
 				</div>
 			  </Col>
-			  {/* Add more movie items here */}
+			 
 			</Row>
 		  </div>
 		  <div className="topbar-filter">
@@ -70,4 +70,3 @@ const Moviegrid = () => {
 );
 };
 
-export default Moviegrid;

@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function Userprofile() {
+export default function UserProfile() {
     return (
         <div className="form-style-1 user-pro" action="#">
             <Form action="#" className="user">
@@ -74,4 +74,3 @@ function Userprofile() {
     );
 }
 
-export default Userprofile;

@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function Sidebar() {
+export default function Sidebar() {
     return (
         <div className="user-information">
             <div className="user-img">
@@ -42,4 +42,3 @@ function Sidebar() {
     );
 }
 
-export default Sidebar;

@@ -3,7 +3,7 @@ import { Form, Button, } from "react-bootstrap";
 import backgroundImage from "../image/slider-bg.jpg"; // Đường dẫn đến hình ảnh nền
 
 
-const Signup = () => {
+export default function Signup () {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -126,4 +126,3 @@ const Signup = () => {
   );
 };
 
-export default Signup;

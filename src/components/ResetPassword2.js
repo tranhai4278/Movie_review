@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button,Row,Col} from "react-bootstrap";
 import backgroundImage from "../image/slider-bg.jpg"; // Đường dẫn đến hình ảnh nền
 
-const ResetPassword2 = () => {
+export default function ResetPassword2() {
     const [email, setEmail] = useState("");
   
     const handleEmailChange = (e) => {
@@ -91,4 +91,3 @@ const ResetPassword2 = () => {
   );
 };
 
-export default ResetPassword2;

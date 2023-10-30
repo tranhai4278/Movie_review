@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-function Changepassword() {
+export default function ChangePassword() {
     return (
         <div className="form-style-1 user-pro" action="#">
             <Form action="#" className="password">
@@ -38,4 +38,4 @@ function Changepassword() {
     );
 }
 
-export default Changepassword;
+
