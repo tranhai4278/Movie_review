@@ -14,7 +14,7 @@ import "../vendors/jquery/dist/jquery.min.js"
 export default function AdminSidebar() {
     return (
         
-        <div class="left_col scroll-view">
+        <div class="left_col scroll-view" style={{position: 'fixed'}}>
           <div class="navbar nav_title" style={{border: '0'}} >
             <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
           </div>
@@ -132,10 +132,7 @@ export default function AdminSidebar() {
                 <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
               </ul>
             </div>
-
           </div>
-
-          
         </div>
    
     );
