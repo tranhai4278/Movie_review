@@ -3,7 +3,7 @@ import { Navbar, Nav, NavDropdown, Button, Form, Container, Row, Col } from 'rea
 
 export default function Footer() {
   return (
-    <footer className="ht-footer">
+    <footer className="ht-footer" id="footer">
       <Container>
         <Row className="flex-parent-ft">
           <Col className="flex-child-ft item1">
