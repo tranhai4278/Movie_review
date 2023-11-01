@@ -18,7 +18,7 @@ export default function MovieRated() {
             <Image src="images/uploads/mv1.jpg" alt="" />
             <Card.Body className="mv-item-infor">
               <Card.Title>
-                <a href="#">oblivion <span>(2012)</span></a>
+                <Link href="#">oblivion <span>(2012)</span></Link>
               </Card.Title>
               <p className="time sm-text">your rate:</p>
               <p className="rate">
@@ -44,7 +44,7 @@ export default function MovieRated() {
             <Image src="images/uploads/mv2.jpg" alt="" />
             <Card.Body className="mv-item-infor">
               <Card.Title>
-                <a href="#">into the wild <span>(2014)</span></a>
+                <Link href="#">into the wild <span>(2014)</span></Link>
               </Card.Title>
               <p className="time sm-text">your rate:</p>
               <p className="rate">
@@ -61,7 +61,7 @@ export default function MovieRated() {
             <Image src="images/uploads/mv3.jpg" alt="" />
             <Card.Body className="mv-item-infor">
               <Card.Title>
-                <a href="#">blade runner<span>(2015)</span></a>
+                <Link href="#">blade runner<span>(2015)</span></Link>
               </Card.Title>
               <p className="time sm-text">your rate:</p>
               <p className="rate">

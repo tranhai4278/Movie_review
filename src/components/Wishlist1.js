@@ -29,9 +29,9 @@ export default function Wishlist1() {
             <img src="images/uploads/mv1.jpg" alt="" />
             <div className="mv-item-infor">
               <h6>
-                <a href="moviesingle.html">
+                <Link href="moviesingle.html">
                   oblivion <span>(2012)</span>
-                </a>
+                </Link>
               </h6>
               <p className="rate">
                 <i className="ion-android-star"></i>
@@ -44,10 +44,10 @@ export default function Wishlist1() {
                 Run Time: 2h21’ . <span>MMPA: PG-13 </span> . <span>Release: 1 May 2015</span>
               </p>
               <p>
-                Director: <a href="#">Joss Whedon</a>
+                Director: <Link href="#">Joss Whedon</Link>
               </p>
               <p>
-                Stars: <a href="#">Robert Downey Jr.,</a> <a href="#">Chris Evans,</a> <a href="#">Chris Hemsworth</a>
+                Stars: <Link href="#">Robert Downey Jr.,</Link> <Link href="#">Chris Evans,</Link> <Link href="#">Chris Hemsworth</Link>
               </p>
             </div>
           </div>
@@ -63,13 +63,13 @@ export default function Wishlist1() {
 	
 			<div className="pagination2">
 			  <span>Page 1 of 2:</span>
-			  <a className="active" href="#">1</a>
-			  <a href="#">2</a>
-			  <a href="#">3</a>
-			  <a href="#">...</a>
-			  <a href="#">78</a>
-			  <a href="#">79</a>
-			  <a href="#"><i className="ion-arrow-right-b"></i></a>
+			  <Link className="active" href="#">1</Link>
+			  <Link href="#">2</Link>
+			  <Link href="#">3</Link>
+			  <Link href="#">...</Link>
+			  <Link href="#">78</Link>
+			  <Link href="#">79</Link>
+			  <Link href="#"><i className="ion-arrow-right-b"></i></Link>
 			</div>
 		  </div>
 		</div>

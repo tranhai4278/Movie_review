@@ -74,8 +74,8 @@ function App() {
           </Container>
 
           <div>
-            <div class="nav-md">
-              <div class="body">
+            <div className="nav-md">
+              <div className="body">
                 <Row style={{ backgroundColor: 'white' }}>
                   <Col md={2} sm={12} xs={12}>
                     <Routes>

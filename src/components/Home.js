@@ -8,40 +8,40 @@ export default function Home() {
         <Row>
           <Col className="social-link">
             <p>Follow us: </p>
-            <a href="#">
+            <Link >
               <i className="ion-social-facebook"></i>
-            </a>
-            <a href="#">
+            </Link>
+            <Link >
               <i className="ion-social-twitter"></i>
-            </a>
-            <a href="#">
+            </Link>
+            <Link >
               <i className="ion-social-googleplus"></i>
-            </a>
-            <a href="#">
+            </Link>
+            <Link >
               <i className="ion-social-youtube"></i>
-            </a>
+            </Link>
           </Col>
           
           <div className="slick-multiItemSlider">
                 <div className="movie-item">
                   <div className="mv-img">
-                    <a href="#">
+                    <Link >
                       <img
                         src="images/uploads/slider1.jpg"
                         alt=""
                         width="285"
                         height="437"
                       />
-                    </a>
+                    </Link>
                   </div>
                   <div className="title-in">
                     <div className="cate">
                       <span className="blue">
-                        <a href="#">Sci-fi</a>
+                        <Link >Sci-fi</Link>
                       </span>
                     </div>
                     <h6>
-                      <a href="#">Interstellar</a>
+                      <Link >Interstellar</Link>
                     </h6>
                     <p>
                       <i className="ion-android-star"></i>
@@ -51,23 +51,23 @@ export default function Home() {
                 </div>
                 <div className="movie-item">
                   <div className="mv-img">
-                    <a href="#">
+                    <Link >
                       <img
                         src="images/uploads/slider2.jpg"
                         alt=""
                         width="285"
                         height="437"
                       />
-                    </a>
+                    </Link>
                   </div>
                   <div className="title-in">
                     <div className="cate">
                       <span className="yell">
-                        <a href="#">action</a>
+                        <Link >action</Link>
                       </span>
                     </div>
                     <h6>
-                      <a href="#">The revenant</a>
+                      <Link >The revenant</Link>
                     </h6>
                     <p>
                       <i className="ion-android-star"></i>
@@ -77,23 +77,23 @@ export default function Home() {
                 </div>
                 <div className="movie-item">
                   <div className="mv-img">
-                    <a href="#">
+                    <Link >
                       <img
                         src="images/uploads/slider3.jpg"
                         alt=""
                         width="285"
                         height="437"
                       />
-                    </a>
+                    </Link>
                   </div>
                   <div className="title-in">
                     <div className="cate">
                       <span className="green">
-                        <a href="#">comedy</a>
+                        <Link >comedy</Link>
                       </span>
                     </div>
                     <h6>
-                      <a href="#">Die hard</a>
+                      <Link >Die hard</Link>
                     </h6>
                     <p>
                       <i className="ion-android-star"></i>
@@ -103,26 +103,26 @@ export default function Home() {
                 </div>
                 <div className="movie-item">
                   <div className="mv-img">
-                    <a href="#">
+                    <Link >
                       <img
                         src="images/uploads/slider4.jpg"
                         alt=""
                         width="285"
                         height="437"
                       />
-                    </a>
+                    </Link>
                   </div>
                   <div className="title-in">
                     <div className="cate">
                       <span className="blue">
-                        <a href="#">Sci-fi</a>
+                        <Link >Sci-fi</Link>
                       </span>{" "}
                       <span className="orange">
-                        <a href="#">advanture</a>
+                        <Link >advanture</Link>
                       </span>
                     </div>
                     <h6>
-                      <a href="#">The walk</a>
+                      <Link >The walk</Link>
                     </h6>
                     <p>
                       <i className="ion-android-star"></i>
@@ -132,23 +132,23 @@ export default function Home() {
                 </div>
                 <div className="movie-item">
                   <div className="mv-img">
-                    <a href="#">
+                    <Link >
                       <img
                         src="images/uploads/slider1.jpg"
                         alt=""
                         width="285"
                         height="437"
                       />
-                    </a>
+                    </Link>
                   </div>
                   <div className="title-in">
                     <div className="cate">
                       <span className="blue">
-                        <a href="#">Sci-fi</a>
+                        <Link >Sci-fi</Link>
                       </span>
                     </div>
                     <h6>
-                      <a href="#">Interstellar</a>
+                      <Link >Interstellar</Link>
                     </h6>
                     <p>
                       <i className="ion-android-star"></i>
@@ -158,23 +158,23 @@ export default function Home() {
                 </div>
                 <div className="movie-item">
                   <div className="mv-img">
-                    <a href="#">
+                    <Link >
                       <img
                         src="images/uploads/slider2.jpg"
                         alt=""
                         width="285"
                         height="437"
                       />
-                    </a>
+                    </Link>
                   </div>
                   <div className="title-in">
                     <div className="cate">
                       <span className="yell">
-                        <a href="#">action</a>
+                        <Link >action</Link>
                       </span>
                     </div>
                     <h6>
-                      <a href="#">The revenant</a>
+                      <Link >The revenant</Link>
                     </h6>
                     <p>
                       <i className="ion-android-star"></i>
@@ -194,11 +194,11 @@ export default function Home() {
                   <div className="title-in">
                     <div className="cate">
                       <span className="green">
-                        <a href="#">comedy</a>
+                        <Link >comedy</Link>
                       </span>
                     </div>
                     <h6>
-                      <a href="#">Die hard</a>
+                      <Link >Die hard</Link>
                     </h6>
                     <p>
                       <i className="ion-android-star"></i>
@@ -218,14 +218,14 @@ export default function Home() {
                   <div className="title-in">
                     <div className="cate">
                       <span className="blue">
-                        <a href="#">Sci-fi</a>
+                        <Link >Sci-fi</Link>
                       </span>{" "}
                       <span className="orange">
-                        <a href="#">advanture</a>
+                        <Link >advanture</Link>
                       </span>
                     </div>
                     <h6>
-                      <a href="#">The walk</a>
+                      <Link >The walk</Link>
                     </h6>
                     <p>
                       <i className="ion-android-star"></i>
@@ -245,11 +245,11 @@ export default function Home() {
                   <div className="title-in">
                     <div className="cate">
                       <span className="green">
-                        <a href="#">comedy</a>
+                        <Link >comedy</Link>
                       </span>
                     </div>
                     <h6>
-                      <a href="#">Die hard</a>
+                      <Link >Die hard</Link>
                     </h6>
                     <p>
                       <i className="ion-android-star"></i>
@@ -268,23 +268,23 @@ export default function Home() {
               <div className="col-md-8">
                 <div className="title-hd">
                   <h2>in theater</h2>
-                  <a href="#" className="viewall">
+                  <Link  className="viewall">
                     View all <i className="ion-ios-arrow-right"></i>
-                  </a>
+                  </Link>
                 </div>
                 <div className="tabs">
                   <ul className="tab-links">
                     <li className="active">
-                      <a href="#tab1">#Popular</a>
+                      <Link href="#tab1">#Popular</Link>
                     </li>
                     <li>
-                      <a href="#tab2"> #Coming soon</a>
+                      <Link href="#tab2"> #Coming soon</Link>
                     </li>
                     <li>
-                      <a href="#tab3"> #Top rated </a>
+                      <Link href="#tab3"> #Top rated </Link>
                     </li>
                     <li>
-                      <a href="#tab4"> #Most reviewed</a>
+                      <Link href="#tab4"> #Most reviewed</Link>
                     </li>
                   </ul>
                   <div className="tab-content">
@@ -306,7 +306,7 @@ export default function Home() {
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Interstellar</a>
+                                  <Link >Interstellar</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -330,7 +330,7 @@ export default function Home() {
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The revenant</a>
+                                  <Link >The revenant</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -354,7 +354,7 @@ export default function Home() {
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -374,16 +374,16 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                {/* <a href="moviesingle.html">
+                                {/* <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   </i>{" "}
-                                </a> */}
+                                </Link> */}
                                 <Link to={'/moviedetail'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The walk</a>
+                                  <Link >The walk</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -403,15 +403,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Interstellar</a>
+                                  <Link >Interstellar</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -431,15 +431,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The revenant</a>
+                                  <Link >The revenant</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -459,15 +459,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -487,15 +487,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The walk</a>
+                                  <Link >The walk</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -515,15 +515,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -549,15 +549,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Interstellar</a>
+                                  <Link >Interstellar</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -577,15 +577,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The revenant</a>
+                                  <Link >The revenant</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -605,15 +605,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -633,15 +633,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The walk</a>
+                                  <Link >The walk</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -661,15 +661,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -695,15 +695,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Interstellar</a>
+                                  <Link >Interstellar</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -723,15 +723,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The revenant</a>
+                                  <Link >The revenant</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -751,15 +751,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -779,15 +779,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The walk</a>
+                                  <Link >The walk</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -807,15 +807,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -841,15 +841,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Interstellar</a>
+                                  <Link >Interstellar</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -869,15 +869,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The revenant</a>
+                                  <Link >The revenant</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -897,15 +897,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -925,15 +925,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The walk</a>
+                                  <Link >The walk</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -953,15 +953,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -977,23 +977,23 @@ export default function Home() {
                 </div>
                 <div className="title-hd">
                   <h2>on tv</h2>
-                  <a href="#" className="viewall">
+                  <Link  className="viewall">
                     View all <i className="ion-ios-arrow-right"></i>
-                  </a>
+                  </Link>
                 </div>
                 <div className="tabs">
                   <ul className="tab-links-2">
                     <li>
-                      <a href="#tab21">#Popular</a>
+                      <Link href="#tab21">#Popular</Link>
                     </li>
                     <li className="active">
-                      <a href="#tab22"> #Coming soon</a>
+                      <Link href="#tab22"> #Coming soon</Link>
                     </li>
                     <li>
-                      <a href="#tab23"> #Top rated </a>
+                      <Link href="#tab23"> #Top rated </Link>
                     </li>
                     <li>
-                      <a href="#tab24"> #Most reviewed</a>
+                      <Link href="#tab24"> #Most reviewed</Link>
                     </li>
                   </ul>
                   <div className="tab-content">
@@ -1011,15 +1011,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Interstellar</a>
+                                  <Link >Interstellar</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1039,15 +1039,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The revenant</a>
+                                  <Link >The revenant</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1067,15 +1067,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1095,15 +1095,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The walk</a>
+                                  <Link >The walk</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1123,15 +1123,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1157,15 +1157,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Interstellar</a>
+                                  <Link >Interstellar</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1185,15 +1185,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The revenant</a>
+                                  <Link >The revenant</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1213,15 +1213,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1241,15 +1241,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The walk</a>
+                                  <Link >The walk</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1269,15 +1269,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Interstellar</a>
+                                  <Link >Interstellar</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1297,15 +1297,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The revenant</a>
+                                  <Link >The revenant</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1325,15 +1325,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1353,15 +1353,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The walk</a>
+                                  <Link >The walk</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1381,15 +1381,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Interstellar</a>
+                                  <Link >Interstellar</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1409,15 +1409,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The revenant</a>
+                                  <Link >The revenant</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1443,15 +1443,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Interstellar</a>
+                                  <Link >Interstellar</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1471,15 +1471,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The revenant</a>
+                                  <Link >The revenant</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1499,15 +1499,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1527,15 +1527,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The walk</a>
+                                  <Link >The walk</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1555,15 +1555,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Interstellar</a>
+                                  <Link >Interstellar</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1583,15 +1583,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The revenant</a>
+                                  <Link >The revenant</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1611,15 +1611,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1639,15 +1639,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The walk</a>
+                                  <Link >The walk</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1667,15 +1667,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1701,15 +1701,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Interstellar</a>
+                                  <Link >Interstellar</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1729,15 +1729,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The revenant</a>
+                                  <Link >The revenant</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1757,15 +1757,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1785,15 +1785,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">The walk</a>
+                                  <Link >The walk</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1813,15 +1813,15 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                                <a href="moviesingle.html">
+                                <Link href="moviesingle.html">
                                   {" "}
                                   Read more{" "}
                                   <i className="ion-android-arrow-dropright"></i>{" "}
-                                </a>
+                                </Link>
                               </div>
                               <div className="title-in">
                                 <h6>
-                                  <a href="#">Die hard</a>
+                                  <Link >Die hard</Link>
                                 </h6>
                                 <p>
                                   <i className="ion-android-star"></i>
@@ -1849,68 +1849,68 @@ export default function Home() {
                   <div className="celebrities">
                     <h4 className="sb-title">Spotlight Celebrities</h4>
                     <div className="celeb-item">
-                      <a href="#">
+                      <Link >
                         <img
                           src="images/uploads/ava1.jpg"
                           alt=""
                           width="70"
                           height="70"
                         />
-                      </a>
+                      </Link>
                       <div className="celeb-author">
                         <h6>
-                          <a href="#">Samuel N. Jack</a>
+                          <Link >Samuel N. Jack</Link>
                         </h6>
                       </div>
                     </div>
                     <div className="celeb-item">
-                      <a href="#">
+                      <Link >
                         <img
                           src="images/uploads/ava2.jpg"
                           alt=""
                           width="70"
                           height="70"
                         />
-                      </a>
+                      </Link>
                       <div className="celeb-author">
                         <h6>
-                          <a href="#">Benjamin Carroll</a>
+                          <Link >Benjamin Carroll</Link>
                         </h6>
                       </div>
                     </div>
                     <div className="celeb-item">
-                      <a href="#">
+                      <Link >
                         <img
                           src="images/uploads/ava3.jpg"
                           alt=""
                           width="70"
                           height="70"
                         />
-                      </a>
+                      </Link>
                       <div className="celeb-author">
                         <h6>
-                          <a href="#">Beverly Griffin</a>
+                          <Link >Beverly Griffin</Link>
                         </h6>
                       </div>
                     </div>
                     <div className="celeb-item">
-                      <a href="#">
+                      <Link >
                         <img
                           src="images/uploads/ava4.jpg"
                           alt=""
                           width="70"
                           height="70"
                         />
-                      </a>
+                      </Link>
                       <div className="celeb-author">
                         <h6>
-                          <a href="#">Justin Weaver</a>
+                          <Link >Justin Weaver</Link>
                         </h6>
                       </div>
                     </div>
-                    <a href="#" className="btn">
+                    <Link  className="btn">
                       See all celebrities<i className="ion-ios-arrow-right"></i>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -1924,9 +1924,9 @@ export default function Home() {
               <div className="col-md-12">
                 <div className="title-hd">
                   <h2>in theater</h2>
-                  <a href="#" className="viewall">
+                  <Link  className="viewall">
                     View all <i className="ion-ios-arrow-right"></i>
-                  </a>
+                  </Link>
                 </div>
                 <div className="videos">
                   <div className="slider-for-2 video-ft">

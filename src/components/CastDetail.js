@@ -20,27 +20,27 @@ export default function CastDetail() {
                     <div className="movie-single-ct">
                         <h1 className="bd-hd">Hugh Jackman</h1>
                         <div className="social-link cebsingle-socail">
-                            <a href="#">
+                            <Link href="#">
                                 <i className="ion-social-facebook"></i>
-                            </a>
-                            <a href="#">
+                            </Link>
+                            <Link href="#">
                                 <i className="ion-social-twitter"></i>
-                            </a>
-                            <a href="#">
+                            </Link>
+                            <Link href="#">
                                 <i className="ion-social-googleplus"></i>
-                            </a>
-                            <a href="#">
+                            </Link>
+                            <Link href="#">
                                 <i className="ion-social-linkedin"></i>
-                            </a>
+                            </Link>
                         </div>
                         <div className="movie-tabs">
                             <div className="tabs">
                                 <ul className="tab-links tabs-mv">
                                     <li className="active">
-                                        <a href="#overviewceb">Overview</a>
+                                        <Link href="#overviewceb">Overview</Link>
                                     </li>
                                     <li>
-                                        <a href="#film">films</a>
+                                        <Link href="#film">films</Link>
                                     </li>
                                 </ul>
                                 <div className="tab-content">
@@ -50,7 +50,7 @@ export default function CastDetail() {
                                                 <Col md={3} className="sb-it">
                                                     <h6 style={{ color: 'white' }}>Fullname: </h6>
                                                     <p>
-                                                        <a href="#">Hugh Jackman</a>
+                                                        <Link href="#">Hugh Jackman</Link>
                                                     </p>
                                                 </Col>
                                                 <Col md={3} className="sb-it">
@@ -67,48 +67,48 @@ export default function CastDetail() {
                                                 </Col>
                                                 <Col md={12} className="title-hd-sm" style={{ marginTop: '48px' }}>
                                                     <h4>filmography</h4>
-                                                    <a href="#" className="time">
+                                                    <Link href="#" className="time">
                                                         Full Filmography <i className="ion-ios-arrow-right"></i>
-                                                    </a>
+                                                    </Link>
                                                 </Col>
                                                 <Row style={{ marginLeft: '0px' }}>
                                                     <Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
                                                         <img src="images/uploads/mv1.jpg" alt="" />
                                                         <div className="hvr-inner">
-                                                            <a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+                                                            <Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
                                                         </div>
                                                         <div className="mv-item-infor">
-                                                            <h6><a href="#">oblivion</a></h6>
+                                                            <h6><Link href="#">oblivion</Link></h6>
                                                             <p className="rate"><i className="ion-android-star"></i><span>8.1</span> /10</p>
                                                         </div>
                                                     </Col>
                                                     <Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
                                                         <img src="images/uploads/mv2.jpg" alt="" />
                                                         <div className="hvr-inner">
-                                                            <a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+                                                            <Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
                                                         </div>
                                                         <div className="mv-item-infor">
-                                                            <h6><a href="#">into the wild</a></h6>
+                                                            <h6><Link href="#">into the wild</Link></h6>
                                                             <p className="rate"><i className="ion-android-star"></i><span>7.8</span> /10</p>
                                                         </div>
                                                     </Col>
                                                     <Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
                                                         <img src="images/uploads/mv1.jpg" alt="" />
                                                         <div className="hvr-inner">
-                                                            <a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+                                                            <Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
                                                         </div>
                                                         <div className="mv-item-infor">
-                                                            <h6><a href="#">oblivion</a></h6>
+                                                            <h6><Link href="#">oblivion</Link></h6>
                                                             <p className="rate"><i className="ion-android-star"></i><span>8.1</span> /10</p>
                                                         </div>
                                                     </Col>
                                                     <Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
                                                         <img src="images/uploads/mv2.jpg" alt="" />
                                                         <div className="hvr-inner">
-                                                            <a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+                                                            <Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
                                                         </div>
                                                         <div className="mv-item-infor">
-                                                            <h6><a href="#">into the wild</a></h6>
+                                                            <h6><Link href="#">into the wild</Link></h6>
                                                             <p className="rate"><i className="ion-android-star"></i><span>7.8</span> /10</p>
                                                         </div>
                                                     </Col>
@@ -145,40 +145,40 @@ export default function CastDetail() {
                                                 <Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
                                                     <img src="images/uploads/mv1.jpg" alt="" />
                                                     <div className="hvr-inner">
-                                                        <a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+                                                        <Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
                                                     </div>
                                                     <div className="mv-item-infor">
-                                                        <h6><a href="#">oblivion</a></h6>
+                                                        <h6><Link href="#">oblivion</Link></h6>
                                                         <p className="rate"><i className="ion-android-star"></i><span>8.1</span> /10</p>
                                                     </div>
                                                 </Col>
                                                 <Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
                                                     <img src="images/uploads/mv2.jpg" alt="" />
                                                     <div className="hvr-inner">
-                                                        <a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+                                                        <Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
                                                     </div>
                                                     <div className="mv-item-infor">
-                                                        <h6><a href="#">into the wild</a></h6>
+                                                        <h6><Link href="#">into the wild</Link></h6>
                                                         <p className="rate"><i className="ion-android-star"></i><span>7.8</span> /10</p>
                                                     </div>
                                                 </Col>
                                                 <Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
                                                     <img src="images/uploads/mv1.jpg" alt="" />
                                                     <div className="hvr-inner">
-                                                        <a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+                                                        <Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
                                                     </div>
                                                     <div className="mv-item-infor">
-                                                        <h6><a href="#">oblivion</a></h6>
+                                                        <h6><Link href="#">oblivion</Link></h6>
                                                         <p className="rate"><i className="ion-android-star"></i><span>8.1</span> /10</p>
                                                     </div>
                                                 </Col>
                                                 <Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
                                                     <img src="images/uploads/mv2.jpg" alt="" />
                                                     <div className="hvr-inner">
-                                                        <a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+                                                        <Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
                                                     </div>
                                                     <div className="mv-item-infor">
-                                                        <h6><a href="#">into the wild</a></h6>
+                                                        <h6><Link href="#">into the wild</Link></h6>
                                                         <p className="rate"><i className="ion-android-star"></i><span>7.8</span> /10</p>
                                                     </div>
                                                 </Col>

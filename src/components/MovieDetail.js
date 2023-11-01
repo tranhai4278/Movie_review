@@ -30,9 +30,9 @@ export default function MovieDetail() {
 									</Button>
 								</div>
 								<div>
-									<a href="https://www.youtube.com/embed/o-0hcF97wy0" className="item item-2 redbtn fancybox-media hvr-grow">
+									<Link href="https://www.youtube.com/embed/o-0hcF97wy0" className="item item-2 redbtn fancybox-media hvr-grow">
 										<i className="ion-play"></i>
-									</a>
+									</Link>
 								</div>
 							</div>
 						</div>
@@ -45,14 +45,14 @@ export default function MovieDetail() {
 					<div className="movie-single-ct main-content">
 						<h1 className="bd-hd">Skyfall: Quantum of Spectre <span>2015</span></h1>
 						<div className="social-btn">
-							<a href="#" className="parent-btn"><i className="ion-heart"></i> Add to Favorite</a>
+							<Link href="#" className="parent-btn"><i className="ion-heart"></i> Add to Favorite</Link>
 							<div className="hover-bnt">
-								<a href="#" className="parent-btn"><i className="ion-android-share-alt"></i>share</a>
+								<Link href="#" className="parent-btn"><i className="ion-android-share-alt"></i>share</Link>
 								<div className="hvr-item">
-									<a href="#" className="hvr-grow"><i className="ion-social-facebook"></i></a>
-									<a href="#" className="hvr-grow"><i className="ion-social-twitter"></i></a>
-									<a href="#" className="hvr-grow"><i className="ion-social-googleplus"></i></a>
-									<a href="#" className="hvr-grow"><i className="ion-social-youtube"></i></a>
+									<Link href="#" className="hvr-grow"><i className="ion-social-facebook"></i></Link>
+									<Link href="#" className="hvr-grow"><i className="ion-social-twitter"></i></Link>
+									<Link href="#" className="hvr-grow"><i className="ion-social-googleplus"></i></Link>
+									<Link href="#" className="hvr-grow"><i className="ion-social-youtube"></i></Link>
 								</div>
 							</div>
 						</div>
@@ -87,9 +87,9 @@ export default function MovieDetail() {
 						<div className="movie-tabs">
 							<div className="tabs">
 								<ul className="tab-links tabs-mv">
-									<li className="active"><a href="#overview">Overview</a></li>
-									<li><a href="#reviews"> Reviews</a></li>
-									<li><a href="#cast">  Casts </a></li>
+									<li className="active"><Link href="#overview">Overview</Link></li>
+									<li><Link href="#reviews"> Reviews</Link></li>
+									<li><Link href="#cast">  Casts </Link></li>
 								</ul>
 								<div className="tab-content">
 									<div id="overview" className="tab active">
@@ -101,11 +101,11 @@ export default function MovieDetail() {
 												<Row>
 													<Col md={3} className="sb-it">
 														<h6 style={{ color: 'white' }}>Director: </h6>
-														<p><a href="#">Joss Whedon</a></p>
+														<p><Link href="#">Joss Whedon</Link></p>
 													</Col>
 													<Col md={3} className="sb-it">
 														<h6 style={{ color: 'white' }}>Genres:</h6>
-														<p><a href="#">Action, </a> <a href="#">Sci-Fi,</a> <a href="#">Adventure</a></p>
+														<p><Link href="#">Action, </Link> <Link href="#">Sci-Fi,</Link> <Link href="#">Adventure</Link></p>
 													</Col>
 													<Col md={3} className="sb-it">
 														<h6 style={{ color: 'white' }}>Release Date:</h6>
@@ -119,54 +119,54 @@ export default function MovieDetail() {
 											</Col>
 											<Col md={12} className="title-hd-sm">
 												<h4>cast</h4>
-												<a href="#" className="time">
+												<Link href="#" className="time">
 													Full Cast & Crew <i className="ion-ios-arrow-right"></i>
-												</a>
+												</Link>
 											</Col>
 											<Row style={{ marginLeft: '0px' }}>
 												<Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
 													<img src="images/uploads/ceb1.jpg" alt="" />
 													<div className="hvr-inner">
-														<a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+														<Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
 													</div>
 													<div className="mv-item-infor">
-														<h6><a href="#">Tom Hardy</a></h6>
+														<h6><Link href="#">Tom Hardy</Link></h6>
 													</div>
 												</Col>
 												<Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
 													<img src="images/uploads/ceb2.jpg" alt="" />
 													<div className="hvr-inner">
-														<a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+														<Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
 													</div>
 													<div className="mv-item-infor">
-														<h6><a href="#">Leonardo DiCaprio</a></h6>
+														<h6><Link href="#">Leonardo DiCaprio</Link></h6>
 													</div>
 												</Col>
 												<Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
 													<img src="images/uploads/ceb3.jpg" alt="" />
 													<div className="hvr-inner">
-														<a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+														<Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
 													</div>
 													<div className="mv-item-infor">
-														<h6><a href="#">Emma Stone</a></h6>
+														<h6><Link href="#">Emma Stone</Link></h6>
 													</div>
 												</Col>
 												<Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
 													<img src="images/uploads/ceb4.jpg" alt="" />
 													<div className="hvr-inner">
-														<a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+														<Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
 													</div>
 													<div className="mv-item-infor">
-														<h6><a href="#">Olga Kurylenko</a></h6>
+														<h6><Link href="#">Olga Kurylenko</Link></h6>
 													</div>
 												</Col>
 											</Row>
 
 											<Col md={12} className="title-hd-sm">
 												<h4>Reviews</h4>
-												<a href="#" className="time">
+												<Link href="#" className="time">
 													See All 56 Reviews <i className="ion-ios-arrow-right"></i>
-												</a>
+												</Link>
 											</Col>
 										</Row>
 										<Row>
@@ -249,37 +249,37 @@ export default function MovieDetail() {
 											<Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
 												<img src="images/uploads/ceb1.jpg" alt="" />
 												<div className="hvr-inner">
-													<a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+													<Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
 												</div>
 												<div className="mv-item-infor">
-													<h6><a href="#">Tom Hardy</a></h6>
+													<h6><Link href="#">Tom Hardy</Link></h6>
 												</div>
 											</Col>
 											<Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
 												<img src="images/uploads/ceb2.jpg" alt="" />
 												<div className="hvr-inner">
-													<a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+													<Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
 												</div>
 												<div className="mv-item-infor">
-													<h6><a href="#">Leonardo DiCaprio</a></h6>
+													<h6><Link href="#">Leonardo DiCaprio</Link></h6>
 												</div>
 											</Col>
 											<Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
 												<img src="images/uploads/ceb3.jpg" alt="" />
 												<div className="hvr-inner">
-													<a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+													<Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
 												</div>
 												<div className="mv-item-infor">
-													<h6><a href="#">Emma Stone</a></h6>
+													<h6><Link href="#">Emma Stone</Link></h6>
 												</div>
 											</Col>
 											<Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: '0px' }}>
 												<img src="images/uploads/ceb4.jpg" alt="" />
 												<div className="hvr-inner">
-													<a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+													<Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
 												</div>
 												<div className="mv-item-infor">
-													<h6><a href="#">Olga Kurylenko</a></h6>
+													<h6><Link href="#">Olga Kurylenko</Link></h6>
 												</div>
 											</Col>
 										</Row>

@@ -7,23 +7,23 @@ export default function Sidebar() {
     return (
         <div className="user-information">
             <div className="user-img">
-                <a href="#">
+                <Link href="#">
                     <img src="images/uploads/user-img.png" alt="" />
                     <br />
-                </a>
+                </Link>
                 <Button variant="danger">Change avatar</Button>
             </div>
             <div className="user-fav">
                 <p>Account Details</p>
                 <ul className="list-group">
                     <li className="list-group-item active">
-                        <Link to="/userprofile"><a href="#">Profile</a></Link>
+                        <Link to="/userprofile"><Link href="#">Profile</Link></Link>
                     </li>
                     <li className="list-group-item">
-                        <Link to="/wishlistgrid"><a href="#">Wish List</a></Link>
+                        <Link to="/wishlistgrid"><Link href="#">Wish List</Link></Link>
                     </li>
                     <li className="list-group-item">
-                        <Link to="/movierated"><a href="#">Reated Movie</a></Link>
+                        <Link to="/movierated"><Link href="#">Reated Movie</Link></Link>
                     </li>
                 </ul>
             </div>
@@ -31,10 +31,10 @@ export default function Sidebar() {
                 <p>Others</p>
                 <ul className="list-group">
                     <li className="list-group-item">
-                        <Link to="/changepassword"><a href="#">Change password</a></Link>
+                        <Link to="/changepassword"><Link href="#">Change password</Link></Link>
                     </li>
                     <li className="list-group-item">
-                        <a href="#">Log out</a>
+                        <Link href="#">Log out</Link>
                     </li>
                 </ul>
             </div>

@@ -30,20 +30,20 @@ export default function WishlistGrid() {
 			  <Col md={3} className="movie-item-style-2 movie-item-style-1">
 				<img src="images/uploads/mv1.jpg" alt="" />
 				<div className="hvr-inner">
-				  <a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+				  <Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
 				</div>
 				<div className="mv-item-infor">
-				  <h6><a href="#">oblivion</a></h6>
+				  <h6><Link href="#">oblivion</Link></h6>
 				  <p className="rate"><i className="ion-android-star"></i><span>8.1</span> /10</p>
 				</div>
 			  </Col>
 			  <Col md={3} className="movie-item-style-2 movie-item-style-1">
 				<img src="images/uploads/mv2.jpg" alt="" />
 				<div className="hvr-inner">
-				  <a href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </a>
+				  <Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
 				</div>
 				<div className="mv-item-infor">
-				  <h6><a href="#">into the wild</a></h6>
+				  <h6><Link href="#">into the wild</Link></h6>
 				  <p className="rate"><i className="ion-android-star"></i><span>7.8</span> /10</p>
 				</div>
 			  </Col>
@@ -59,13 +59,13 @@ export default function WishlistGrid() {
 	
 			<div className="pagination2">
 			  <span>Page 1 of 2:</span>
-			  <a className="active" href="#">1</a>
-			  <a href="#">2</a>
-			  <a href="#">3</a>
-			  <a href="#">...</a>
-			  <a href="#">78</a>
-			  <a href="#">79</a>
-			  <a href="#"><i className="ion-arrow-right-b"></i></a>
+			  <Link className="active" href="#">1</Link>
+			  <Link href="#">2</Link>
+			  <Link href="#">3</Link>
+			  <Link href="#">...</Link>
+			  <Link href="#">78</Link>
+			  <Link href="#">79</Link>
+			  <Link href="#"><i className="ion-arrow-right-b"></i></Link>
 			</div>
 		  </div>
 		</div>
