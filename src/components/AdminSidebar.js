@@ -8,7 +8,7 @@ import "../vendors/font-awesome/css/font-awesome.min.css"
 import "../vendors/nprogress/nprogress.css" 
 import "../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" 
 import "../build/css/custom.min.css"
-import "../vendors/jquery/dist/jquery.min.js"
+// import "../vendors/jquery/dist/jquery.min.js"
 // import "../build/js/custom.min.js"
 
 export default function AdminSidebar() {
