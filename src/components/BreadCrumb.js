@@ -14,7 +14,7 @@ export default function BreadCrumb() {
 
                   <ul className="breadcumb">
                     <li className="active breadcrumb-item">
-                      <a href="#">Home</a>
+                      <Link href="#">Home</Link>
                     </li>
                     <li className="breadcrumb-item">
                       <Link to="/userprofile"><span className="ion-ios-arrow-right"></span>Profile</Link>

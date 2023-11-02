@@ -112,12 +112,12 @@ export default function MovieDetail() {
                   </Button>
                 </div>
                 <div>
-                  <a
+                  <Link
                     href={movie?.trailers_url}
                     className="item item-2 redbtn fancybox-media hvr-grow"
                   >
                     <i className="ion-play"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -132,26 +132,26 @@ export default function MovieDetail() {
               {movie?.name} <span>{movie?.release_year}</span>
             </h1>
             <div className="social-btn">
-              <a href="1" className="parent-btn">
+              <Link href="1" className="parent-btn">
                 <i className="ion-heart"></i> Add to Favorite
-              </a>
+              </Link>
               <div className="hover-bnt">
-                <a href="1" className="parent-btn">
+                <Link href="1" className="parent-btn">
                   <i className="ion-android-share-alt"></i>share
-                </a>
+                </Link>
                 <div className="hvr-item">
-                  <a href="1" className="hvr-grow">
+                  <Link href="1" className="hvr-grow">
                     <i className="ion-social-facebook"></i>
-                  </a>
-                  <a href="1" className="hvr-grow">
+                  </Link>
+                  <Link href="1" className="hvr-grow">
                     <i className="ion-social-twitter"></i>
-                  </a>
-                  <a href="1" className="hvr-grow">
+                  </Link>
+                  <Link href="1" className="hvr-grow">
                     <i className="ion-social-googleplus"></i>
-                  </a>
-                  <a href="1" className="hvr-grow">
+                  </Link>
+                  <Link href="1" className="hvr-grow">
                     <i className="ion-social-youtube"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -233,13 +233,13 @@ export default function MovieDetail() {
               <div className="tabs">
                 <ul className="tab-links tabs-mv">
                   <li className="active">
-                    <a href="#overview">Overview</a>
+                    <Link href="#overview">Overview</Link>
                   </li>
                   <li>
-                    <a href="#reviews"> Reviews</a>
+                    <Link href="#reviews"> Reviews</Link>
                   </li>
                   <li>
-                    <a href="#cast"> Casts </a>
+                    <Link href="#cast"> Casts </Link>
                   </li>
                 </ul>
                 <div className="tab-content">
@@ -256,17 +256,17 @@ export default function MovieDetail() {
                           <Col md={3} className="sb-it">
                             <h6 style={{ color: "white" }}>Director: </h6>
                             <p>
-                              <a href="1">{movie?.director}</a>
+                              <Link href="1">{movie?.director}</Link>
                             </p>
                           </Col>
                           <Col md={3} className="sb-it">
                             <h6 style={{ color: "white" }}>Genres:</h6>
                             <p>
                               {movieGenres?.map((item, index) => (
-                                <a key={item.id} href={item.id}>
+                                <Link key={item.id} href={item.id}>
                                   {item.name}
                                   {index < movieGenres?.length - 1 && ", "}
-                                </a>
+                                </Link>
                               ))}
                             </p>
                           </Col>
@@ -282,10 +282,10 @@ export default function MovieDetail() {
                       </Col>
                       <Col md={12} className="title-hd-sm">
                         <h4>cast</h4>
-                        <a href="1" className="time">
+                        <Link href="1" className="time">
                           Full Cast & Crew{" "}
                           <i className="ion-ios-arrow-right"></i>
-                        </a>
+                        </Link>
                       </Col>
                       <Row style={{ marginLeft: "0px" }}>
                         {movieCasts?.map((item) => (
@@ -297,14 +297,16 @@ export default function MovieDetail() {
                           >
                             <img src="images/uploads/ceb1.jpg" alt="" />
                             <div className="hvr-inner">
-                              <a href={`cast/${item.id}`}>
+                              <Link href={`cast/${item.id}`}>
                                 Read more
                                 <i className="ion-android-arrow-dropright"></i>
-                              </a>
+                              </Link>
                             </div>
                             <div className="mv-item-infor">
                               <h6>
-                                <a href={`cast/${item.id}`}>{item.name}</a>
+                                <Link href={`cast/${item.id}`}>
+                                  {item.name}
+                                </Link>
                               </h6>
                             </div>
                           </Col>
@@ -313,10 +315,10 @@ export default function MovieDetail() {
 
                       <Col md={12} className="title-hd-sm">
                         <h4>Reviews</h4>
-                        <a href="#" className="time">
+                        <Link href="#" className="time">
                           See All 56 Reviews{" "}
                           <i className="ion-ios-arrow-right"></i>
-                        </a>
+                        </Link>
                       </Col>
                     </Row>
                     <Row>
@@ -475,15 +477,15 @@ export default function MovieDetail() {
                       >
                         <img src="images/uploads/ceb1.jpg" alt="" />
                         <div className="hvr-inner">
-                          <a href="moviesingle.html">
+                          <Link href="moviesingle.html">
                             {" "}
                             Read more{" "}
                             <i className="ion-android-arrow-dropright"></i>{" "}
-                          </a>
+                          </Link>
                         </div>
                         <div className="mv-item-infor">
                           <h6>
-                            <a href="#">Tom Hardy</a>
+                            <Link href="#">Tom Hardy</Link>
                           </h6>
                         </div>
                       </Col>
@@ -494,15 +496,15 @@ export default function MovieDetail() {
                       >
                         <img src="images/uploads/ceb2.jpg" alt="" />
                         <div className="hvr-inner">
-                          <a href="moviesingle.html">
+                          <Link href="moviesingle.html">
                             {" "}
                             Read more{" "}
                             <i className="ion-android-arrow-dropright"></i>{" "}
-                          </a>
+                          </Link>
                         </div>
                         <div className="mv-item-infor">
                           <h6>
-                            <a href="#">Leonardo DiCaprio</a>
+                            <Link href="#">Leonardo DiCaprio</Link>
                           </h6>
                         </div>
                       </Col>
@@ -513,15 +515,15 @@ export default function MovieDetail() {
                       >
                         <img src="images/uploads/ceb3.jpg" alt="" />
                         <div className="hvr-inner">
-                          <a href="moviesingle.html">
+                          <Link href="moviesingle.html">
                             {" "}
                             Read more{" "}
                             <i className="ion-android-arrow-dropright"></i>{" "}
-                          </a>
+                          </Link>
                         </div>
                         <div className="mv-item-infor">
                           <h6>
-                            <a href="#">Emma Stone</a>
+                            <Link href="#">Emma Stone</Link>
                           </h6>
                         </div>
                       </Col>
@@ -532,15 +534,15 @@ export default function MovieDetail() {
                       >
                         <img src="images/uploads/ceb4.jpg" alt="" />
                         <div className="hvr-inner">
-                          <a href="moviesingle.html">
+                          <Link href="moviesingle.html">
                             {" "}
                             Read more{" "}
                             <i className="ion-android-arrow-dropright"></i>{" "}
-                          </a>
+                          </Link>
                         </div>
                         <div className="mv-item-infor">
                           <h6>
-                            <a href="#">Olga Kurylenko</a>
+                            <Link href="#">Olga Kurylenko</Link>
                           </h6>
                         </div>
                       </Col>

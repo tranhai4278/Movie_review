@@ -8,92 +8,92 @@ export default function Table() {
         
        
           <div >
-            <div class="top_nav" style={{marginLeft:'-30px'}}>
-              <div class="nav_menu">
+            <div className="top_nav" style={{marginLeft:'-30px'}}>
+              <div className="nav_menu">
                 <nav>
-                  <div class="nav toggle">
-                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                  <div className="nav toggle">
+                    <Link id="menu_toggle"><i className="fa fa-bars"></i></Link>
                   </div>
     
-                  <ul class="nav navbar-nav navbar-right">
-                    <li class="">
-                      <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <ul className="nav navbar-nav navbar-right">
+                    <li className="">
+                      <Link href="javascript:;" className="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         <img src="images/img.jpg" alt=""/>John Doe
-                        <span class=" fa fa-angle-down"></span>
-                      </a>
-                      <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="javascript:;"> Profile</a></li>
+                        <span className=" fa fa-angle-down"></span>
+                      </Link>
+                      <ul className="dropdown-menu dropdown-usermenu pull-right">
+                        <li><Link href="javascript:;"> Profile</Link></li>
                         <li>
-                          <a href="javascript:;">
-                            <span class="badge bg-red pull-right">50%</span>
+                          <Link href="javascript:;">
+                            <span className="badge bg-red pull-right">50%</span>
                             <span>Settings</span>
-                          </a>
+                          </Link>
                         </li>
-                        <li><a href="javascript:;">Help</a></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                        <li><Link href="javascript:;">Help</Link></li>
+                        <li><Link href="login.html"><i className="fa fa-sign-out pull-right"></i> Log Out</Link></li>
                       </ul>
                     </li>
     
-                    <li role="presentation" class="dropdown">
-                      <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-envelope-o"></i>
-                        <span class="badge bg-green">6</span>
-                      </a>
-                      <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li role="presentation" className="dropdown">
+                      <Link href="javascript:;" className="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                        <i className="fa fa-envelope-o"></i>
+                        <span className="badge bg-green">6</span>
+                      </Link>
+                      <ul id="menu1" className="dropdown-menu list-unstyled msg_list" role="menu">
                         <li>
-                          <a>
-                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <Link>
+                            <span className="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                             <span>
                               <span>John Smith</span>
-                              <span class="time">3 mins ago</span>
+                              <span className="time">3 mins ago</span>
                             </span>
-                            <span class="message">
+                            <span className="message">
                               Film festivals used to be do-or-die moments for movie makers. They were where...
                             </span>
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a>
-                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <Link>
+                            <span className="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                             <span>
                               <span>John Smith</span>
-                              <span class="time">3 mins ago</span>
+                              <span className="time">3 mins ago</span>
                             </span>
-                            <span class="message">
+                            <span className="message">
                               Film festivals used to be do-or-die moments for movie makers. They were where...
                             </span>
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a>
-                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <Link>
+                            <span className="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                             <span>
                               <span>John Smith</span>
-                              <span class="time">3 mins ago</span>
+                              <span className="time">3 mins ago</span>
                             </span>
-                            <span class="message">
+                            <span className="message">
                               Film festivals used to be do-or-die moments for movie makers. They were where...
                             </span>
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a>
-                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                          <Link>
+                            <span className="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                             <span>
                               <span>John Smith</span>
-                              <span class="time">3 mins ago</span>
+                              <span className="time">3 mins ago</span>
                             </span>
-                            <span class="message">
+                            <span className="message">
                               Film festivals used to be do-or-die moments for movie makers. They were where...
                             </span>
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <div class="text-center">
-                            <a>
+                          <div className="text-center">
+                            <Link>
                               <strong>See All Alerts</strong>
-                              <i class="fa fa-angle-right"></i>
-                            </a>
+                              <i className="fa fa-angle-right"></i>
+                            </Link>
                           </div>
                         </li>
                       </ul>
@@ -104,53 +104,53 @@ export default function Table() {
             </div>
     
             <div role="main">
-              <div class="">
-                <div class="page-title">
-                  <div class="title_left">
+              <div className="">
+                <div className="page-title">
+                  <div className="title_left">
                     <h3>Users <small>Some examples to get you started</small></h3>
                   </div>
     
-                  <div class="title_right">
-                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for..."/>
-                        <span class="input-group-btn">
-                          <button class="btn btn-default" type="button">Go!</button>
+                  <div className="title_right">
+                    <div className="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                      <div className="input-group">
+                        <input type="text" className="form-control" placeholder="Search for..."/>
+                        <span className="input-group-btn">
+                          <button className="btn btn-default" type="button">Go!</button>
                         </span>
                       </div>
                     </div>
                   </div>
                 </div>
     
-                <div class="clearfix"></div>
+                <div className="clearfix"></div>
     
-                <div class="row">
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                      <div class="x_title">
+                <div className="row">
+                  <div className="col-md-12 col-sm-12 col-xs-12">
+                    <div className="x_panel">
+                      <div className="x_title">
                         <h2>Default Example <small>Users</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        <ul className="nav navbar-right panel_toolbox">
+                          <li><Link className="collapse-link"><i className="fa fa-chevron-up"></i></Link>
                           </li>
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Settings 1</a>
+                          <li className="dropdown">
+                            <Link href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i className="fa fa-wrench"></i></Link>
+                            <ul className="dropdown-menu" role="menu">
+                              <li><Link href="#">Settings 1</Link>
                               </li>
-                              <li><a href="#">Settings 2</a>
+                              <li><Link href="#">Settings 2</Link>
                               </li>
                             </ul>
                           </li>
-                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          <li><Link className="close-link"><i className="fa fa-close"></i></Link>
                           </li>
                         </ul>
-                        <div class="clearfix"></div>
+                        <div className="clearfix"></div>
                       </div>
-                      <div class="x_content">
-                        <p class="text-muted font-13 m-b-30">
+                      <div className="x_content">
+                        <p className="text-muted font-13 m-b-30">
                           DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
                         </p>
-                        <table id="datatable" class="table table-striped table-bordered">
+                        <table id="datatable" className="table table-striped table-bordered">
                           <thead>
                             <tr>
                               <th>Name</th>
@@ -626,36 +626,36 @@ export default function Table() {
                     </div>
                   </div>
     
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                      <div class="x_title">
+                  <div className="col-md-12 col-sm-12 col-xs-12">
+                    <div className="x_panel">
+                      <div className="x_title">
                         <h2><small>Plus Table Design</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        <ul className="nav navbar-right panel_toolbox">
+                          <li><Link className="collapse-link"><i className="fa fa-chevron-up"></i></Link>
                           </li>
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Settings 1</a>
+                          <li className="dropdown">
+                            <Link href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i className="fa fa-wrench"></i></Link>
+                            <ul className="dropdown-menu" role="menu">
+                              <li><Link href="#">Settings 1</Link>
                               </li>
-                              <li><a href="#">Settings 2</a>
+                              <li><Link href="#">Settings 2</Link>
                               </li>
                             </ul>
                           </li>
-                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          <li><Link className="close-link"><i className="fa fa-close"></i></Link>
                           </li>
                         </ul>
-                        <div class="clearfix"></div>
+                        <div className="clearfix"></div>
                       </div>
-                      <div class="x_content">
-                        <p class="text-muted font-13 m-b-30">
+                      <div className="x_content">
+                        <p className="text-muted font-13 m-b-30">
                           DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
                         </p>
-                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                        <table id="datatable-checkbox" className="table table-striped table-bordered bulk_action">
                           <thead>
                             <tr>
                               <th>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </th>
                               <th>Name</th>
                               <th>Position</th>
@@ -670,7 +670,7 @@ export default function Table() {
                           <tbody>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Tiger Nixon</td>
                               <td>System Architect</td>
@@ -681,7 +681,7 @@ export default function Table() {
                             </tr>
                             <tr>
                              <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Garrett Winters</td>
                               <td>Accountant</td>
@@ -692,7 +692,7 @@ export default function Table() {
                             </tr>
                             <tr>
                                 <td>
-                                     <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                     <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Ashton Cox</td>
                               <td>Junior Technical Author</td>
@@ -703,7 +703,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Cedric Kelly</td>
                               <td>Senior Javascript Developer</td>
@@ -714,7 +714,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Airi Satou</td>
                               <td>Accountant</td>
@@ -725,7 +725,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Brielle Williamson</td>
                               <td>Integration Specialist</td>
@@ -736,7 +736,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Herrod Chandler</td>
                               <td>Sales Assistant</td>
@@ -747,7 +747,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Rhona Davidson</td>
                               <td>Integration Specialist</td>
@@ -758,7 +758,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Colleen Hurst</td>
                               <td>Javascript Developer</td>
@@ -769,7 +769,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Sonya Frost</td>
                               <td>Software Engineer</td>
@@ -780,7 +780,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Jena Gaines</td>
                               <td>Office Manager</td>
@@ -791,7 +791,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Quinn Flynn</td>
                               <td>Support Lead</td>
@@ -802,7 +802,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Charde Marshall</td>
                               <td>Regional Director</td>
@@ -813,7 +813,7 @@ export default function Table() {
                             </tr>
                             <tr>
                                <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Haley Kennedy</td>
                               <td>Senior Marketing Designer</td>
@@ -824,7 +824,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Tatyana Fitzpatrick</td>
                               <td>Regional Director</td>
@@ -835,7 +835,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Michael Silva</td>
                               <td>Marketing Designer</td>
@@ -846,7 +846,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Paul Byrd</td>
                               <td>Chief Financial Officer (CFO)</td>
@@ -857,7 +857,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Gloria Little</td>
                               <td>Systems Administrator</td>
@@ -868,7 +868,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Bradley Greer</td>
                               <td>Software Engineer</td>
@@ -879,7 +879,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Dai Rios</td>
                               <td>Personnel Lead</td>
@@ -890,7 +890,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Jenette Caldwell</td>
                               <td>Development Lead</td>
@@ -901,7 +901,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Yuri Berry</td>
                               <td>Chief Marketing Officer (CMO)</td>
@@ -912,7 +912,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Caesar Vance</td>
                               <td>Pre-Sales Support</td>
@@ -923,7 +923,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Doris Wilder</td>
                               <td>Sales Assistant</td>
@@ -934,7 +934,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Angelica Ramos</td>
                               <td>Chief Executive Officer (CEO)</td>
@@ -945,7 +945,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Gavin Joyce</td>
                               <td>Developer</td>
@@ -956,7 +956,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Jennifer Chang</td>
                               <td>Regional Director</td>
@@ -967,7 +967,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Brenden Wagner</td>
                               <td>Software Engineer</td>
@@ -978,7 +978,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Fiona Green</td>
                               <td>Chief Operating Officer (COO)</td>
@@ -989,7 +989,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Shou Itou</td>
                               <td>Regional Marketing</td>
@@ -1000,7 +1000,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Michelle House</td>
                               <td>Integration Specialist</td>
@@ -1011,7 +1011,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Suki Burks</td>
                               <td>Developer</td>
@@ -1022,7 +1022,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Prescott Bartlett</td>
                               <td>Technical Author</td>
@@ -1033,7 +1033,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Gavin Cortez</td>
                               <td>Team Leader</td>
@@ -1044,7 +1044,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Martena Mccray</td>
                               <td>Post-Sales support</td>
@@ -1055,7 +1055,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Unity Butler</td>
                               <td>Marketing Designer</td>
@@ -1066,7 +1066,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Howard Hatfield</td>
                               <td>Office Manager</td>
@@ -1077,7 +1077,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Hope Fuentes</td>
                               <td>Secretary</td>
@@ -1088,7 +1088,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Vivian Harrell</td>
                               <td>Financial Controller</td>
@@ -1099,7 +1099,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Timothy Mooney</td>
                               <td>Office Manager</td>
@@ -1110,7 +1110,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Jackson Bradshaw</td>
                               <td>Director</td>
@@ -1121,7 +1121,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Olivia Liang</td>
                               <td>Support Engineer</td>
@@ -1132,7 +1132,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Bruno Nash</td>
                               <td>Software Engineer</td>
@@ -1143,7 +1143,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Sakura Yamamoto</td>
                               <td>Support Engineer</td>
@@ -1154,7 +1154,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Thor Walton</td>
                               <td>Developer</td>
@@ -1165,7 +1165,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Finn Camacho</td>
                               <td>Support Engineer</td>
@@ -1176,7 +1176,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Serge Baldwin</td>
                               <td>Data Coordinator</td>
@@ -1187,7 +1187,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Zenaida Frank</td>
                               <td>Software Engineer</td>
@@ -1198,7 +1198,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Zorita Serrano</td>
                               <td>Software Engineer</td>
@@ -1209,7 +1209,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Jennifer Acosta</td>
                               <td>Junior Javascript Developer</td>
@@ -1220,7 +1220,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Cara Stevens</td>
                               <td>Sales Assistant</td>
@@ -1231,7 +1231,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Hermione Butler</td>
                               <td>Regional Director</td>
@@ -1242,7 +1242,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Lael Greer</td>
                               <td>Systems Administrator</td>
@@ -1253,7 +1253,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Jonas Alexander</td>
                               <td>Developer</td>
@@ -1264,7 +1264,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Shad Decker</td>
                               <td>Regional Director</td>
@@ -1275,7 +1275,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Michael Bruce</td>
                               <td>Javascript Developer</td>
@@ -1286,7 +1286,7 @@ export default function Table() {
                             </tr>
                             <tr>
                               <td>
-                                 <th><input type="checkbox" id="check-all" class="flat"/></th>
+                                 <th><input type="checkbox" id="check-all" className="flat"/></th>
                               </td>
                               <td>Donna Snider</td>
                               <td>Customer Support</td>
@@ -1301,32 +1301,32 @@ export default function Table() {
                     </div>
                   </div>
     
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                      <div class="x_title">
+                  <div className="col-md-12 col-sm-12 col-xs-12">
+                    <div className="x_panel">
+                      <div className="x_title">
                         <h2>Button Example <small>Users</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        <ul className="nav navbar-right panel_toolbox">
+                          <li><Link className="collapse-link"><i className="fa fa-chevron-up"></i></Link>
                           </li>
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Settings 1</a>
+                          <li className="dropdown">
+                            <Link href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i className="fa fa-wrench"></i></Link>
+                            <ul className="dropdown-menu" role="menu">
+                              <li><Link href="#">Settings 1</Link>
                               </li>
-                              <li><a href="#">Settings 2</a>
+                              <li><Link href="#">Settings 2</Link>
                               </li>
                             </ul>
                           </li>
-                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          <li><Link className="close-link"><i className="fa fa-close"></i></Link>
                           </li>
                         </ul>
-                        <div class="clearfix"></div>
+                        <div className="clearfix"></div>
                       </div>
-                      <div class="x_content">
-                        <p class="text-muted font-13 m-b-30">
+                      <div className="x_content">
+                        <p className="text-muted font-13 m-b-30">
                           The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
                         </p>
-                        <table id="datatable-buttons" class="table table-striped table-bordered">
+                        <table id="datatable-buttons" className="table table-striped table-bordered">
                           <thead>
                             <tr>
                               <th>Name</th>
@@ -1802,32 +1802,32 @@ export default function Table() {
                     </div>
                   </div>
     
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                      <div class="x_title">
+                  <div className="col-md-12 col-sm-12 col-xs-12">
+                    <div className="x_panel">
+                      <div className="x_title">
                         <h2>Fixed Header Example <small>Users</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        <ul className="nav navbar-right panel_toolbox">
+                          <li><Link className="collapse-link"><i className="fa fa-chevron-up"></i></Link>
                           </li>
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Settings 1</a>
+                          <li className="dropdown">
+                            <Link href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i className="fa fa-wrench"></i></Link>
+                            <ul className="dropdown-menu" role="menu">
+                              <li><Link href="#">Settings 1</Link>
                               </li>
-                              <li><a href="#">Settings 2</a>
+                              <li><Link href="#">Settings 2</Link>
                               </li>
                             </ul>
                           </li>
-                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          <li><Link className="close-link"><i className="fa fa-close"></i></Link>
                           </li>
                         </ul>
-                        <div class="clearfix"></div>
+                        <div className="clearfix"></div>
                       </div>
-                      <div class="x_content">
-                        <p class="text-muted font-13 m-b-30">
+                      <div className="x_content">
+                        <p className="text-muted font-13 m-b-30">
                           This example shows FixedHeader being styling by the Bootstrap CSS framework.
                         </p>
-                        <table id="datatable-fixed-header" class="table table-striped table-bordered">
+                        <table id="datatable-fixed-header" className="table table-striped table-bordered">
                           <thead>
                             <tr>
                               <th>Name</th>
@@ -2303,36 +2303,36 @@ export default function Table() {
                     </div>
                   </div>
     
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                      <div class="x_title">
+                  <div className="col-md-12 col-sm-12 col-xs-12">
+                    <div className="x_panel">
+                      <div className="x_title">
                         <h2>KeyTable example <small>Users</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        <ul className="nav navbar-right panel_toolbox">
+                          <li><Link className="collapse-link"><i className="fa fa-chevron-up"></i></Link>
                           </li>
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Settings 1</a>
+                          <li className="dropdown">
+                            <Link href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i className="fa fa-wrench"></i></Link>
+                            <ul className="dropdown-menu" role="menu">
+                              <li><Link href="#">Settings 1</Link>
                               </li>
-                              <li><a href="#">Settings 2</a>
+                              <li><Link href="#">Settings 2</Link>
                               </li>
                             </ul>
                           </li>
-                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          <li><Link className="close-link"><i className="fa fa-close"></i></Link>
                           </li>
                         </ul>
-                        <div class="clearfix"></div>
+                        <div className="clearfix"></div>
                       </div>
-                      <div class="x_content">
-                        <div class="row">
-                          <div class="col-sm-12">
-                            <div class="card-box table-responsive">
-                              <p class="text-muted font-13 m-b-30">
+                      <div className="x_content">
+                        <div className="row">
+                          <div className="col-sm-12">
+                            <div className="card-box table-responsive">
+                              <p className="text-muted font-13 m-b-30">
                                 KeyTable provides Excel like cell navigation on any table. Events (focus, blur, action etc) can be assigned to individual cells, columns, rows or all cells.
                               </p>
     
-                              <table id="datatable-keytable" class="table table-striped table-bordered">
+                              <table id="datatable-keytable" className="table table-striped table-bordered">
                                 <thead>
                                   <tr>
                                     <th>Name</th>
@@ -2811,33 +2811,33 @@ export default function Table() {
                     </div>
                   </div>
     
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                      <div class="x_title">
+                  <div className="col-md-12 col-sm-12 col-xs-12">
+                    <div className="x_panel">
+                      <div className="x_title">
                         <h2>Responsive example<small>Users</small></h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        <ul className="nav navbar-right panel_toolbox">
+                          <li><Link className="collapse-link"><i className="fa fa-chevron-up"></i></Link>
                           </li>
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Settings 1</a>
+                          <li className="dropdown">
+                            <Link href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i className="fa fa-wrench"></i></Link>
+                            <ul className="dropdown-menu" role="menu">
+                              <li><Link href="#">Settings 1</Link>
                               </li>
-                              <li><a href="#">Settings 2</a>
+                              <li><Link href="#">Settings 2</Link>
                               </li>
                             </ul>
                           </li>
-                          <li><a class="close-link"><i class="fa fa-close"></i></a>
+                          <li><Link className="close-link"><i className="fa fa-close"></i></Link>
                           </li>
                         </ul>
-                        <div class="clearfix"></div>
+                        <div className="clearfix"></div>
                       </div>
-                      <div class="x_content">
-                        <p class="text-muted font-13 m-b-30">
+                      <div className="x_content">
+                        <p className="text-muted font-13 m-b-30">
                           Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
                         </p>
                         
-                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                        <table id="datatable-responsive" className="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                           <thead>
                             <tr>
                               <th>First name</th>
@@ -3491,10 +3491,10 @@ export default function Table() {
             </div>
     
             <footer>
-              <div class="pull-right">
-                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+              <div className="pull-right">
+                Gentelella - Bootstrap Admin Template by <Link href="https://colorlib.com">Colorlib</Link>
               </div>
-              <div class="clearfix"></div>
+              <div className="clearfix"></div>
             </footer>
           </div>
       
