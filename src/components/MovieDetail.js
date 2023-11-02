@@ -295,7 +295,7 @@ export default function MovieDetail() {
                             className="movie-item-style-2 movie-item-style-1"
                             style={{ margin: "0px" }}
                           >
-                            <img src="images/uploads/ceb1.jpg" alt="" />
+                            <img src={item.img} alt="" />
                             <div className="hvr-inner">
                               <Link href={`cast/${item.id}`}>
                                 Read more
