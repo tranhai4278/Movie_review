@@ -1,15 +1,34 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Routes, useMatch } from "react-router-dom";
 import {
-  Home, Header, Footer, Login, Signup, ResetPassword, ResetPassword2, BreadCrumb, Sidebar, ChangePassword, UserProfile,
-  Filter, MovieGrid, MovieList, MovieDetail, Wishlist1, WishlistGrid, MovieRated, CastDetail, AdminSidebar, Table
-} from './components/Index'
+  Home,
+  Header,
+  Footer,
+  Login,
+  Signup,
+  ResetPassword,
+  ResetPassword2,
+  BreadCrumb,
+  Sidebar,
+  ChangePassword,
+  UserProfile,
+  Filter,
+  MovieGrid,
+  MovieList,
+  MovieDetail,
+  Wishlist1,
+  WishlistGrid,
+  MovieRated,
+  CastDetail,
+  AdminSidebar,
+  Table,
+} from "./components/Index";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 function App() {
   return (
-    <div style={{ backgroundColor: '#020d18' }}>
-      <BrowserRouter >
+    <div style={{ backgroundColor: "#020d18" }}>
+      <BrowserRouter>
         <div>
-          {window.location.pathname.startsWith('/admin') ? null : <Header />}
+          {window.location.pathname.startsWith("/admin") ? null : <Header />}
 
           <Routes>
             <Route path="/" element={<Home />} />
@@ -49,7 +68,7 @@ function App() {
             </Row>
           </Container>
 
-          <Container >
+          <Container>
             <Row className="ipad-width">
               <Col md={8} sm={12} xs={12}>
                 <Routes>
@@ -74,9 +93,9 @@ function App() {
           </Container>
 
           <div>
-            <div class="nav-md">
-              <div class="body">
-                <Row style={{ backgroundColor: 'white' }}>
+            <div className="nav-md">
+              <div className="body">
+                <Row style={{ backgroundColor: "white" }}>
                   <Col md={2} sm={12} xs={12}>
                     <Routes>
                       <Route path="/admin" element={<AdminSidebar />} />
@@ -92,11 +111,9 @@ function App() {
             </div>
           </div>
 
-          {window.location.pathname.startsWith('/admin') ? null : <Footer />}
+          {window.location.pathname.startsWith("/admin") ? null : <Footer />}
         </div>
       </BrowserRouter>
-
-
     </div>
   );
 }
