@@ -82,7 +82,9 @@ function MovieDetailComment({
           replies
         </a>
       </div>
-      <p style={{ marginBottom: "4px" }}>{data.content}</p>
+      <p style={{ marginBottom: "4px", whiteSpace: "pre-line" }}>
+        {data.content}
+      </p>
       {showReplyForm && ( // Hiển thị Form.Group nếu showReplyForm là true
         <Form.Group controlId="comment">
           <Form.Control
@@ -96,8 +98,9 @@ function MovieDetailComment({
       )}
       {(showMore !== "Show More" || !isParent) && (
         <div style={{ paddingLeft: "60px" }}>
-          {data?.replies.map((item) => (
+          {data?.replies.map((item, index) => (
             <MovieDetailComment
+              key={index}
               data={item}
               handleSubmitComment={handleSubmitComment}
               movieId={movieId}
