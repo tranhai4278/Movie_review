@@ -139,7 +139,7 @@
     {
       "movie_id": 1,
       "user_id": 1,
-      "rating": 10,
+      "rating": 7,
       "create_at": "2023-11-03",
       "status": "todo",
       "id": 3
@@ -409,6 +409,15 @@
       "status": "todo",
       "parent_comment_id": 27,
       "id": 30
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "ko hay",
+      "create_at": "2023-11-03",
+      "status": "todo",
+      "parent_comment_id": null,
+      "id": 31
     }
   ],
   "report": [
@@ -431,6 +440,28 @@
       "start_date": "2023-09-30",
       "end_date": "2023-10-30",
       "price": "1.000.000VND"
+    }
+  ],
+  "wishlist": [
+    {
+      "id": 1,
+      "movie_id": 1,
+      "user_id": 1
+    },
+    {
+      "id": 2,
+      "movie_id": 2,
+      "user_id": 1
+    },
+    {
+      "id": 3,
+      "movie_id": 1,
+      "user_id": 2
+    },
+    {
+      "id": 4,
+      "movie_id": 2,
+      "user_id": 3
     }
   ]
 }
