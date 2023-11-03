@@ -1,25 +1,44 @@
 import React, { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import backgroundImage from "../image/slider-bg.jpg"; // Đường dẫn đến hình ảnh nền
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+    setUsername(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // Do something with the login data, like send it to an API
+    const user = {
+      username: username,
+      password: password,
+    };
+    axios
+      .get("http://localhost:9999/user")
+      .then((res) => {
+        const userData = res.data;
+        const foundUser = userData.find(
+          (item) => item.username === username && item.password === password
+        );
+        if (foundUser) {
+          // Đăng nhập thành công, chuyển hướng đến trang Home
+          navigate("/");
+        } else {
+          // Hiển thị thông báo đăng nhập không hợp lệ
+          alert("Invalid username or password. Please try again.");
+        }
+      })
+      .catch((error) => console.error(error));
   };
 
   const backgroundStyle = {
@@ -46,7 +65,7 @@ export default function Login() {
   return (
     <div style={backgroundStyle}>
       <div style={formStyle}>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleLogin}>
           <Form.Group
             className="mb-3"
             controlId="formBasicEmail"
@@ -58,9 +77,9 @@ export default function Login() {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Username</Form.Label>
             <Form.Control
-              type="email"
+              type="username"
               placeholder="Username"
-              value={email}
+              value={username}
               onChange={handleEmailChange}
             />
           </Form.Group>
@@ -91,7 +110,7 @@ export default function Login() {
               variant="danger"
               type="submit"
               size="md"
-              style={{ width:'100%' }}
+              style={{ width: '100%' }}
             >
               Login
             </Button>
@@ -104,7 +123,7 @@ export default function Login() {
               variant="primary"
               type="submit"
               size="md"
-              style={{ width:'100%' }}
+              style={{ width: '100%' }}
             >
               Google
             </Button>
@@ -113,5 +132,4 @@ export default function Login() {
       </div>
     </div>
   );
-};
-
+}
