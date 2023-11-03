@@ -3,16 +3,6 @@ import { Container, Row, Col, Button, Form, InputGroup } from "react-bootstrap";
 
 
 export default function Filter() {
-	const [minRating, setMinRating] = useState(0);
-  const [maxRating, setMaxRating] = useState(10);
-
-  const handleRangeChange = (e) => {
-    setMinRating(e.target.value);
-  };
-
-  const handleMaxRangeChange = (e) => {
-    setMaxRating(e.target.value);
-  };
 	return (
 		<div style={{ paddingTop: '280px' }}>
 			<div className="sidebar">
