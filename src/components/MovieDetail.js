@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
 
 import { Row, Col, Button, Form, Image } from "react-bootstrap";
 import axios from "axios";
+
+import MovieDetailComment from "./MovieDetailComment";
+import { getCurrentDate } from "./MovieDetailService";
 
 export default function MovieDetail() {
   const starStyle = {
@@ -20,18 +22,33 @@ export default function MovieDetail() {
   };
 
   // const {id} = useParams();
-  const { id } = { id: 1 };
+  const { id, userId } = { id: 1, userId: 1 };
   // Data moive detail
   const [movie, setMovie] = useState({});
-
-  // rates total
-  const [usersRate, setUsersRate] = useState([]);
 
   // Genres of this moive
   const [movieGenres, setMovieGenres] = useState([]);
 
   // Casts of this moive
   const [movieCasts, setMovieCasts] = useState([]);
+
+  // Comments of this moive
+  const [movieComments, setMovieComments] = useState([]);
+
+  // Comment value to this moive
+  const [myComment, setMyComment] = useState("");
+
+  // error comment blank
+  const [errBlankComment, setErrBlankComment] = useState("");
+
+  // rates total
+  const [usersRate, setUsersRate] = useState([]);
+
+  // Rate value to this moive
+  const [myRate, setMyRate] = useState({ rating: 0 });
+
+  // render Start for rating
+  const [renderStars, setRenderStarts] = useState([]);
 
   /**
    * Init: fetch movie data by movie_id
@@ -41,16 +58,6 @@ export default function MovieDetail() {
       .get(`http://localhost:9999/movie/${id}`)
       .then((response) => response.data)
       .then((data) => setMovie(data));
-  }, [id]);
-
-  /**
-   * Init: fetch total rating data by movie_id
-   */
-  useEffect(() => {
-    axios
-      .get(`http://localhost:9999/rate?movie_id=${id}`)
-      .then((response) => response.data)
-      .then((data) => setUsersRate(data));
   }, [id]);
 
   /**
@@ -95,6 +102,151 @@ export default function MovieDetail() {
       });
   }, [id]);
 
+  /**
+   * Init: fetch total review by movie_id
+   */
+  useEffect(() => {
+    fetchCommnentByMovieId();
+  }, [id]);
+
+  const fetchCommnentByMovieId = () => {
+    axios
+      // fetch all user
+      .get(`http://localhost:9999/user`)
+      .then((response) => response.data)
+      .then((dataUsers) => {
+        // fetch all review by movie_id
+        axios
+          .get(`http://localhost:9999/comment?movie_id=${id}`)
+          .then((response) => response.data)
+          .then((data) => {
+            const nestedComments = nestComments(
+              data.map((item) => ({
+                ...item,
+                user: dataUsers.find((user) => user.user_id === item.user_id),
+              }))
+            );
+            setMovieComments(nestedComments);
+          });
+      });
+  };
+
+  /**
+   * convert comment array to nestedcomment by parent_comment_id
+   */
+  const nestComments = (comments) => {
+    const commentMap = {};
+    const nestedComments = [];
+
+    comments.forEach((comment) => {
+      commentMap[comment.id] = comment;
+      comment.replies = [];
+    });
+
+    comments.forEach((comment) => {
+      if (comment.parent_comment_id) {
+        commentMap[comment.parent_comment_id].replies.push(comment);
+      } else {
+        nestedComments.push(comment);
+      }
+    });
+
+    return nestedComments;
+  };
+
+  /**
+   * submit my comment
+   */
+  const handleSubmitComment = (data) => {
+    if (data.content.trim() === "") {
+      setErrBlankComment("Please enter comment before submit");
+    } else {
+      axios
+        .post("http://localhost:9999/comment", data)
+        .then((response) => response.data)
+        .then((data) => {
+          setMyComment("");
+          fetchCommnentByMovieId();
+          setErrBlankComment("");
+        });
+    }
+  };
+
+  /**
+   * Init: fetch total rating data by movie_id
+   */
+  useEffect(() => {
+    axios
+      .get(`http://localhost:9999/rate?movie_id=${id}`)
+      .then((response) => response.data)
+      .then((data) => setUsersRate(data.filter((item) => item.rating)));
+  }, [id, myRate]);
+
+  /**
+   * Init: fetch total rating data by movie_id and user_id
+   */
+  useEffect(() => {
+    axios
+      .get(`http://localhost:9999/rate?movie_id=${id}&user_id=${userId}`)
+      .then((response) => response.data)
+      .then((data) => {
+        if (data.length !== 0) {
+          setMyRate(data[0]);
+        }
+      });
+  }, [id]);
+
+  /**
+   * Render starts rating
+   */
+  useEffect(() => {
+    const elements = [];
+    for (let i = 1; i <= 10; i++) {
+      elements.push(
+        i <= myRate.rating ? (
+          <Col>
+            <i
+              onClick={() => handleRating(i)}
+              className="ion-android-star"
+              style={starStyle}
+            ></i>
+          </Col>
+        ) : (
+          <Col>
+            <i
+              onClick={() => handleRating(i)}
+              className="ion-ios-star-outline"
+              style={starStyle}
+            ></i>
+          </Col>
+        )
+      );
+    }
+    setRenderStarts(elements);
+  }, [myRate]);
+
+  const handleRating = (rating) => {
+    if (myRate.rating !== 0) {
+      axios
+        .put(`http://localhost:9999/rate/${myRate.id}`, {
+          ...myRate,
+          rating,
+        })
+        .then((response) => response.data)
+        .then((data) => setMyRate(data));
+    } else {
+      axios
+        .post(`http://localhost:9999/rate`, {
+          movie_id: id,
+          user_id: userId,
+          rating,
+          create_at: getCurrentDate(),
+          status: "todo",
+        })
+        .then((response) => response.data)
+        .then((data) => setMyRate(data));
+    }
+  };
   return (
     <div style={{ paddingTop: "220px" }}>
       <Row className="ipad-width2">
@@ -112,12 +264,12 @@ export default function MovieDetail() {
                   </Button>
                 </div>
                 <div>
-                  <Link
+                  <a
                     href={movie?.trailers_url}
                     className="item item-2 redbtn fancybox-media hvr-grow"
                   >
                     <i className="ion-play"></i>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -132,26 +284,26 @@ export default function MovieDetail() {
               {movie?.name} <span>{movie?.release_year}</span>
             </h1>
             <div className="social-btn">
-              <Link href="1" className="parent-btn">
+              <a href="1" className="parent-btn">
                 <i className="ion-heart"></i> Add to Favorite
-              </Link>
+              </a>
               <div className="hover-bnt">
-                <Link href="1" className="parent-btn">
+                <a href="1" className="parent-btn">
                   <i className="ion-android-share-alt"></i>share
-                </Link>
+                </a>
                 <div className="hvr-item">
-                  <Link href="1" className="hvr-grow">
+                  <a href="1" className="hvr-grow">
                     <i className="ion-social-facebook"></i>
-                  </Link>
-                  <Link href="1" className="hvr-grow">
+                  </a>
+                  <a href="1" className="hvr-grow">
                     <i className="ion-social-twitter"></i>
-                  </Link>
-                  <Link href="1" className="hvr-grow">
+                  </a>
+                  <a href="1" className="hvr-grow">
                     <i className="ion-social-googleplus"></i>
-                  </Link>
-                  <Link href="1" className="hvr-grow">
+                  </a>
+                  <a href="1" className="hvr-grow">
                     <i className="ion-social-youtube"></i>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -174,11 +326,13 @@ export default function MovieDetail() {
                   <Col md={9} xs={12}>
                     <p>
                       <span style={{ color: "white", fontSize: "18px" }}>
-                        {usersRate?.reduce(
-                          (totalRate, currentItem) =>
-                            totalRate + currentItem.rating,
-                          0
-                        ) / usersRate?.length}
+                        {(
+                          usersRate?.reduce(
+                            (totalRate, currentItem) =>
+                              totalRate + currentItem.rating,
+                            0
+                          ) / usersRate?.length
+                        ).toFixed(1)}
                       </span>{" "}
                       /10
                       <br />
@@ -196,36 +350,7 @@ export default function MovieDetail() {
                       Rate This Movie:
                     </h4>
                   </Col>
-                  <Col>
-                    <i className="ion-android-star" style={starStyle}></i>{" "}
-                  </Col>
-                  <Col>
-                    <i className="ion-android-star" style={starStyle}></i>{" "}
-                  </Col>
-                  <Col>
-                    <i className="ion-android-star" style={starStyle}></i>{" "}
-                  </Col>
-                  <Col>
-                    <i className="ion-android-star" style={starStyle}></i>{" "}
-                  </Col>
-                  <Col>
-                    <i className="ion-android-star" style={starStyle}></i>{" "}
-                  </Col>
-                  <Col>
-                    <i className="ion-android-star" style={starStyle}></i>{" "}
-                  </Col>
-                  <Col>
-                    <i className="ion-android-star" style={starStyle}></i>{" "}
-                  </Col>
-                  <Col>
-                    <i className="ion-android-star" style={starStyle}></i>{" "}
-                  </Col>
-                  <Col>
-                    <i className="ion-ios-star-outline" style={starStyle}></i>{" "}
-                  </Col>
-                  <Col>
-                    <i className="ion-ios-star-outline" style={starStyle}></i>{" "}
-                  </Col>
+                  {renderStars}
                 </Row>
               </Col>
             </Row>
@@ -233,13 +358,13 @@ export default function MovieDetail() {
               <div className="tabs">
                 <ul className="tab-links tabs-mv">
                   <li className="active">
-                    <Link href="#overview">Overview</Link>
+                    <a href="#overview">Overview</a>
                   </li>
                   <li>
-                    <Link href="#reviews"> Reviews</Link>
+                    <a href="#reviews"> Reviews</a>
                   </li>
                   <li>
-                    <Link href="#cast"> Casts </Link>
+                    <a href="#cast"> Casts </a>
                   </li>
                 </ul>
                 <div className="tab-content">
@@ -256,17 +381,17 @@ export default function MovieDetail() {
                           <Col md={3} className="sb-it">
                             <h6 style={{ color: "white" }}>Director: </h6>
                             <p>
-                              <Link href="1">{movie?.director}</Link>
+                              <a href="1">{movie?.director}</a>
                             </p>
                           </Col>
                           <Col md={3} className="sb-it">
                             <h6 style={{ color: "white" }}>Genres:</h6>
                             <p>
                               {movieGenres?.map((item, index) => (
-                                <Link key={item.id} href={item.id}>
+                                <a key={item.id} href={item.id}>
                                   {item.name}
                                   {index < movieGenres?.length - 1 && ", "}
-                                </Link>
+                                </a>
                               ))}
                             </p>
                           </Col>
@@ -280,118 +405,6 @@ export default function MovieDetail() {
                           </Col>
                         </Row>
                       </Col>
-                      <Col md={12} className="title-hd-sm">
-                        <h4>cast</h4>
-                        <Link href="1" className="time">
-                          Full Cast & Crew{" "}
-                          <i className="ion-ios-arrow-right"></i>
-                        </Link>
-                      </Col>
-                      <Row style={{ marginLeft: "0px" }}>
-                        {movieCasts?.map((item) => (
-                          <Col
-                            key={item.id}
-                            md={3}
-                            className="movie-item-style-2 movie-item-style-1"
-                            style={{ margin: "0px" }}
-                          >
-                            <img src={item.img} alt="" />
-                            <div className="hvr-inner">
-                              <Link href={`cast/${item.id}`}>
-                                Read more
-                                <i className="ion-android-arrow-dropright"></i>
-                              </Link>
-                            </div>
-                            <div className="mv-item-infor">
-                              <h6>
-                                <Link href={`cast/${item.id}`}>
-                                  {item.name}
-                                </Link>
-                              </h6>
-                            </div>
-                          </Col>
-                        ))}
-                      </Row>
-
-                      <Col md={12} className="title-hd-sm">
-                        <h4>Reviews</h4>
-                        <Link href="#" className="time">
-                          See All 56 Reviews{" "}
-                          <i className="ion-ios-arrow-right"></i>
-                        </Link>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={12} className="anime__details__form">
-                        <Form>
-                          <Form.Group controlId="comment">
-                            <Form.Control
-                              type="text"
-                              placeholder="Your Comment"
-                              as="textarea"
-                            />
-                          </Form.Group>
-                          <Button type="submit">
-                            <i className="fa fa-location-arrow"></i> Review
-                          </Button>
-                        </Form>
-                      </Col>
-                      <Col
-                        md={12}
-                        className="mv-user-review-item"
-                        style={{ marginBottom: "28px" }}
-                      >
-                        <div className="user-infor">
-                          <Image
-                            src="images/uploads/userava1.jpg"
-                            style={{ borderRadius: "20px" }}
-                          />
-                          <span style={{ paddingLeft: "16px", color: "white" }}>
-                            User Name
-                          </span>
-                          <span
-                            style={{ paddingLeft: "16px" }}
-                            className="time"
-                          >
-                            17 December 2016
-                          </span>
-                        </div>
-                        <p>
-                          This is by far one of my favorite movies from the MCU.
-                          The introduction of new Characters both good and bad
-                          also makes the movie more exciting. giving the
-                          characters more of a back story can also help
-                          audiences relate more to different characters better,
-                          and it connects a bond between the audience and actors
-                          or characters.
-                        </p>
-                      </Col>
-                      <Col
-                        md={12}
-                        className="mv-user-review-item"
-                        style={{ marginBottom: "28px" }}
-                      >
-                        <div className="user-infor">
-                          <Image
-                            src="images/uploads/userava1.jpg"
-                            style={{ borderRadius: "20px" }}
-                          />
-                          <span style={{ paddingLeft: "16px", color: "white" }}>
-                            User Name
-                          </span>
-                          <span
-                            style={{ paddingLeft: "16px" }}
-                            className="time"
-                          >
-                            17 December 2016
-                          </span>
-                        </div>
-                        <p>
-                          This is by far one of my favorite movies from the MCU.
-                          The introduction of new Characters both good and bad
-                          also makes the movie more exciting.
-                        </p>
-                      </Col>
                     </Row>
                   </div>
                   <div id="reviews" className="tab review">
@@ -400,152 +413,71 @@ export default function MovieDetail() {
                         <Form>
                           <Form.Group controlId="comment">
                             <Form.Control
+                              value={myComment}
+                              onChange={(e) => setMyComment(e.target.value)}
                               type="text"
                               placeholder="Your Comment"
                               as="textarea"
                             />
                           </Form.Group>
-                          <Button type="submit">
+                          {errBlankComment !== "" && (
+                            <div class="alert alert-danger">
+                              {errBlankComment}
+                            </div>
+                          )}
+                          <Button
+                            type="button"
+                            onClick={() =>
+                              handleSubmitComment({
+                                movie_id: id,
+                                user_id: 1,
+                                content: myComment,
+                                create_at: getCurrentDate(),
+                                status: "todo",
+                                parent_comment_id: null,
+                              })
+                            }
+                          >
                             <i className="fa fa-location-arrow"></i> Review
                           </Button>
                         </Form>
                       </Col>
-                      <Col
-                        md={12}
-                        className="mv-user-review-item"
-                        style={{ marginBottom: "28px" }}
-                      >
-                        <div className="user-infor">
-                          <Image
-                            src="images/uploads/userava1.jpg"
-                            style={{ borderRadius: "20px" }}
+                      {movieComments?.map((item) => (
+                        <div style={{ marginBottom: "20px" }}>
+                          <MovieDetailComment
+                            handleSubmitComment={handleSubmitComment}
+                            data={item}
+                            isParent
+                            movieId={id}
+                            userId={userId}
                           />
-                          <span style={{ paddingLeft: "16px", color: "white" }}>
-                            User Name
-                          </span>
-                          <span
-                            style={{ paddingLeft: "16px" }}
-                            className="time"
-                          >
-                            17 December 2016
-                          </span>
                         </div>
-                        <p>
-                          This is by far one of my favorite movies from the MCU.
-                          The introduction of new Characters both good and bad
-                          also makes the movie more exciting. giving the
-                          characters more of a back story can also help
-                          audiences relate more to different characters better,
-                          and it connects a bond between the audience and actors
-                          or characters.
-                        </p>
-                      </Col>
-                      <Col
-                        md={12}
-                        className="mv-user-review-item"
-                        style={{ marginBottom: "28px" }}
-                      >
-                        <div className="user-infor">
-                          <Image
-                            src="images/uploads/userava1.jpg"
-                            style={{ borderRadius: "20px" }}
-                          />
-                          <span style={{ paddingLeft: "16px", color: "white" }}>
-                            User Name
-                          </span>
-                          <span
-                            style={{ paddingLeft: "16px" }}
-                            className="time"
-                          >
-                            17 December 2016
-                          </span>
-                        </div>
-                        <p>
-                          This is by far one of my favorite movies from the MCU.
-                          The introduction of new Characters both good and bad
-                          also makes the movie more exciting.
-                        </p>
-                      </Col>
+                      ))}
                     </Row>
                   </div>
                   <div id="cast" className="tab">
                     <Row style={{ marginLeft: "0px" }}>
-                      <Col
-                        md={3}
-                        className="movie-item-style-2 movie-item-style-1"
-                        style={{ margin: "0px" }}
-                      >
-                        <img src="images/uploads/ceb1.jpg" alt="" />
-                        <div className="hvr-inner">
-                          <Link href="moviesingle.html">
-                            {" "}
-                            Read more{" "}
-                            <i className="ion-android-arrow-dropright"></i>{" "}
-                          </Link>
-                        </div>
-                        <div className="mv-item-infor">
-                          <h6>
-                            <Link href="#">Tom Hardy</Link>
-                          </h6>
-                        </div>
-                      </Col>
-                      <Col
-                        md={3}
-                        className="movie-item-style-2 movie-item-style-1"
-                        style={{ margin: "0px" }}
-                      >
-                        <img src="images/uploads/ceb2.jpg" alt="" />
-                        <div className="hvr-inner">
-                          <Link href="moviesingle.html">
-                            {" "}
-                            Read more{" "}
-                            <i className="ion-android-arrow-dropright"></i>{" "}
-                          </Link>
-                        </div>
-                        <div className="mv-item-infor">
-                          <h6>
-                            <Link href="#">Leonardo DiCaprio</Link>
-                          </h6>
-                        </div>
-                      </Col>
-                      <Col
-                        md={3}
-                        className="movie-item-style-2 movie-item-style-1"
-                        style={{ margin: "0px" }}
-                      >
-                        <img src="images/uploads/ceb3.jpg" alt="" />
-                        <div className="hvr-inner">
-                          <Link href="moviesingle.html">
-                            {" "}
-                            Read more{" "}
-                            <i className="ion-android-arrow-dropright"></i>{" "}
-                          </Link>
-                        </div>
-                        <div className="mv-item-infor">
-                          <h6>
-                            <Link href="#">Emma Stone</Link>
-                          </h6>
-                        </div>
-                      </Col>
-                      <Col
-                        md={3}
-                        className="movie-item-style-2 movie-item-style-1"
-                        style={{ margin: "0px" }}
-                      >
-                        <img src="images/uploads/ceb4.jpg" alt="" />
-                        <div className="hvr-inner">
-                          <Link href="moviesingle.html">
-                            {" "}
-                            Read more{" "}
-                            <i className="ion-android-arrow-dropright"></i>{" "}
-                          </Link>
-                        </div>
-                        <div className="mv-item-infor">
-                          <h6>
-                            <Link href="#">Olga Kurylenko</Link>
-                          </h6>
-                        </div>
-                      </Col>
+                      {movieCasts?.map((item) => (
+                        <Col
+                          key={item.id}
+                          md={3}
+                          className="movie-item-style-2 movie-item-style-1"
+                          style={{ margin: "0px" }}
+                        >
+                          <img src={item.img} alt="" />
+                          <div className="hvr-inner">
+                            <a href={`cast/${item.id}`}>
+                              Read more
+                              <i className="ion-android-arrow-dropright"></i>
+                            </a>
+                          </div>
+                          <div className="mv-item-infor">
+                            <h6>
+                              <a href={`cast/${item.id}`}>{item.name}</a>
+                            </h6>
+                          </div>
+                        </Col>
+                      ))}
                     </Row>
                   </div>
                 </div>
