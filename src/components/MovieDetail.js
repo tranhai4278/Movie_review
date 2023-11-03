@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import { Row, Col, Button, Form, Image } from "react-bootstrap";
 import axios from "axios";
+import { FacebookShareButton, FacebookIcon } from "react-share";
 
 import MovieDetailComment from "./MovieDetailComment";
 import { getCurrentDate } from "./MovieDetailService";
+import { useParams } from "react-router-dom";
 
 export default function MovieDetail() {
   const starStyle = {
@@ -21,8 +23,8 @@ export default function MovieDetail() {
     height: "54px",
   };
 
-  // const {id} = useParams();
-  const { id, userId } = { id: 1, userId: 1 };
+  const { id } = useParams();
+  const { userId } = { userId: 1 };
   // Data moive detail
   const [movie, setMovie] = useState({});
 
@@ -284,24 +286,29 @@ export default function MovieDetail() {
               {movie?.name} <span>{movie?.release_year}</span>
             </h1>
             <div className="social-btn">
-              <a href="1" className="parent-btn">
+              <a href="javascript:void(0)" className="parent-btn">
                 <i className="ion-heart"></i> Add to Favorite
               </a>
               <div className="hover-bnt">
-                <a href="1" className="parent-btn">
+                <a href="javascript:void(0)" className="parent-btn">
                   <i className="ion-android-share-alt"></i>share
                 </a>
                 <div className="hvr-item">
-                  <a href="1" className="hvr-grow">
-                    <i className="ion-social-facebook"></i>
+                  <a href="javascript:void(0)" className="hvr-grow">
+                    <FacebookShareButton
+                      url={movie?.trailers_url}
+                      hashtag="fermovie"
+                    >
+                      <i className="ion-social-facebook"></i>
+                    </FacebookShareButton>
                   </a>
-                  <a href="1" className="hvr-grow">
+                  <a href="javascript:void(0)" className="hvr-grow">
                     <i className="ion-social-twitter"></i>
                   </a>
-                  <a href="1" className="hvr-grow">
+                  <a href="javascript:void(0)" className="hvr-grow">
                     <i className="ion-social-googleplus"></i>
                   </a>
-                  <a href="1" className="hvr-grow">
+                  <a href="javascript:void(0)" className="hvr-grow">
                     <i className="ion-social-youtube"></i>
                   </a>
                 </div>
@@ -381,7 +388,7 @@ export default function MovieDetail() {
                           <Col md={3} className="sb-it">
                             <h6 style={{ color: "white" }}>Director: </h6>
                             <p>
-                              <a href="1">{movie?.director}</a>
+                              <a href="javascript:void(0)">{movie?.director}</a>
                             </p>
                           </Col>
                           <Col md={3} className="sb-it">
@@ -442,8 +449,8 @@ export default function MovieDetail() {
                           </Button>
                         </Form>
                       </Col>
-                      {movieComments?.map((item) => (
-                        <div style={{ marginBottom: "20px" }}>
+                      {movieComments?.map((item, index) => (
+                        <div key={index} style={{ marginBottom: "20px" }}>
                           <MovieDetailComment
                             handleSubmitComment={handleSubmitComment}
                             data={item}

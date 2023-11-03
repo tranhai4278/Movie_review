@@ -87,7 +87,7 @@ function App() {
 
           <Container>
             <Routes>
-              <Route path="/moviedetail" element={<MovieDetail />} />
+              <Route path="/moviedetail/:id" element={<MovieDetail />} />
               <Route path="/castdetail" element={<CastDetail />} />
             </Routes>
           </Container>
