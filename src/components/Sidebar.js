@@ -17,7 +17,7 @@ export default function Sidebar() {
                 <p>Account Details</p>
                 <ul className="list-group">
                     <li className="list-group-item active">
-                        <Link to="/userprofile"><Link href="#">Profile</Link></Link>
+                        <Link to="/userprofile">Profile</Link>
                     </li>
                     <li className="list-group-item">
                         <Link to="/wishlistgrid"><Link href="#">Wish List</Link></Link>
@@ -31,7 +31,7 @@ export default function Sidebar() {
                 <p>Others</p>
                 <ul className="list-group">
                     <li className="list-group-item">
-                        <Link to="/changepassword"><Link href="#">Change password</Link></Link>
+                        <Link to="/changepassword">Change password</Link>
                     </li>
                     <li className="list-group-item">
                         <Link href="#">Log out</Link>

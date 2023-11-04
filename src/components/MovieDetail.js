@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 
 import { Row, Col, Button, Form, Image } from "react-bootstrap";
 import axios from "axios";
@@ -7,6 +8,12 @@ import { FacebookShareButton, FacebookIcon } from "react-share";
 import MovieDetailComment from "./MovieDetailComment";
 import { getCurrentDate } from "./MovieDetailService";
 import { useParams } from "react-router-dom";
+=======
+import { Link, useParams } from "react-router-dom";
+
+import { Row, Col, Button, Form, Image } from "react-bootstrap";
+import axios from "axios";
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
 
 export default function MovieDetail() {
   const starStyle = {
@@ -23,17 +30,29 @@ export default function MovieDetail() {
     height: "54px",
   };
 
+<<<<<<< HEAD
   const { id } = useParams();
   const { userId } = { userId: 1 };
   // Data moive detail
   const [movie, setMovie] = useState({});
 
+=======
+  // const {id} = useParams();
+  const { id } = { id: 1 };
+  // Data moive detail
+  const [movie, setMovie] = useState({});
+
+  // rates total
+  const [usersRate, setUsersRate] = useState([]);
+
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
   // Genres of this moive
   const [movieGenres, setMovieGenres] = useState([]);
 
   // Casts of this moive
   const [movieCasts, setMovieCasts] = useState([]);
 
+<<<<<<< HEAD
   // Comments of this moive
   const [movieComments, setMovieComments] = useState([]);
 
@@ -52,6 +71,8 @@ export default function MovieDetail() {
   // render Start for rating
   const [renderStars, setRenderStarts] = useState([]);
 
+=======
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
   /**
    * Init: fetch movie data by movie_id
    */
@@ -63,6 +84,19 @@ export default function MovieDetail() {
   }, [id]);
 
   /**
+<<<<<<< HEAD
+=======
+   * Init: fetch total rating data by movie_id
+   */
+  useEffect(() => {
+    axios
+      .get(`http://localhost:9999/rate?movie_id=${id}`)
+      .then((response) => response.data)
+      .then((data) => setUsersRate(data));
+  }, [id]);
+
+  /**
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
    * Init: fetch total genre by movie_id
    */
   useEffect(() => {
@@ -104,6 +138,7 @@ export default function MovieDetail() {
       });
   }, [id]);
 
+<<<<<<< HEAD
   /**
    * Init: fetch total review by movie_id
    */
@@ -249,6 +284,8 @@ export default function MovieDetail() {
         .then((data) => setMyRate(data));
     }
   };
+=======
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
   return (
     <div style={{ paddingTop: "220px" }}>
       <Row className="ipad-width2">
@@ -266,12 +303,20 @@ export default function MovieDetail() {
                   </Button>
                 </div>
                 <div>
+<<<<<<< HEAD
                   <a
+=======
+                  <Link
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                     href={movie?.trailers_url}
                     className="item item-2 redbtn fancybox-media hvr-grow"
                   >
                     <i className="ion-play"></i>
+<<<<<<< HEAD
                   </a>
+=======
+                  </Link>
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                 </div>
               </div>
             </div>
@@ -286,6 +331,7 @@ export default function MovieDetail() {
               {movie?.name} <span>{movie?.release_year}</span>
             </h1>
             <div className="social-btn">
+<<<<<<< HEAD
               <a href="javascript:void(0)" className="parent-btn">
                 <i className="ion-heart"></i> Add to Favorite
               </a>
@@ -311,6 +357,28 @@ export default function MovieDetail() {
                   <a href="javascript:void(0)" className="hvr-grow">
                     <i className="ion-social-youtube"></i>
                   </a>
+=======
+              <Link href="1" className="parent-btn">
+                <i className="ion-heart"></i> Add to Favorite
+              </Link>
+              <div className="hover-bnt">
+                <Link href="1" className="parent-btn">
+                  <i className="ion-android-share-alt"></i>share
+                </Link>
+                <div className="hvr-item">
+                  <Link href="1" className="hvr-grow">
+                    <i className="ion-social-facebook"></i>
+                  </Link>
+                  <Link href="1" className="hvr-grow">
+                    <i className="ion-social-twitter"></i>
+                  </Link>
+                  <Link href="1" className="hvr-grow">
+                    <i className="ion-social-googleplus"></i>
+                  </Link>
+                  <Link href="1" className="hvr-grow">
+                    <i className="ion-social-youtube"></i>
+                  </Link>
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                 </div>
               </div>
             </div>
@@ -333,6 +401,7 @@ export default function MovieDetail() {
                   <Col md={9} xs={12}>
                     <p>
                       <span style={{ color: "white", fontSize: "18px" }}>
+<<<<<<< HEAD
                         {(
                           usersRate?.reduce(
                             (totalRate, currentItem) =>
@@ -340,6 +409,13 @@ export default function MovieDetail() {
                             0
                           ) / usersRate?.length
                         ).toFixed(1)}
+=======
+                        {usersRate?.reduce(
+                          (totalRate, currentItem) =>
+                            totalRate + currentItem.rating,
+                          0
+                        ) / usersRate?.length}
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                       </span>{" "}
                       /10
                       <br />
@@ -357,7 +433,40 @@ export default function MovieDetail() {
                       Rate This Movie:
                     </h4>
                   </Col>
+<<<<<<< HEAD
                   {renderStars}
+=======
+                  <Col>
+                    <i className="ion-android-star" style={starStyle}></i>{" "}
+                  </Col>
+                  <Col>
+                    <i className="ion-android-star" style={starStyle}></i>{" "}
+                  </Col>
+                  <Col>
+                    <i className="ion-android-star" style={starStyle}></i>{" "}
+                  </Col>
+                  <Col>
+                    <i className="ion-android-star" style={starStyle}></i>{" "}
+                  </Col>
+                  <Col>
+                    <i className="ion-android-star" style={starStyle}></i>{" "}
+                  </Col>
+                  <Col>
+                    <i className="ion-android-star" style={starStyle}></i>{" "}
+                  </Col>
+                  <Col>
+                    <i className="ion-android-star" style={starStyle}></i>{" "}
+                  </Col>
+                  <Col>
+                    <i className="ion-android-star" style={starStyle}></i>{" "}
+                  </Col>
+                  <Col>
+                    <i className="ion-ios-star-outline" style={starStyle}></i>{" "}
+                  </Col>
+                  <Col>
+                    <i className="ion-ios-star-outline" style={starStyle}></i>{" "}
+                  </Col>
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                 </Row>
               </Col>
             </Row>
@@ -365,6 +474,7 @@ export default function MovieDetail() {
               <div className="tabs">
                 <ul className="tab-links tabs-mv">
                   <li className="active">
+<<<<<<< HEAD
                     <a href="#overview">Overview</a>
                   </li>
                   <li>
@@ -372,6 +482,15 @@ export default function MovieDetail() {
                   </li>
                   <li>
                     <a href="#cast"> Casts </a>
+=======
+                    <Link href="#overview">Overview</Link>
+                  </li>
+                  <li>
+                    <Link href="#reviews"> Reviews</Link>
+                  </li>
+                  <li>
+                    <Link href="#cast"> Casts </Link>
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                   </li>
                 </ul>
                 <div className="tab-content">
@@ -388,17 +507,28 @@ export default function MovieDetail() {
                           <Col md={3} className="sb-it">
                             <h6 style={{ color: "white" }}>Director: </h6>
                             <p>
+<<<<<<< HEAD
                               <a href="javascript:void(0)">{movie?.director}</a>
+=======
+                              <Link href="1">{movie?.director}</Link>
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                             </p>
                           </Col>
                           <Col md={3} className="sb-it">
                             <h6 style={{ color: "white" }}>Genres:</h6>
                             <p>
                               {movieGenres?.map((item, index) => (
+<<<<<<< HEAD
                                 <a key={item.id} href={item.id}>
                                   {item.name}
                                   {index < movieGenres?.length - 1 && ", "}
                                 </a>
+=======
+                                <Link key={item.id} href={item.id}>
+                                  {item.name}
+                                  {index < movieGenres?.length - 1 && ", "}
+                                </Link>
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                               ))}
                             </p>
                           </Col>
@@ -412,6 +542,121 @@ export default function MovieDetail() {
                           </Col>
                         </Row>
                       </Col>
+<<<<<<< HEAD
+=======
+                      <Col md={12} className="title-hd-sm">
+                        <h4>cast</h4>
+                        <Link href="1" className="time">
+                          Full Cast & Crew{" "}
+                          <i className="ion-ios-arrow-right"></i>
+                        </Link>
+                      </Col>
+                      <Row style={{ marginLeft: "0px" }}>
+                        {movieCasts?.map((item) => (
+                          <Col
+                            key={item.id}
+                            md={3}
+                            className="movie-item-style-2 movie-item-style-1"
+                            style={{ margin: "0px" }}
+                          >
+                            <img src="images/uploads/ceb1.jpg" alt="" />
+                            <div className="hvr-inner">
+                              <Link href={`cast/${item.id}`}>
+                                Read more
+                                <i className="ion-android-arrow-dropright"></i>
+                              </Link>
+                            </div>
+                            <div className="mv-item-infor">
+                              <h6>
+                                <Link href={`cast/${item.id}`}>
+                                  {item.name}
+                                </Link>
+                              </h6>
+                            </div>
+                          </Col>
+                        ))}
+                      </Row>
+
+                      <Col md={12} className="title-hd-sm">
+                        <h4>Reviews</h4>
+                        <Link href="#" className="time">
+                          See All 56 Reviews{" "}
+                          <i className="ion-ios-arrow-right"></i>
+                        </Link>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md={12} className="anime__details__form">
+                        <Form>
+                          <Form.Group controlId="comment">
+                            <Form.Control
+                              type="text"
+                              placeholder="Your Comment"
+                              as="textarea"
+                            />
+                          </Form.Group>
+                          <Button type="submit">
+                            <i className="fa fa-location-arrow"></i> Review
+                          </Button>
+                        </Form>
+                      </Col>
+                      <Col
+                        md={12}
+                        className="mv-user-review-item"
+                        style={{ marginBottom: "28px" }}
+                      >
+                        <div className="user-infor">
+                          <Image
+                            src="images/uploads/userava1.jpg"
+                            style={{ borderRadius: "20px" }}
+                          />
+                          <span style={{ paddingLeft: "16px", color: "white" }}>
+                            User Name
+                          </span>
+                          <span
+                            style={{ paddingLeft: "16px" }}
+                            className="time"
+                          >
+                            17 December 2016
+                          </span>
+                        </div>
+                        <p>
+                          This is by far one of my favorite movies from the MCU.
+                          The introduction of new Characters both good and bad
+                          also makes the movie more exciting. giving the
+                          characters more of a back story can also help
+                          audiences relate more to different characters better,
+                          and it connects a bond between the audience and actors
+                          or characters.
+                        </p>
+                      </Col>
+                      <Col
+                        md={12}
+                        className="mv-user-review-item"
+                        style={{ marginBottom: "28px" }}
+                      >
+                        <div className="user-infor">
+                          <Image
+                            src="images/uploads/userava1.jpg"
+                            style={{ borderRadius: "20px" }}
+                          />
+                          <span style={{ paddingLeft: "16px", color: "white" }}>
+                            User Name
+                          </span>
+                          <span
+                            style={{ paddingLeft: "16px" }}
+                            className="time"
+                          >
+                            17 December 2016
+                          </span>
+                        </div>
+                        <p>
+                          This is by far one of my favorite movies from the MCU.
+                          The introduction of new Characters both good and bad
+                          also makes the movie more exciting.
+                        </p>
+                      </Col>
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                     </Row>
                   </div>
                   <div id="reviews" className="tab review">
@@ -420,13 +665,17 @@ export default function MovieDetail() {
                         <Form>
                           <Form.Group controlId="comment">
                             <Form.Control
+<<<<<<< HEAD
                               value={myComment}
                               onChange={(e) => setMyComment(e.target.value)}
+=======
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                               type="text"
                               placeholder="Your Comment"
                               as="textarea"
                             />
                           </Form.Group>
+<<<<<<< HEAD
                           {errBlankComment !== "" && (
                             <div class="alert alert-danger">
                               {errBlankComment}
@@ -445,10 +694,14 @@ export default function MovieDetail() {
                               })
                             }
                           >
+=======
+                          <Button type="submit">
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                             <i className="fa fa-location-arrow"></i> Review
                           </Button>
                         </Form>
                       </Col>
+<<<<<<< HEAD
                       {movieComments?.map((item, index) => (
                         <div key={index} style={{ marginBottom: "20px" }}>
                           <MovieDetailComment
@@ -460,10 +713,69 @@ export default function MovieDetail() {
                           />
                         </div>
                       ))}
+=======
+                      <Col
+                        md={12}
+                        className="mv-user-review-item"
+                        style={{ marginBottom: "28px" }}
+                      >
+                        <div className="user-infor">
+                          <Image
+                            src="images/uploads/userava1.jpg"
+                            style={{ borderRadius: "20px" }}
+                          />
+                          <span style={{ paddingLeft: "16px", color: "white" }}>
+                            User Name
+                          </span>
+                          <span
+                            style={{ paddingLeft: "16px" }}
+                            className="time"
+                          >
+                            17 December 2016
+                          </span>
+                        </div>
+                        <p>
+                          This is by far one of my favorite movies from the MCU.
+                          The introduction of new Characters both good and bad
+                          also makes the movie more exciting. giving the
+                          characters more of a back story can also help
+                          audiences relate more to different characters better,
+                          and it connects a bond between the audience and actors
+                          or characters.
+                        </p>
+                      </Col>
+                      <Col
+                        md={12}
+                        className="mv-user-review-item"
+                        style={{ marginBottom: "28px" }}
+                      >
+                        <div className="user-infor">
+                          <Image
+                            src="images/uploads/userava1.jpg"
+                            style={{ borderRadius: "20px" }}
+                          />
+                          <span style={{ paddingLeft: "16px", color: "white" }}>
+                            User Name
+                          </span>
+                          <span
+                            style={{ paddingLeft: "16px" }}
+                            className="time"
+                          >
+                            17 December 2016
+                          </span>
+                        </div>
+                        <p>
+                          This is by far one of my favorite movies from the MCU.
+                          The introduction of new Characters both good and bad
+                          also makes the movie more exciting.
+                        </p>
+                      </Col>
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                     </Row>
                   </div>
                   <div id="cast" className="tab">
                     <Row style={{ marginLeft: "0px" }}>
+<<<<<<< HEAD
                       {movieCasts?.map((item) => (
                         <Col
                           key={item.id}
@@ -485,6 +797,84 @@ export default function MovieDetail() {
                           </div>
                         </Col>
                       ))}
+=======
+                      <Col
+                        md={3}
+                        className="movie-item-style-2 movie-item-style-1"
+                        style={{ margin: "0px" }}
+                      >
+                        <img src="images/uploads/ceb1.jpg" alt="" />
+                        <div className="hvr-inner">
+                          <Link href="moviesingle.html">
+                            {" "}
+                            Read more{" "}
+                            <i className="ion-android-arrow-dropright"></i>{" "}
+                          </Link>
+                        </div>
+                        <div className="mv-item-infor">
+                          <h6>
+                            <Link href="#">Tom Hardy</Link>
+                          </h6>
+                        </div>
+                      </Col>
+                      <Col
+                        md={3}
+                        className="movie-item-style-2 movie-item-style-1"
+                        style={{ margin: "0px" }}
+                      >
+                        <img src="images/uploads/ceb2.jpg" alt="" />
+                        <div className="hvr-inner">
+                          <Link href="moviesingle.html">
+                            {" "}
+                            Read more{" "}
+                            <i className="ion-android-arrow-dropright"></i>{" "}
+                          </Link>
+                        </div>
+                        <div className="mv-item-infor">
+                          <h6>
+                            <Link href="#">Leonardo DiCaprio</Link>
+                          </h6>
+                        </div>
+                      </Col>
+                      <Col
+                        md={3}
+                        className="movie-item-style-2 movie-item-style-1"
+                        style={{ margin: "0px" }}
+                      >
+                        <img src="images/uploads/ceb3.jpg" alt="" />
+                        <div className="hvr-inner">
+                          <Link href="moviesingle.html">
+                            {" "}
+                            Read more{" "}
+                            <i className="ion-android-arrow-dropright"></i>{" "}
+                          </Link>
+                        </div>
+                        <div className="mv-item-infor">
+                          <h6>
+                            <Link href="#">Emma Stone</Link>
+                          </h6>
+                        </div>
+                      </Col>
+                      <Col
+                        md={3}
+                        className="movie-item-style-2 movie-item-style-1"
+                        style={{ margin: "0px" }}
+                      >
+                        <img src="images/uploads/ceb4.jpg" alt="" />
+                        <div className="hvr-inner">
+                          <Link href="moviesingle.html">
+                            {" "}
+                            Read more{" "}
+                            <i className="ion-android-arrow-dropright"></i>{" "}
+                          </Link>
+                        </div>
+                        <div className="mv-item-infor">
+                          <h6>
+                            <Link href="#">Olga Kurylenko</Link>
+                          </h6>
+                        </div>
+                      </Col>
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                     </Row>
                   </div>
                 </div>

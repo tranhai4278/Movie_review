@@ -19,11 +19,18 @@ import MovieRated from "./MovieRated";
 import CastDetail from "./CastDetail";
 import AdminSidebar from "./AdminSidebar";
 import Table from "./Table";
+<<<<<<< HEAD
 import AdminTopNav from "./AdminTopNav";
 import AdminFooter from "./AdminFooter";
+=======
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
 
 export {
     Home, Header, Footer, Login, Signup, ResetPassword, ResetPassword2, Sidebar, BreadCrumb, UserProfile, 
     ChangePassword, MovieGrid, Filter, MovieList, MovieDetail, Wishlist1, WishlistGrid, MovieRated, CastDetail,
+<<<<<<< HEAD
     AdminSidebar, Table, AdminTopNav, AdminFooter
+=======
+    AdminSidebar, Table
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
 }
