@@ -77,9 +77,9 @@ export default function Login() {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Username</Form.Label>
             <Form.Control
-              type="email"
+              type="username"
               placeholder="Username"
-              value={email}
+              value={username}
               onChange={handleEmailChange}
             />
           </Form.Group>
@@ -110,7 +110,7 @@ export default function Login() {
               variant="danger"
               type="submit"
               size="md"
-              style={{ width:'100%' }}
+              style={{ width: '100%' }}
             >
               Login
             </Button>
@@ -123,7 +123,7 @@ export default function Login() {
               variant="primary"
               type="submit"
               size="md"
-              style={{ width:'100%' }}
+              style={{ width: '100%' }}
             >
               Google
             </Button>
@@ -132,5 +132,4 @@ export default function Login() {
       </div>
     </div>
   );
-};
-
+}

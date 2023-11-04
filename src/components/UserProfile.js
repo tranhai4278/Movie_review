@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
-
-export default function UserProfile() {
-    return (
-        <div className="form-style-1 user-pro" action="#">
-            <Form action="#" className="user">
-=======
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
@@ -105,33 +95,20 @@ export default function UserProfile() {
     return (
         <div className="form-style-1 user-pro" action="#">
             <Form onSubmit={handleSubmit} className="user">
->>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                 <h4>01. Profile details</h4>
                 <Form.Group>
                     <Form.Label for="username-3">Username</Form.Label>
                     <Form.Control
-<<<<<<< HEAD
-                        type="text"
-                        id="username-3"
-                        placeholder="edwardkennedy"
-=======
                         readOnly
                         type="text"
                         id="username-3"
                         placeholder={userData ? userData.username : ''}
                         style={{ backgroundColor: '#4a5a75', border: '3 px' }}
->>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                     />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label for="email-3">Email Address</Form.Label>
                     <Form.Control
-<<<<<<< HEAD
-                        type="text"
-                        id="email-3"
-                        placeholder="edward@kennedy.com"
-                    />
-=======
                         type="email"
                         id="email-3"
                         placeholder={userData ? userData.email : ''}
@@ -141,18 +118,10 @@ export default function UserProfile() {
                     {
                         messageEmail ? <p className="text-danger">{messageEmail}</p> : ''
                     }
->>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                 </Form.Group>
                 <Row>
                     <Col md={6}>
                         <Form.Group>
-<<<<<<< HEAD
-                            <Form.Label for="firstname">First Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                id="firstname"
-                                placeholder="Edward"
-=======
                             <Form.Label for="fullname">Full Name</Form.Label>
                             <Form.Control
                                 type="text"
@@ -160,20 +129,11 @@ export default function UserProfile() {
                                 placeholder={userData ? userData.fullname : ''}
                                 value={fullname}
                                 onChange={(e) => setFullname(e.target.value)}
->>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                             />
                         </Form.Group>
                     </Col>
                     <Col md={6}>
                         <Form.Group>
-<<<<<<< HEAD
-                            <Form.Label for="lastname">Last Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                id="lastname"
-                                placeholder="Kennedy"
-                            />
-=======
                             <Form.Label for="gender">Gender</Form.Label>
                             <Form.Control as="select" id="gender" value={gender} onChange={handleGenderChange}>
                                 {userData && userData.gender ? (
@@ -187,20 +147,12 @@ export default function UserProfile() {
                                     <option value="" disabled>Select Gender</option>
                                 )}
                             </Form.Control>
->>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
                     <Col md={6}>
                         <Form.Group>
-<<<<<<< HEAD
-                            <Form.Label for="country">Country</Form.Label>
-                            <Form.Control as="select" id="country">
-                                <option value="united">United States</option>
-                                <option value="saab">Others</option>
-                            </Form.Control>
-=======
                             <Form.Label for="lastname">Phonenumber </Form.Label>
                             <Form.Control
                                 type="text"
@@ -212,22 +164,10 @@ export default function UserProfile() {
                             {
                                 messagePhone ? <p className="text-danger">{messagePhone}</p> : ''
                             }
->>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                         </Form.Group>
                     </Col>
                     <Col md={6}>
                         <Form.Group>
-<<<<<<< HEAD
-                            <Form.Label for="state">State</Form.Label>
-                            <Form.Control as="select" id="state">
-                                <option value="united">New York</option>
-                                <option value="saab">Others</option>
-                            </Form.Control>
-                        </Form.Group>
-                    </Col>
-                </Row>
-                <Button variant="primary" type="submit" style={{marginTop: '20px'}}>
-=======
                             <Form.Label for="country">Country</Form.Label>
                             <Form.Control as="select" id="country" value={country} onChange={handleCountryChange}>
                                 <option value="">{userData ? userData.country : ''}</option>
@@ -249,7 +189,6 @@ export default function UserProfile() {
 
                 </Row>
                 <Button variant="primary" type="submit" style={{ marginTop: '20px' }}>
->>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
                     Save
                 </Button>
             </Form>

@@ -196,8 +196,3 @@ export default function ChangePassword() {
         </div>
     );
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
