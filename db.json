@@ -68,11 +68,6 @@
       "id": 2,
       "movie_id": 1,
       "cast_id": 2
-    },
-    {
-      "id": 2,
-      "movie_id": 2,
-      "cast_id": 2
     }
   ],
   "cast": [
@@ -99,12 +94,12 @@
     {
       "id": 1,
       "username": "admin",
-      "password": "Hunghung2003@",
+      "password": "Admin@123",
       "email": "hoangmaidung@gmail.com",
-      "fullname": "Hoang Mai Dung",
+      "fullname": "Hoang Mai Dungg",
       "country": "United States",
       "gender": "Female",
-      "phonenumber": "1234567",
+      "phonenumber": "123456",
       "isPrimeum": true,
       "avatar": "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png",
       "role": "ADMIN",
