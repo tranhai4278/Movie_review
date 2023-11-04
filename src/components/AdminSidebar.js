@@ -3,6 +3,17 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+<<<<<<< HEAD
+=======
+import "../vendors/bootstrap/dist/css/bootstrap.min.css" 
+import "../vendors/font-awesome/css/font-awesome.min.css" 
+import "../vendors/nprogress/nprogress.css" 
+import "../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" 
+import "../build/css/custom.min.css"
+// import "../vendors/jquery/dist/jquery.min.js"
+// import "../build/js/custom.min.js"
+
+>>>>>>> 0a39cafb1863b54458ddf0007676c086cca054ad
 export default function AdminSidebar() {
     return (
         
