@@ -21,7 +21,7 @@ export default function Header() {
         <Navbar bg="light" expand="lg" className="navbar-custom" style={{ margin: '0' }}>
           <Navbar.Brand>
             <Link to="/" style={linkStyle}>
-              <img className="logo" src="images/logo1.png" alt="Logo" width="200" height="58" />
+              <img className="logo" src="/images/logo1.png" alt="Logo" width="200" height="58" />
             </Link>
           </Navbar.Brand>
 

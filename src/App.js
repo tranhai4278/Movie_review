@@ -21,6 +21,8 @@ import {
   CastDetail,
   AdminSidebar,
   Table,
+  AdminTopNav,
+  AdminFooter
 } from "./components/Index";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 function App() {
@@ -95,6 +97,7 @@ function App() {
           <div>
             <div className="nav-md">
               <div className="body">
+                <div class="main_container">
                 <Row style={{ backgroundColor: "white" }}>
                   <Col md={2} sm={12} xs={12}>
                     <Routes>
@@ -103,10 +106,17 @@ function App() {
                   </Col>
                   <Col md={10} sm={12} xs={12}>
                     <Routes>
+                      <Route path="/admin" element={<AdminTopNav />} />
+                    </Routes>
+                    <Routes>
                       <Route path="/admin" element={<Table />} />
+                    </Routes>
+                    <Routes>
+                      <Route path="/admin" element={<AdminFooter />} />
                     </Routes>
                   </Col>
                 </Row>
+                </div>
               </div>
             </div>
           </div>
