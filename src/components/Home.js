@@ -302,7 +302,7 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                              <Link to={'/moviedetail'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
+                              <Link to={'/moviedetail/1'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
                               </div>
                               <div className="title-in">
                                 <h6>
@@ -350,7 +350,7 @@ export default function Home() {
                                 />
                               </div>
                               <div className="hvr-inner">
-                              <Link to={'/moviedetail'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
+                              <Link to={'/moviedetail/2'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
                               </div>
                               <div className="title-in">
                                 <h6>
