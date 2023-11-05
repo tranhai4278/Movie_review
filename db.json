@@ -132,6 +132,57 @@
       "avatar": "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png",
       "role": "USER",
       "status": "active"
+    },
+    {
+      "username": "linhxinhdep",
+      "email": "linhxinh@gmail.com",
+      "password": "123456",
+      "role": "USER",
+      "status": "active",
+      "avatar": "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "username": "linhxinhdep",
+      "password": "123456",
+      "email": "linhxinh@gmail.com",
+      "fullname": "",
+      "country": "",
+      "gender": "",
+      "phonenumber": "",
+      "isPrimeum": false,
+      "avatar": "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png",
+      "role": "USER",
+      "status": "active"
+    },
+    {
+      "id": 6,
+      "username": "linhxinhdep",
+      "password": "123456",
+      "email": "linhxinh@gmail.com",
+      "fullname": "",
+      "country": "",
+      "gender": "",
+      "phonenumber": "",
+      "isPrimeum": false,
+      "avatar": "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png",
+      "role": "USER",
+      "status": "active"
+    },
+    {
+      "id": 7,
+      "username": "linhxinhdep",
+      "password": "123456",
+      "email": "linhxinh@gmail.com",
+      "fullname": "",
+      "country": "",
+      "gender": "",
+      "phonenumber": "",
+      "isPrimeum": false,
+      "avatar": "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png",
+      "role": "USER",
+      "status": "active"
     }
   ],
   "rate": [

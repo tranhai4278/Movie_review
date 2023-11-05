@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Form, Button, } from "react-bootstrap";
-import backgroundImage from "../image/slider-bg.jpg"; // Đường dẫn đến hình ảnh nền
+import React, { useState, useEffect } from "react";
+import { Form, Button } from "react-bootstrap";
+import backgroundImage from "../image/slider-bg.jpg";
 
-
-export default function Signup () {
+export default function Signup() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+  const [users, setUsers] = useState([]);
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -22,13 +22,65 @@ export default function Signup () {
   const handleRePasswordChange = (e) => {
     setRePassword(e.target.value);
   };
-  const handleSubmit = (e) => {
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:9999/user");
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const generateNewId = () => {
+    const ids = users.map((user) => user.id);
+    const maxId = Math.max(...ids);
+    return maxId + 1;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Username:", username);
-    console.log("Password:", password);
-    console.log("Re-Password:", rePassword);
-    // Do something with the login data, like send it to an API
+    if (password !== rePassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    const newUser = {
+      id: generateNewId(),
+      username: username,
+      password: password,
+      email: email,
+      fullname: "", // Set this value as needed
+      country: "", // Set this value as needed
+      gender: "", // Set this value as needed
+      phonenumber: "", // Set this value as needed
+      isPrimeum: false, // Set this value as needed
+      avatar: "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png",
+      role: "USER",
+      status: "active",
+    };
+
+    try {
+      const response = await fetch("http://localhost:9999/user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
+
+      if (response.ok) {
+       alert("User registered successfully:", newUser);
+      } else {
+       alert("Registration failed");
+      }
+    } catch (error) {
+      alert("Error registering user:", error);
+    }
   };
 
   const backgroundStyle = {
@@ -90,7 +142,6 @@ export default function Signup () {
               value={password}
               onChange={handlePasswordChange}
             />
-            
             <Form.Text className="text-muted">
               We'll never share your password with anyone else.
             </Form.Text>
@@ -107,9 +158,6 @@ export default function Signup () {
               We'll never share your password with anyone else.
             </Form.Text>
           </Form.Group>
-          
-
-          
           <Form.Group style={buttonStyle}>
             <Button
               variant="danger"
@@ -124,5 +172,4 @@ export default function Signup () {
       </div>
     </div>
   );
-};
-
+}
