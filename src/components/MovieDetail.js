@@ -125,7 +125,7 @@ export default function MovieDetail() {
             const nestedComments = nestComments(
               data.map((item) => ({
                 ...item,
-                user: dataUsers.find((user) => user.user_id === item.user_id),
+                user: dataUsers.find((user) => user.id === item.user_id),
               }))
             );
             setMovieComments(nestedComments);
