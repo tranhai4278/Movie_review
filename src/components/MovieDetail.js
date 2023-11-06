@@ -365,13 +365,21 @@ export default function MovieDetail() {
               <div className="tabs">
                 <ul className="tab-links tabs-mv">
                   <li className="active">
-                    <a href="#overview">Overview</a>
+                    <a data-toggle="tab" href="#overview">
+                      Overview
+                    </a>
                   </li>
                   <li>
-                    <a href="#reviews"> Reviews</a>
+                    <a data-toggle="tab" href="#reviews">
+                      {" "}
+                      Reviews
+                    </a>
                   </li>
                   <li>
-                    <a href="#cast"> Casts </a>
+                    <a data-toggle="tab" href="#cast">
+                      {" "}
+                      Casts{" "}
+                    </a>
                   </li>
                 </ul>
                 <div className="tab-content">
