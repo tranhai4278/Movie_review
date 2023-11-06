@@ -37,12 +37,12 @@ export default function Search() {
         setSearchTerm(searchQuery);
         axios.get('http://localhost:9999/movie')
             .then((res) => res.data)
-            .then((movies) => {
+            .then(async (movies) => {
                 let filteredMovies = movies.filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
     
                 // Apply genre filter
                 if (selectedGenres.length > 0) {
-                    axios.get('http://localhost:9999/movie_genre')
+                    await axios.get('http://localhost:9999/movie_genre')
                         .then((res) => res.data)
                         .then((movieGenres) => {
                             const filteredMovieIds = movieGenres

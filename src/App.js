@@ -57,8 +57,8 @@ function App() {
                 <Routes>
                   <Route path="/userprofile" element={<Sidebar />} />
                   <Route path="/changepassword" element={<Sidebar />} />
-                  <Route path="/wishlistgrid" element={<Sidebar />} />
                   <Route path="/wishlist" element={<Sidebar />} />
+                  {/* <Route path="/wishlist" element={<Sidebar />} /> */}
                   <Route path="/movierated" element={<Sidebar />} />
                 </Routes>
               </Col>
@@ -66,8 +66,8 @@ function App() {
                 <Routes>
                   <Route path="/userprofile" element={<UserProfile />} />
                   <Route path="/changepassword" element={<ChangePassword />} />
-                  <Route path="/wishlistgrid" element={<WishlistGrid />} />
-                  <Route path="/wishlist" element={<Wishlist1 />} />
+                  <Route path="/wishlist" element={<WishlistGrid />} />
+                  {/* <Route path="/wishlist" element={<Wishlist1 />} /> */}
                   <Route path="/movierated" element={<MovieRated />} />
                 </Routes>
               </Col>
