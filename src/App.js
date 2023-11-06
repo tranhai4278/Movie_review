@@ -22,7 +22,8 @@ import {
   AdminSidebar,
   Table,
   AdminTopNav,
-  AdminFooter
+  AdminFooter,
+  Search
 } from "./components/Index";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { ToastContainer } from 'react-toastify';
@@ -75,18 +76,21 @@ function App() {
 
           <Container>
             <Row className="ipad-width">
-              <Col md={8} sm={12} xs={12}>
+              <Routes>
+                  <Route path="/movie" element={<Search />} />
+                </Routes>
+              {/* <Col md={8} sm={12} xs={12}>
                 <Routes>
-                  <Route path="/moviegrid" element={<MovieGrid />} />
+                  <Route path="/MovieGrid" element={<MovieGrid />} />
                   <Route path="/movielist" element={<MovieList />} />
                 </Routes>
               </Col>
               <Col md={4} sm={12} xs={12}>
                 <Routes>
-                  <Route path="/moviegrid" element={<Filter />} />
+                  <Route path="/MovieGrid" element={<Filter />} />
                   <Route path="/movielist" element={<Filter />} />
                 </Routes>
-              </Col>
+              </Col> */}
             </Row>
           </Container>
 

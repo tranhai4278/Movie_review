@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { React, useState} from 'react';
+import { Link, useNavigate  } from 'react-router-dom';
 import { Navbar, Nav, Button, FormControl, Container } from 'react-bootstrap';
 
 const menuItem = {
@@ -15,6 +15,19 @@ const linkStyle = {
 };
 
 export default function Header() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    navigate(`/movie?search=${searchQuery}`);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSearch();
+    }
+  };
   return (
     <header className="ht-header">
       <Container>
@@ -47,12 +60,15 @@ export default function Header() {
 
         <div className="top-search" style={{ border: 'none' }}>
           <FormControl as="select">
-            <option value="united">TV show</option>
-            <option value="saab">Others</option>
+            <option value="movie">Movie</option>
+            <option value="cast">Cast</option>
           </FormControl>
           <FormControl
             type="text"
             placeholder="Search for a movie, TV Show, or celebrity that you are looking for"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
         </div>
       </Container>
