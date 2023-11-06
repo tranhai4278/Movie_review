@@ -69,6 +69,9 @@ function MovieDetailComment({
         <span style={{ padding: "0 16px" }} className="time">
           {data.create_at}
         </span>
+        <a href="java" className="reply-link" onClick={handleShowReplyForm}>
+          replies
+        </a>
         {isParent && data.replies.length !== 0 && (
           <a
             style={{ padding: "0 16px" }}
@@ -78,9 +81,6 @@ function MovieDetailComment({
             {showMore}
           </a>
         )}
-        <a href="java" className="reply-link" onClick={handleShowReplyForm}>
-          replies
-        </a>
       </div>
       <p style={{ marginBottom: "4px", whiteSpace: "pre-line" }}>
         {data.content}
