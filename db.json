@@ -225,7 +225,7 @@
     {
       "movie_id": 1,
       "user_id": 1,
-      "rating": 4,
+      "rating": 10,
       "create_at": "2023-11-03",
       "status": true,
       "id": 3
@@ -237,6 +237,14 @@
       "create_at": "2023-11-03",
       "status": true,
       "id": 4
+    },
+    {
+      "movie_id": "1",
+      "user_id": {},
+      "rating": 5,
+      "create_at": "2023-11-06",
+      "status": "todo",
+      "id": 5
     }
   ],
   "comment": [
@@ -557,6 +565,42 @@
       "status": "todo",
       "parent_comment_id": 1,
       "id": 36
+    },
+    {
+      "movie_id": "1",
+      "user_id": 1,
+      "content": "wqeqweqwewqewqe",
+      "create_at": "2023-11-06",
+      "status": "todo",
+      "parent_comment_id": 1,
+      "id": 37
+    },
+    {
+      "movie_id": "1",
+      "user_id": 1,
+      "content": "adsasd",
+      "create_at": "2023-11-06",
+      "status": "todo",
+      "parent_comment_id": 29,
+      "id": 38
+    },
+    {
+      "movie_id": "1",
+      "user_id": 1,
+      "content": "qewqwe",
+      "create_at": "2023-11-06",
+      "status": "todo",
+      "parent_comment_id": 29,
+      "id": 39
+    },
+    {
+      "movie_id": "1",
+      "user_id": 4,
+      "content": "qwewqe",
+      "create_at": "2023-11-06",
+      "status": "todo",
+      "parent_comment_id": 28,
+      "id": 40
     }
   ],
   "report": [
@@ -601,6 +645,11 @@
       "id": 4,
       "movie_id": 2,
       "user_id": 3
+    },
+    {
+      "movie_id": 1,
+      "user_id": 4,
+      "id": 5
     }
   ]
 }

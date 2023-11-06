@@ -5,7 +5,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify';
 
 export default function UserProfile() {
-    const { id } = { id: 1 };
+    const { id } = JSON.parse(localStorage.getItem("user"));
     const [userData, setUserData] = useState(null); // Lưu trữ dữ liệu từ JSON
     const [email, setEmail] = useState('');
     const [fullname, setFullname] = useState('');
@@ -26,6 +26,8 @@ export default function UserProfile() {
                 console.error("Error fetching data: " + error);
             });
     }, [id]);
+
+    
     // Handle country selection
     const handleCountryChange = (e) => {
         setCountry(e.target.value);
