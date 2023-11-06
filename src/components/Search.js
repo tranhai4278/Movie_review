@@ -13,7 +13,18 @@ export default function Search() {
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [startYear, setStartYear] = useState(1900);
     const [endYear, setEndYear] = useState(new Date().getFullYear());
+    const [usersRate, setUsersRate] = useState([]);
     const getCurrentYear = new Date().getFullYear();
+
+    /**
+     * Init: fetch total rating data by movie_id
+     */
+    useEffect(() => {
+        axios
+        .get(`http://localhost:9999/rate`)
+        .then((response) => response.data)
+        .then((data) => setUsersRate(data.filter((item) => item.rating)));
+    }, []);
 
     useEffect(() => {
         axios.get("http://localhost:9999/genre")
@@ -80,7 +91,8 @@ export default function Search() {
                                 </div>
                                 <div className="mv-item-infor">
                                     <h6><Link to={`/moviedetail/${movie.id}`}>{movie.name}</Link></h6>
-                                    <p className="rate"><i className="ion-android-star"></i><span>{movie.rating}</span> /10</p>
+                                    <p className="rate"><i className="ion-android-star"></i><span>
+                                        {movie.rating}</span>{console.log(usersRate.filter(item => item.movie_id === movie.id))} {(usersRate.filter(item => item.movie_id === movie.id).reduce((total, cur) => (total+cur.rating),0) /(usersRate.filter(item => item.movie_id === movie.id)).length).toFixed(1)}/10</p>
                                 </div>
                             </Col>
                         ))}

@@ -269,11 +269,9 @@ export default function MovieDetail() {
               user_id: userId});
             console.log(`Movie with ID ${movieId} added to wishlist.`);
         } else {
-          axios.get(`http://localhost:9999/wishlist?movie_id=${movieId}&user_id=${userId}`)
-          .then((response) => response.data)
-          .then((data) => set(data));
+          const removeId = response.data[0].id
             // Movie is already in the wishlist, remove it
-            await axios.delete(`http://localhost:9999/wishlist?${removeId}`);
+            await axios.delete(`http://localhost:9999/wishlist/${removeId}`);
             console.log(`Movie with ID ${movieId} removed from wishlist.`);
         }
     } catch (error) {
