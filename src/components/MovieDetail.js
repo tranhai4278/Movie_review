@@ -24,7 +24,6 @@ export default function MovieDetail() {
   };
 
   const { id } = useParams();
-  const { userId } = { userId: 1 };
   // Data moive detail
   const [movie, setMovie] = useState({});
 
@@ -52,16 +51,24 @@ export default function MovieDetail() {
   // render Start for rating
   const [renderStars, setRenderStarts] = useState([]);
 
+  const [userId, setUserId] = useState({});
+  const [wishlist, setWishlist] = useState([]);
   /**
    * Init: fetch movie data by movie_id
    */
   useEffect(() => {
+    setUserId(JSON.parse(localStorage.getItem("user")).id)
     axios
       .get(`http://localhost:9999/movie/${id}`)
       .then((response) => response.data)
       .then((data) => setMovie(data));
   }, [id]);
 
+  useEffect(() => {
+    axios.get("http://localhost:9999/wishlist")
+        .then((res) => setWishlist(res.data))
+        .catch((err) => console.error(err));
+}, []);
   /**
    * Init: fetch total genre by movie_id
    */
@@ -125,7 +132,7 @@ export default function MovieDetail() {
             const nestedComments = nestComments(
               data.map((item) => ({
                 ...item,
-                user: dataUsers.find((user) => user.user_id === item.user_id),
+                user: dataUsers.find((user) => user.id === item.user_id),
               }))
             );
             setMovieComments(nestedComments);
@@ -249,6 +256,29 @@ export default function MovieDetail() {
         .then((data) => setMyRate(data));
     }
   };
+
+  const handleWishlist = async (movieId) => {
+    try {
+        // Check if the movie is in http://localhost:9999/wishlist
+        const response = await axios.get(`http://localhost:9999/wishlist?movie_id=${movieId}&user_id=${userId}`);
+        console.log(response);
+        if (response.data.length === 0) {
+            // Movie is not in the wishlist, add it
+            await axios.post('http://localhost:9999/wishlist', { 
+              movie_id: movieId,
+              user_id: userId});
+            console.log(`Movie with ID ${movieId} added to wishlist.`);
+        } else {
+          const removeId = response.data[0].id
+            // Movie is already in the wishlist, remove it
+            await axios.delete(`http://localhost:9999/wishlist/${removeId}`);
+            console.log(`Movie with ID ${movieId} removed from wishlist.`);
+        }
+    } catch (error) {
+        console.error('Error handling wishlist:', error);
+    }
+};
+
   return (
     <div style={{ paddingTop: "220px" }}>
       <Row className="ipad-width2">
@@ -286,9 +316,9 @@ export default function MovieDetail() {
               {movie?.name} <span>{movie?.release_year}</span>
             </h1>
             <div className="social-btn">
-              <a href="javascript:void(0)" className="parent-btn">
-                <i className="ion-heart"></i> Add to Favorite
-              </a>
+            <a href="#" onClick={() => handleWishlist(movie.id)} className="parent-btn">
+              <i className="ion-heart"></i> Add to Favorite
+            </a>
               <div className="hover-bnt">
                 <a href="javascript:void(0)" className="parent-btn">
                   <i className="ion-android-share-alt"></i>share
@@ -365,13 +395,21 @@ export default function MovieDetail() {
               <div className="tabs">
                 <ul className="tab-links tabs-mv">
                   <li className="active">
-                    <a href="#overview">Overview</a>
+                    <a data-toggle="tab" href="#overview">
+                      Overview
+                    </a>
                   </li>
                   <li>
-                    <a href="#reviews"> Reviews</a>
+                    <a data-toggle="tab" href="#reviews">
+                      {" "}
+                      Reviews
+                    </a>
                   </li>
                   <li>
-                    <a href="#cast"> Casts </a>
+                    <a data-toggle="tab" href="#cast">
+                      {" "}
+                      Casts{" "}
+                    </a>
                   </li>
                 </ul>
                 <div className="tab-content">

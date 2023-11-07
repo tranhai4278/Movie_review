@@ -32,6 +32,7 @@ export default function Login() {
         );
         if (foundUser) {
           // Đăng nhập thành công, chuyển hướng đến trang Home
+          localStorage.setItem("user", JSON.stringify(foundUser));
           navigate("/");
         } else {
           // Hiển thị thông báo đăng nhập không hợp lệ

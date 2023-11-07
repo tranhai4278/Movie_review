@@ -5,8 +5,9 @@ import axios from 'axios'
 import { toast } from 'react-toastify';
 
 export default function UserProfile() {
-    const { id } = { id: 1 };
+    const { id } = JSON.parse(localStorage.getItem("user"));
     const [userData, setUserData] = useState(null); // Lưu trữ dữ liệu từ JSON
+    const [data, setData] = useState(null);
     const [email, setEmail] = useState('');
     const [fullname, setFullname] = useState('');
     const [country, setCountry] = useState('');
@@ -26,6 +27,20 @@ export default function UserProfile() {
                 console.error("Error fetching data: " + error);
             });
     }, [id]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:9999/user`)
+            .then((response) => {
+                const data = response.data;
+                setData(data);
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error("Error fetching data: " + error);
+            });
+    });
+
+
     // Handle country selection
     const handleCountryChange = (e) => {
         setCountry(e.target.value);
@@ -37,6 +52,17 @@ export default function UserProfile() {
         const emailPattern = /\b[A-Za-z0-9._%+-]+@gmail.com\b/;
         return emailPattern.test(email);
     };
+    const isEmailAlreadyExists = (email) => {
+        const normalizedEmail = email.toLowerCase();
+        let isFound = false;
+        data.forEach(user => {
+            if (user.email.toLowerCase() === normalizedEmail) {
+                isFound = true;
+            }
+        });
+        return isFound;
+    };
+
     const isPhoneNumberValid = (phoneNumber) => {
         const phoneNumberPattern = /^\d{1,11}$/; // Kiểm tra xem số điện thoại có từ 1 đến 11 chữ số
         return phoneNumberPattern.test(phoneNumber);
@@ -52,8 +78,16 @@ export default function UserProfile() {
         } else {
             setMessageEmail('');
         }
+
+        if (isEmailAlreadyExists(email)) {
+            toast.error("Email already exists. Please use a different email.");
+            setMessageEmail('Email already exists');
+            return;
+        } else {
+            setMessageEmail('');
+        }
         // Kiểm tra xem số điện thoại có hợp lệ không
-        if (phonenumber!=='' && !isPhoneNumberValid(phonenumber)) {
+        if (phonenumber !== '' && !isPhoneNumberValid(phonenumber)) {
             toast.error("Invalid phone number. Please use a phone number with 1 to 11 digits.");
             setMessagePhone('Invalid phone number');
             return;

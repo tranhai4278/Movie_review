@@ -1,54 +1,47 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Container, Row, Col, Form } from 'react-bootstrap';
+import axios from 'axios';
+
 export default function MovieGrid() {
+  const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const location = useLocation();
+
+  useEffect(() => {
+	const searchQuery = new URLSearchParams(location.search).get('search');
+	setSearchTerm(searchQuery); // Set the search term from the query parameter
+  
+	axios.get('http://localhost:9999/movie')
+	  .then((res) => res.data)
+	  .then((movies) => {
+		setMovies(movies.filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase())))
+	  })
+	  .catch((error) => console.error(error));
+  }, [location.search]);
+
   return (
-	
-		<div style={{paddingTop:'280px'}}>
-		  <div className="topbar-filter">
-			<p>Found <span>1,608 movies</span> in total</p>
-			<label>Sort by:</label>
-			<select>
-			  <option value="popularity">Popularity Descending</option>
-			  <option value="popularity">Popularity Ascending</option>
-			  <option value="rating">Rating Descending</option>
-			  <option value="rating">Rating Ascending</option>
-			  <option value="date">Release date Descending</option>
-			  <option value="date">Release date Ascending</option>
-			</select>
-			<Link to={'/movielist'} className="list">
-			  <i className="ion-ios-list-outline"></i>
-			</Link>
-			<Link to={'/moviegrid'} className="grid">
-			  <i className="ion-grid active"></i>
-			</Link>
-		  </div>
-		  <div >
-			<Row>
-			  <Col md={3} className="movie-item-style-2 movie-item-style-1">
-				<img src="images/uploads/mv1.jpg" alt="" />
-				<div className="hvr-inner">
-				  <Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
-				</div>
-				<div className="mv-item-infor">
-				  <h6><Link href="#">oblivion</Link></h6>
-				  <p className="rate"><i className="ion-android-star"></i><span>8.1</span> /10</p>
-				</div>
-			  </Col>
-			  <Col md={3} className="movie-item-style-2 movie-item-style-1">
-				<img src="images/uploads/mv2.jpg" alt="" />
-				<div className="hvr-inner">
-				  <Link href="moviesingle.html"> Read more <i className="ion-android-arrow-dropright"></i> </Link>
-				</div>
-				<div className="mv-item-infor">
-				  <h6><Link href="#">into the wild</Link></h6>
-				  <p className="rate"><i className="ion-android-star"></i><span>7.8</span> /10</p>
-				</div>
-			  </Col>
-			 
-			</Row>
-		  </div>
-		  <div className="topbar-filter">
+    <div style={{ paddingTop: '280px' }}>
+      <div className="topbar-filter">
+        <p>Found <span>{movies.length} movies</span> in total</p>
+      </div>
+      <div>
+        <Row>
+          {movies.map((movie) => (
+            <Col key={movie.id} md={3} className="movie-item-style-2 movie-item-style-1">
+              <img src={movie.img_url} alt={movie.name} />
+              <div className="hvr-inner">
+                <Link to={`/moviedetail/${movie.id}`}> Read more <i className="ion-android-arrow-dropright"></i> </Link>
+              </div>
+              <div className="mv-item-infor">
+                <h6><Link to={`/moviedetail/${movie.id}`}>{movie.name}</Link></h6>
+                <p className="rate"><i className="ion-android-star"></i><span>{movie.rating}</span> /10</p>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </div>
+      <div className="topbar-filter">
 			<label>Movies per page:</label>
 			<select>
 			  <option value="range">20 Movies</option>
@@ -66,7 +59,6 @@ export default function MovieGrid() {
 			  <Link href="#"><i className="ion-arrow-right-b"></i></Link>
 			</div>
 		  </div>
-		</div>
-);
-};
-
+    </div>
+  );
+}

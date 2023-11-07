@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 export default function ChangePassword() {
     const navigate = useNavigate();
-    const { id } = { id: 1 };
+    const { id } = JSON.parse(localStorage.getItem("user"));
     const [userData, setUserData] = useState(null);
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");

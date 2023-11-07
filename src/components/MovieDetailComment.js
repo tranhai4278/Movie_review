@@ -56,7 +56,7 @@ function MovieDetailComment({
       style={isParent ? { marginBottom: "20px" } : { padding: "0" }}
     >
       <div className="user-infor">
-        <Link to={`user/${data.user.user_id}`}>
+        <Link to={`user/${data.user.id}`}>
           <img
             src={data.user.avatar}
             style={{ borderRadius: "100px", width: "28px", height: "28px" }}
@@ -64,11 +64,14 @@ function MovieDetailComment({
           />
         </Link>
         <span style={{ paddingLeft: "16px", color: "white" }}>
-          <Link to={`user/${data.user.user_id}`}>{data.user.username}</Link>
+          <Link to={`user/${data.user.id}`}>{data.user.username}</Link>
         </span>
         <span style={{ padding: "0 16px" }} className="time">
           {data.create_at}
         </span>
+        <a href="java" className="reply-link" onClick={handleShowReplyForm}>
+          replies
+        </a>
         {isParent && data.replies.length !== 0 && (
           <a
             style={{ padding: "0 16px" }}
@@ -78,9 +81,6 @@ function MovieDetailComment({
             {showMore}
           </a>
         )}
-        <a href="java" className="reply-link" onClick={handleShowReplyForm}>
-          replies
-        </a>
       </div>
       <p style={{ marginBottom: "4px", whiteSpace: "pre-line" }}>
         {data.content}
