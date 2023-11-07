@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Row, Col, Alert } from "react-bootstrap";
 import backgroundImage from "../image/slider-bg.jpg"; // Đường dẫn đến hình ảnh nền
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -7,6 +7,7 @@ import axios from "axios";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
@@ -33,10 +34,10 @@ export default function Login() {
         if (foundUser) {
           // Đăng nhập thành công, chuyển hướng đến trang Home
           localStorage.setItem("user", JSON.stringify(foundUser));
-          navigate("/");
+          window.location.href = "/";
         } else {
           // Hiển thị thông báo đăng nhập không hợp lệ
-          alert("Invalid username or password. Please try again.");
+          setMessage("Invalid username or password. Please try again.");
         }
       })
       .catch((error) => console.error(error));
@@ -62,7 +63,9 @@ export default function Login() {
     width: "100%", // Đảm bảo nút chiếm toàn bộ chiều rộng của form
     fontSize: "20px", // Kích thước chữ của nút
     textAlign: "center",
+    marginTop: "12px"
   };
+
   return (
     <div style={backgroundStyle}>
       <div style={formStyle}>
@@ -74,7 +77,7 @@ export default function Login() {
           >
             <h3>Login</h3>
           </Form.Group>
-
+          {message.length > 0 && <Alert variant="danger">{message}</Alert>}
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Username</Form.Label>
             <Form.Control
@@ -114,19 +117,6 @@ export default function Login() {
               style={{ width: '100%' }}
             >
               Login
-            </Button>
-          </Form.Group>
-          <Form.Text className="text-muted" style={{ textAlign: "center" }}>
-            or
-          </Form.Text>
-          <Form.Group style={buttonStyle}>
-            <Button
-              variant="primary"
-              type="submit"
-              size="md"
-              style={{ width: '100%' }}
-            >
-              Google
             </Button>
           </Form.Group>
         </Form>
