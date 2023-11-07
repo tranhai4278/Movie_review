@@ -52,6 +52,7 @@ export default function MovieDetail() {
   const [renderStars, setRenderStarts] = useState([]);
 
   const [userId, setUserId] = useState({});
+
   const [wishlist, setWishlist] = useState([]);
   /**
    * Init: fetch movie data by movie_id
@@ -64,11 +65,7 @@ export default function MovieDetail() {
       .then((data) => setMovie(data));
   }, [id]);
 
-  useEffect(() => {
-    axios.get("http://localhost:9999/wishlist")
-        .then((res) => setWishlist(res.data))
-        .catch((err) => console.error(err));
-}, []);
+ 
   /**
    * Init: fetch total genre by movie_id
    */
@@ -250,35 +247,55 @@ export default function MovieDetail() {
           user_id: userId,
           rating,
           create_at: getCurrentDate(),
-          status: "todo",
+          status: true,
         })
         .then((response) => response.data)
         .then((data) => setMyRate(data));
     }
   };
 
-  const handleWishlist = async (movieId) => {
-    try {
-        // Check if the movie is in http://localhost:9999/wishlist
-        const response = await axios.get(`http://localhost:9999/wishlist?movie_id=${movieId}&user_id=${userId}`);
-        console.log(response);
-        if (response.data.length === 0) {
-            // Movie is not in the wishlist, add it
-            await axios.post('http://localhost:9999/wishlist', { 
-              movie_id: movieId,
-              user_id: userId});
-            console.log(`Movie with ID ${movieId} added to wishlist.`);
-        } else {
-          const removeId = response.data[0].id
-            // Movie is already in the wishlist, remove it
-            await axios.delete(`http://localhost:9999/wishlist/${removeId}`);
-            console.log(`Movie with ID ${movieId} removed from wishlist.`);
+  /**
+   * Handle wishlist 
+   */
+
+  useEffect(() => {
+    const fetchWishlist = async () => {
+        try {
+            // Fetch wishlist data for the user
+            const response = await axios.get(`http://localhost:9999/wishlist?user_id=${userId}`);
+            setWishlist(response.data);
+        } catch (error) {
+            console.error('Error fetching wishlist:', error);
         }
-    } catch (error) {
-        console.error('Error handling wishlist:', error);
-    }
+    };
+
+    fetchWishlist();
+}, [userId]);
+
+const isInWishlist = (movieId) => {
+    return wishlist.some((item) => item.movie_id === movieId);
 };
 
+  const handleWishlist = async (movieId) => {
+        try {
+            if (!isInWishlist(movieId)) {
+                // Movie is not in the wishlist, add it
+                await axios.post('http://localhost:9999/wishlist', { movie_id: movieId, user_id: userId });
+                console.log(`Movie with ID ${movieId} added to wishlist.`);
+            } else {
+                // Movie is already in the wishlist, remove it
+                const removeItem = wishlist.find((item) => item.movie_id === movieId);
+                await axios.delete(`http://localhost:9999/wishlist/${removeItem.id}`);
+                console.log(`Movie with ID ${movieId} removed from wishlist.`);
+            }
+
+            // Fetch the updated wishlist after adding/removing a movie
+            const updatedWishlist = await axios.get(`http://localhost:9999/wishlist?user_id=${userId}`);
+            setWishlist(updatedWishlist.data);
+        } catch (error) {
+            console.error('Error handling wishlist:', error);
+        }
+    };
   return (
     <div style={{ paddingTop: "220px" }}>
       <Row className="ipad-width2">
@@ -316,9 +333,9 @@ export default function MovieDetail() {
               {movie?.name} <span>{movie?.release_year}</span>
             </h1>
             <div className="social-btn">
-            <a href="#" onClick={() => handleWishlist(movie.id)} className="parent-btn">
-              <i className="ion-heart"></i> Add to Favorite
-            </a>
+              <a href="#" onClick={() => handleWishlist(movie.id)} className="parent-btn">
+                <i className="ion-heart" style={{ backgroundColor: isInWishlist(movie.id) ? '#981818' : 'transparent' }}></i> Add to Favorite
+              </a>
               <div className="hover-bnt">
                 <a href="javascript:void(0)" className="parent-btn">
                   <i className="ion-android-share-alt"></i>share
