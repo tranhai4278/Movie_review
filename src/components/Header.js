@@ -28,6 +28,7 @@ export default function Header() {
       handleSearch();
     }
   };
+  
   return (
     <header className="ht-header">
       <Container>
