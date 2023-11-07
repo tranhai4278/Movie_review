@@ -14,6 +14,10 @@ export default function Search() {
     const [startYear, setStartYear] = useState(1900);
     const [endYear, setEndYear] = useState(new Date().getFullYear());
     const [usersRate, setUsersRate] = useState([]);
+    const [minRating, setMinRating] = useState(0);
+    const [maxRating, setMaxRating] = useState(10);
+    const [visibleMovies, setVisibleMovies] = useState(8); // Number of movies to display initially
+    const [sortOption, setSortOption] = useState('popularity'); // Default sort by popularity
     const getCurrentYear = new Date().getFullYear();
 
     /**
@@ -21,9 +25,9 @@ export default function Search() {
      */
     useEffect(() => {
         axios
-        .get(`http://localhost:9999/rate`)
-        .then((response) => response.data)
-        .then((data) => setUsersRate(data.filter((item) => item.rating)));
+            .get(`http://localhost:9999/rate`)
+            .then((response) => setUsersRate(response.data))
+            .catch((err) => console.error(err));
     }, []);
 
     useEffect(() => {
@@ -33,36 +37,90 @@ export default function Search() {
     }, []);
 
     useEffect(() => {
-        const searchQuery = new URLSearchParams(location.search).get('search');
-        setSearchTerm(searchQuery);
-        axios.get('http://localhost:9999/movie')
-            .then((res) => res.data)
-            .then(async (movies) => {
+        const fetchData = async () => {
+            try {
+                const searchQuery = new URLSearchParams(location.search).get('search');
+                setSearchTerm(searchQuery);
+
+                const moviesResponse = await axios.get('http://localhost:9999/movie');
+                const movies = moviesResponse.data;
+
                 let filteredMovies = movies.filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
-    
+
                 // Apply genre filter
                 if (selectedGenres.length > 0) {
-                    await axios.get('http://localhost:9999/movie_genre')
-                        .then((res) => res.data)
-                        .then((movieGenres) => {
-                            const filteredMovieIds = movieGenres
-                                .filter((mg) => selectedGenres.includes(mg.genre_id))
-                                .map((mg) => mg.movie_id);
-    
-                            // Get distinct movies based on movie_id
-                            filteredMovies = filteredMovies.filter((movie) => filteredMovieIds.includes(movie.id));
-                        });
+                    const movieGenresRes = await axios.get('http://localhost:9999/movie_genre');
+                    const movieGenres = movieGenresRes.data;
+                    const filteredMovieIds = movieGenres
+                        .filter((mg) => selectedGenres.includes(mg.genre_id))
+                        .map((mg) => mg.movie_id);
+
+                    // Get distinct movies based on movie_id
+                    filteredMovies = filteredMovies.filter((movie) => filteredMovieIds.includes(movie.id));
                 }
-    
+
                 // Apply release year filter
                 filteredMovies = filteredMovies.filter(
                     (movie) => movie.release_year >= startYear && movie.release_year <= endYear
                 );
+
+                filteredMovies = filteredMovies.map((movie) => {
+                    const ratings = usersRate.filter(item => item.movie_id === movie.id);
+                    const averageRating = ratings.length > 0
+                        ? (ratings.reduce((total, cur) => (total + cur.rating), 0) / ratings.length).toFixed(1)
+                        : 0;
     
+                    return { ...movie, rate: averageRating };
+                });
+
+                // Apply rating filter
+                filteredMovies = filteredMovies.filter(
+                    (movie) => movie.rate >= minRating && movie.rate <= maxRating
+                );
+
+                // Apply sorting
+                switch (sortOption) {
+                    case 'ratingDesc':
+                        filteredMovies.sort((a, b) => b.rate - a.rate);
+                        break;
+                    case 'ratingAsc':
+                        filteredMovies.sort((a, b) => a.rate - b.rate);
+                        break;
+                    case 'yearDesc':
+                        filteredMovies.sort((a, b) => new Date(b.release_year) - new Date(a.release_year));
+                        break;
+                    case 'yearAsc':
+                        filteredMovies.sort((a, b) => new Date(a.release_year) - new Date(b.release_year));
+                        break;
+                    default:
+                        break;
+                }
+
                 setMovies(filteredMovies);
-            })
-            .catch((error) => console.error(error));
-    }, [location.search, selectedGenres, startYear, endYear]);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchData();
+    }, [location.search, selectedGenres, startYear, endYear, usersRate, minRating, maxRating, sortOption]);
+
+    // Function to load more movies when scrolled to the bottom
+    const handleScroll = () => {
+        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+        if (scrollTop + clientHeight >= scrollHeight - 20) {
+            setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 8);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [handleScroll]);
 
     const handleGenreChange = (genreId) => {
         // Toggle selected genres
@@ -75,15 +133,27 @@ export default function Search() {
         });
     };
 
+    const handleRatingChange = (value) => {
+        setMinRating(value[0]);
+        setMaxRating(value[1]);
+    };
+
     return (
         <Row>
             <Col md={8} style={{ paddingTop: '280px' }}>
                 <div className="topbar-filter">
                     <p>Found <span>{movies.length} movies</span> in total</p>
+                    <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+                        <option value="">Sort By</option>
+                        <option value="ratingDesc">Rating Descending</option>
+                        <option value="ratingAsc">Rating Ascending</option>
+                        <option value="yearDesc">Release date Descending</option>
+                        <option value="yearAsc">Release date Ascending</option>
+                    </select>
                 </div>
                 <div>
-                    <Row>
-                        {movies.map((movie) => (
+                    <Row className="flex-wrap-movielist">
+                        {movies.slice(0, visibleMovies).map((movie) => (
                             <Col key={movie.id} md={3} className="movie-item-style-2 movie-item-style-1">
                                 <img src={movie.img_url} alt={movie.name} />
                                 <div className="hvr-inner">
@@ -92,28 +162,11 @@ export default function Search() {
                                 <div className="mv-item-infor">
                                     <h6><Link to={`/moviedetail/${movie.id}`}>{movie.name}</Link></h6>
                                     <p className="rate"><i className="ion-android-star"></i><span>
-                                        {movie.rating}</span>{console.log(usersRate.filter(item => item.movie_id === movie.id))} {(usersRate.filter(item => item.movie_id === movie.id).reduce((total, cur) => (total+cur.rating),0) /(usersRate.filter(item => item.movie_id === movie.id)).length).toFixed(1)}/10</p>
+                                        {movie.rate}</span>/10</p>
                                 </div>
                             </Col>
                         ))}
                     </Row>
-                </div>
-                <div className="topbar-filter">
-                    <label>Movies per page:</label>
-                    <select>
-                        <option value="range">20 Movies</option>
-                        <option value="saab">10 Movies</option>
-                    </select>
-                    <div className="pagination2">
-                        <span>Page 1 of 2:</span>
-                        <Link className="active" href="#">1</Link>
-                        <Link href="#">2</Link>
-                        <Link href="#">3</Link>
-                        <Link href="#">...</Link>
-                        <Link href="#">78</Link>
-                        <Link href="#">79</Link>
-                        <Link href="#"><i className="ion-arrow-right-b"></i></Link>
-                    </div>
                 </div>
             </Col>
             <Col md={4} style={{ paddingTop: '280px' }}>
@@ -142,6 +195,29 @@ export default function Search() {
                                 </Col>
 
                                 <Col md={12} className="form-it">
+                                    <Form.Group controlId="ratingRange">
+                                        <Form.Label>Rating Range: {minRating} - {maxRating}</Form.Label>
+                                        <Slider
+                                            range
+                                            defaultValue={[0, 10]}
+                                            min={0}
+                                            max={10}
+                                            step={1}
+                                            onChange={handleRatingChange}
+                                            marks={{ 0: '0', 10: '10' }}
+                                            handleStyle={{
+                                                borderColor: '#00bcd4',
+                                                height: 20,
+                                                width: 20,
+                                                marginLeft: 0,
+                                                marginTop: -8,
+                                                backgroundColor: '#00bcd4',
+                                            }}
+                                        />
+                                    </Form.Group>
+                                </Col>
+
+                                <Col md={12} className="form-it">
                                     <Form.Group controlId="releaseYear">
                                         <Form.Label>Release Year</Form.Label>
                                         <Row>
@@ -166,7 +242,6 @@ export default function Search() {
                                                 />
                                             </Col>
                                         </Row>
-
                                     </Form.Group>
                                 </Col>
                             </Row>
@@ -177,7 +252,6 @@ export default function Search() {
                     </div>
                 </div>
             </Col>
-
         </Row>
     );
 }

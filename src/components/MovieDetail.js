@@ -441,8 +441,8 @@ export default function MovieDetail() {
                             </p>
                           </Col>
                           <Col md={3} className="sb-it">
-                            <h6 style={{ color: "white" }}>Release Date:</h6>
-                            <p>May 1, 2015 (U.S.A)</p>
+                            <h6 style={{ color: "white" }}>Release Year:</h6>
+                            <p>{movie.release_year}</p>
                           </Col>
                           <Col md={3} className="sb-it">
                             <h6 style={{ color: "white" }}>Run Time:</h6>
