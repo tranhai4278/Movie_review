@@ -65,7 +65,7 @@ export default function MovieDetail() {
       .then((data) => setMovie(data));
   }, [id]);
 
- 
+
   /**
    * Init: fetch total genre by movie_id
    */
@@ -164,7 +164,7 @@ export default function MovieDetail() {
    * submit my comment
    */
   const handleSubmitComment = (data) => {
-    if (userId===-1) {
+    if (userId === -1) {
       // User is not logged in, redirect to the login page
       window.location.href = "/login";
       return; // Stop execution to prevent adding to wishlist
@@ -237,7 +237,7 @@ export default function MovieDetail() {
   }, [myRate]);
 
   const handleRating = (rating) => {
-    if (userId===-1) {
+    if (userId === -1) {
       // User is not logged in, redirect to the login page
       window.location.href = "/login";
       return; // Stop execution to prevent adding to wishlist
@@ -270,53 +270,53 @@ export default function MovieDetail() {
 
   useEffect(() => {
     const fetchWishlist = async () => {
-        try {
-            // Fetch wishlist data for the user
-            const response = await axios.get(`http://localhost:9999/wishlist?user_id=${userId}`);
-            setWishlist(response.data);
-        } catch (error) {
-            console.error('Error fetching wishlist:', error);
-        }
+      try {
+        // Fetch wishlist data for the user
+        const response = await axios.get(`http://localhost:9999/wishlist?user_id=${userId}`);
+        setWishlist(response.data);
+      } catch (error) {
+        console.error('Error fetching wishlist:', error);
+      }
     };
 
     fetchWishlist();
-}, [userId]);
+  }, [userId]);
 
-const isInWishlist = (movieId) => {
+  const isInWishlist = (movieId) => {
     return wishlist.some((item) => item.movie_id === movieId);
-};
+  };
 
   const handleWishlist = async (movieId) => {
-        if (userId===-1) {
-          // User is not logged in, redirect to the login page
-          window.location.href = "/login";
-          return; // Stop execution to prevent adding to wishlist
-        }
-        try {
-            if (!isInWishlist(movieId)) {
-                // Movie is not in the wishlist, add it
-                await axios.post('http://localhost:9999/wishlist', { movie_id: movieId, user_id: userId });
-                console.log(`Movie with ID ${movieId} added to wishlist.`);
-            } else {
-                // Movie is already in the wishlist, remove it
-                const removeItem = wishlist.find((item) => item.movie_id === movieId);
-                await axios.delete(`http://localhost:9999/wishlist/${removeItem.id}`);
-                console.log(`Movie with ID ${movieId} removed from wishlist.`);
-            }
+    if (userId === -1) {
+      // User is not logged in, redirect to the login page
+      window.location.href = "/login";
+      return; // Stop execution to prevent adding to wishlist
+    }
+    try {
+      if (!isInWishlist(movieId)) {
+        // Movie is not in the wishlist, add it
+        await axios.post('http://localhost:9999/wishlist', { movie_id: movieId, user_id: userId });
+        console.log(`Movie with ID ${movieId} added to wishlist.`);
+      } else {
+        // Movie is already in the wishlist, remove it
+        const removeItem = wishlist.find((item) => item.movie_id === movieId);
+        await axios.delete(`http://localhost:9999/wishlist/${removeItem.id}`);
+        console.log(`Movie with ID ${movieId} removed from wishlist.`);
+      }
 
-            // Fetch the updated wishlist after adding/removing a movie
-            const updatedWishlist = await axios.get(`http://localhost:9999/wishlist?user_id=${userId}`);
-            setWishlist(updatedWishlist.data);
-        } catch (error) {
-            console.error('Error handling wishlist:', error);
-        }
-    };
+      // Fetch the updated wishlist after adding/removing a movie
+      const updatedWishlist = await axios.get(`http://localhost:9999/wishlist?user_id=${userId}`);
+      setWishlist(updatedWishlist.data);
+    } catch (error) {
+      console.error('Error handling wishlist:', error);
+    }
+  };
   return (
     <div style={{ paddingTop: "220px" }}>
       <Row className="ipad-width2">
         <Col md={4} sm={12} xs={12}>
           <div className="movie-img sticky-sb">
-            <Image src={movie?.img_url} alt="" fluid />
+            <Image src={movie?.img_url} width={342} alt="" fluid />
             <div className="movie-btn">
               <div
                 className="btn-transform transform-vertical red"
@@ -349,7 +349,7 @@ const isInWishlist = (movieId) => {
             </h1>
             <div className="social-btn">
               <a href="#" onClick={() => handleWishlist(movie.id)} className="parent-btn">
-                <i className="ion-heart" style={{ backgroundColor: isInWishlist(movie.id) ? '#981818' : 'transparent' }}></i> Add to Favorite
+                <i className="ion-heart" style={{ color: isInWishlist(movie.id) ? 'red' : '#eec1c1', fontSize: '16px', backgroundColor: isInWishlist(movie.id) ? '#981818' : 'transparent' }}></i> Add to Favorite
               </a>
               <div className="hover-bnt">
                 <a href="javascript:void(0)" className="parent-btn">
@@ -395,13 +395,16 @@ const isInWishlist = (movieId) => {
                   <Col md={9} xs={12}>
                     <p>
                       <span style={{ color: "white", fontSize: "18px" }}>
-                        {(
-                          usersRate?.reduce(
-                            (totalRate, currentItem) =>
-                              totalRate + currentItem.rating,
-                            0
-                          ) / usersRate?.length
-                        ).toFixed(1)}
+                        {(usersRate?.length > 0
+                          ? (
+                            usersRate.reduce(
+                              (totalRate, currentItem) =>
+                                totalRate + currentItem.rating,
+                              0
+                            ) / usersRate.length
+                          ).toFixed(1)
+                          : 0
+                        )}
                       </span>{" "}
                       /10
                       <br />

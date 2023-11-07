@@ -79,7 +79,9 @@ export default function Header() {
               ) : (
                 <Nav className="flex-child-menu navbar-right">
                   <Nav className="flex-child-menu menu-right" style={{ display: 'flex', marginTop: '16px' }}>
-                    <Nav.Link href="/wishlist" style={{ margin: '6px' }}><i className="fa fa-heart" style={IconStyle}></i></Nav.Link>
+                    <Nav.Link href="/wishlist" style={{ margin: '6px' }}>
+                    <i className="fa fa-heart" style={{ ...IconStyle, color: location.pathname === '/wishlist' ? 'red' : 'white' }}></i>
+                    </Nav.Link>
                     <Nav.Link href="/userprofile" style={{ margin: '6px' }}><i className="fa fa-user" style={IconStyle}></i></Nav.Link>
                   </Nav>
                 </Nav>

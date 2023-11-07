@@ -17,7 +17,7 @@ export default function Search() {
     const [minRating, setMinRating] = useState(0);
     const [maxRating, setMaxRating] = useState(10);
     const [visibleMovies, setVisibleMovies] = useState(8); // Number of movies to display initially
-    const [sortOption, setSortOption] = useState('popularity'); // Default sort by popularity
+    const [sortOption, setSortOption] = useState(''); // Default sort by popularity
     const getCurrentYear = new Date().getFullYear();
 
     /**
@@ -109,7 +109,7 @@ export default function Search() {
     const handleScroll = () => {
         const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
-        if (scrollTop + clientHeight >= scrollHeight - 20) {
+        if (scrollTop + clientHeight >= scrollHeight - 300) {
             setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 8);
         }
     };
@@ -147,8 +147,8 @@ export default function Search() {
                         <option value="">Sort By</option>
                         <option value="ratingDesc">Rating Descending</option>
                         <option value="ratingAsc">Rating Ascending</option>
-                        <option value="yearDesc">Release date Descending</option>
-                        <option value="yearAsc">Release date Ascending</option>
+                        <option value="yearDesc">Release Year Descending</option>
+                        <option value="yearAsc">Release Year Ascending</option>
                     </select>
                 </div>
                 <div>
