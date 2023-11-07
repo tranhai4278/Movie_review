@@ -12,6 +12,7 @@ export default function MovieDetail() {
   const starStyle = {
     fontSize: "36px",
     color: "#f5b50a",
+    cursor: "pointer"
   };
 
   const rateStyle = {
@@ -51,14 +52,13 @@ export default function MovieDetail() {
   // render Start for rating
   const [renderStars, setRenderStarts] = useState([]);
 
-  const [userId, setUserId] = useState({});
+  const [userId, setUserId] = useState(localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).id : -1);
 
   const [wishlist, setWishlist] = useState([]);
   /**
    * Init: fetch movie data by movie_id
    */
   useEffect(() => {
-    setUserId(JSON.parse(localStorage.getItem("user")).id)
     axios
       .get(`http://localhost:9999/movie/${id}`)
       .then((response) => response.data)
@@ -164,6 +164,11 @@ export default function MovieDetail() {
    * submit my comment
    */
   const handleSubmitComment = (data) => {
+    if (userId===-1) {
+      // User is not logged in, redirect to the login page
+      window.location.href = "/login";
+      return; // Stop execution to prevent adding to wishlist
+    }
     if (data.content.trim() === "") {
       setErrBlankComment("Please enter comment before submit");
     } else {
@@ -232,6 +237,11 @@ export default function MovieDetail() {
   }, [myRate]);
 
   const handleRating = (rating) => {
+    if (userId===-1) {
+      // User is not logged in, redirect to the login page
+      window.location.href = "/login";
+      return; // Stop execution to prevent adding to wishlist
+    }
     if (myRate.rating !== 0) {
       axios
         .put(`http://localhost:9999/rate/${myRate.id}`, {
@@ -277,6 +287,11 @@ const isInWishlist = (movieId) => {
 };
 
   const handleWishlist = async (movieId) => {
+        if (userId===-1) {
+          // User is not logged in, redirect to the login page
+          window.location.href = "/login";
+          return; // Stop execution to prevent adding to wishlist
+        }
         try {
             if (!isInWishlist(movieId)) {
                 // Movie is not in the wishlist, add it
