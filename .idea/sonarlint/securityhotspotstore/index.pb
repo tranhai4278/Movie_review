@@ -11,3 +11,5 @@ M
 src/components/MovieDetail.js,a\7\a70a065abeb74586749f0d40664450a338ec0fe4
 H
 src/components/Filter.js,5\e\5e84959c58c1ae2756c769d2be9fe67ef317048e
+H
+src/components/Search.js,1\6\16966eb99737e0e7030146f4c0a7b5a9b3e321e0

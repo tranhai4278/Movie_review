@@ -29,6 +29,16 @@
       "director": "Ban Dow",
       "img_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/qDK2qEA5pfUK7Rog8urvgKuaXiP.jpg",
       "trailers_url": "https://www.youtube.com/watch?v=O9T0j8mSPx8"
+    },
+    {
+      "id": 4,
+      "name": "Án Mạng Ở Venice",
+      "status": true,
+      "description": "Dựa trên tiểu thuyết Hallowe'en Party của nhà văn Agatha Christie, hành trình phá án của thám tử Hercule Poirot tiếp tục được đưa lên màn ảnh rộng.",
+      "release_year": "2023",
+      "director": "Kenneth Branagh",
+      "img_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/3gsRQEqvMzkUdirHrZ10MdqamCR.jpg",
+      "trailers_url": "https://www.youtube.com/watch?v=EL8FdLQFUhc"
     }
   ],
   "movie_genre": [
@@ -56,6 +66,11 @@
       "id": 5,
       "movie_id": 3,
       "genre_id": 3
+    },
+    {
+      "id": 6,
+      "movie_id": 4,
+      "genre_id": 4
     }
   ],
   "genre": [
@@ -74,6 +89,12 @@
     {
       "id": 3,
       "name": "Khoa học viễn tưởng",
+      "description": "todo",
+      "status": true
+    },
+    {
+      "id": 4,
+      "name": "Phim gay cấn",
       "description": "todo",
       "status": true
     }
