@@ -93,7 +93,6 @@ export default function CastDetail() {
 
   const sortMovies = (criteria) => {
     let sortedMovies = [...movieCasts];
-
     if (criteria === "rating-desc") {
       sortedMovies.sort((a, b) => calculateAverageRating(b) - calculateAverageRating(a));
     } else if (criteria === "rating-asc") {
@@ -103,7 +102,6 @@ export default function CastDetail() {
     } else if (criteria === "date-asc") {
       sortedMovies.sort((a, b) => new Date(a.release_year) - new Date(b.release_year));
     }
-
     setMovieCasts(sortedMovies);
   };
 
@@ -213,13 +211,13 @@ export default function CastDetail() {
                               .filter((rating) => rating.movie_id === movie.id)
                               .length > 0
                               ? (
-                                  usersRate
-                                    .filter((rating) => rating.movie_id === movie.id)
-                                    .reduce((totalRate, currentItem) => totalRate + currentItem.rating, 0) /
-                                  usersRate
-                                    .filter((rating) => rating.movie_id === movie.id)
-                                    .length
-                                ).toFixed(1)
+                                usersRate
+                                  .filter((rating) => rating.movie_id === movie.id)
+                                  .reduce((totalRate, currentItem) => totalRate + currentItem.rating, 0) /
+                                usersRate
+                                  .filter((rating) => rating.movie_id === movie.id)
+                                  .length
+                              ).toFixed(1)
                               : 0;
 
                           return (
