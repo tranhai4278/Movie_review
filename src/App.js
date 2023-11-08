@@ -31,6 +31,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AdminMovieList from "./components/AdminMovieList";
 import AdminMovieDetail from "./components/AdminMovieDetail"
 import AdminLayout from "./layout/AdminLayout";
+import AdminAddMovie from "./components/AdminAddMovie";
 
 function App() {
   return (
@@ -137,6 +138,7 @@ function App() {
           <Routes>
             <Route path="admin/movie-list" element={<AdminLayout><AdminMovieList /></AdminLayout>} />
             <Route path="admin/movie/:movieId" element={<AdminLayout><AdminMovieDetail/></AdminLayout>} />
+            <Route path="admin/add/movie" element={<AdminLayout><AdminAddMovie/></AdminLayout>} />
           </Routes>
         </div>
       </BrowserRouter>
