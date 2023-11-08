@@ -22,7 +22,7 @@ export default function AdminSidebar() {
               <ul className="nav side-menu">
                 <li><Link><i className="fa fa-desktop"></i> Movie <span className="fa fa-chevron-right"></span></Link></li>
                 <li><Link><i className="fa fa-edit"></i> Genre <span className="fa fa-chevron-right"></span></Link></li>
-                <li><Link><i className="fa fa-users-rectangle"></i> Casts <span className="fa fa-chevron-right"></span></Link></li>
+                <li><Link  to="/admin/cast"><i className="fa fa-users-rectangle"></i> Casts <span className="fa fa-chevron-right"></span></Link></li>
                 <li><Link><i className="fa fa-user"></i> Users <span className="fa fa-chevron-right"></span></Link></li>
                 <li><Link><i className="fa fa-clipboard"></i> Report <span className="fa fa-chevron-right"></span></Link></li>
                 {/* <li><Link><i className="fa fa-bar-chart-o"></i> Report <span ></span></Link></li> */}

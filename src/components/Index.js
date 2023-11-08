@@ -24,8 +24,9 @@ import AdminFooter from "./AdminFooter";
 import Search from "./Search";
 import SearchCast from "./SearchCast";
 import AdminMovieList from "./AdminMovieList";
+import AdminCast from "./AdminCast";
 export {
     Home, Header, Footer, Login, Signup, ResetPassword, ResetPassword2, Sidebar, BreadCrumb, UserProfile, 
     ChangePassword, MovieGrid, Filter, MovieList, MovieDetail, Wishlist1, WishlistGrid, MovieRated, CastDetail,
-    AdminSidebar, Table, AdminTopNav, AdminFooter, Search, SearchCast, AdminMovieList
+    AdminSidebar, Table, AdminTopNav, AdminFooter, Search, SearchCast, AdminMovieList,AdminCast
 }
