@@ -25,6 +25,7 @@ import {
   AdminFooter,
   Search,
   SearchCast,
+  AdminCast
 } from "./components/Index";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
@@ -129,6 +130,8 @@ function App() {
                 </AdminLayout>
               }
             />
+            <Route path="admin/cast" element={<AdminLayout><AdminCast /></AdminLayout>} />
+
           </Routes>
         </div>
       </BrowserRouter>

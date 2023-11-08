@@ -51,7 +51,7 @@ export default function AdminSidebar() {
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to={"/admin/cast"}>
                 <i className="fa fa-users-rectangle"></i> Casts{" "}
                 <span className="fa fa-chevron-right"></span>
               </Link>
