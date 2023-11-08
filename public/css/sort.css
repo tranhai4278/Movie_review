@@ -10,3 +10,10 @@
   cursor: pointer;
   color: rgb(255, 0, 0, 0.5);
 }
+
+#adminMovie input,
+#adminMovie textarea,
+#adminMovie select {
+  color: black;
+  background-color: white;
+}

@@ -25,16 +25,19 @@ import {
   AdminFooter,
   Search,
   SearchCast,
-  AdminMovieList
+  AdminMovieList,
 } from "./components/Index";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import AdminMovieList from "./components/AdminMovieList";
+import AdminMovieDetail from "./components/AdminMovieDetail";
 import AdminLayout from "./layout/AdminLayout";
+import AdminAddMovie from "./components/AdminAddMovie";
 
 function App() {
   return (
-    <div style={{ backgroundColor: "#020d18", overflowX: 'hidden' }}>
+    <div style={{ backgroundColor: "#020d18", overflowX: "hidden" }}>
       <BrowserRouter>
         <div>
           {window.location.pathname.startsWith("/admin") ? null : <Header />}
@@ -78,9 +81,9 @@ function App() {
           <Container>
             <Row className="ipad-width">
               <Routes>
-                  <Route path="/movie" element={<Search />} />
-                  <Route path="/cast" element={<SearchCast />} />
-                </Routes>
+                <Route path="/movie" element={<Search />} />
+                <Route path="/cast" element={<SearchCast />} />
+              </Routes>
             </Row>
           </Container>
 
@@ -93,11 +96,40 @@ function App() {
 
           {window.location.pathname.startsWith("/admin") ? null : <Footer />}
         </div>
-        <div style={{ backgroundColor: "white", overflowX:"none" }}>
+        <div style={{ backgroundColor: "white", overflowX: "none" }}>
           <Routes>
-            <Route path="admin" element={<AdminLayout><AdminMovieList /></AdminLayout>} />
-            <Route path="admin/movie-list" element={<AdminLayout><AdminMovieList /></AdminLayout>} />
-            <Route path="admin/movie/:movieId" element={<AdminLayout><AdminMovieList /></AdminLayout>} />
+            <Route
+              path="admin"
+              element={
+                <AdminLayout>
+                  <AdminMovieList />
+                </AdminLayout>
+              }
+            />
+            <Route
+              path="admin/movie-list"
+              element={
+                <AdminLayout>
+                  <AdminMovieList />
+                </AdminLayout>
+              }
+            />
+            <Route
+              path="admin/movie/:movieId"
+              element={
+                <AdminLayout>
+                  <AdminMovieDetail />
+                </AdminLayout>
+              }
+            />
+            <Route
+              path="admin/add/movie"
+              element={
+                <AdminLayout>
+                  <AdminAddMovie />
+                </AdminLayout>
+              }
+            />
           </Routes>
         </div>
       </BrowserRouter>
