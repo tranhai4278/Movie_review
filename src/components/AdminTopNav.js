@@ -1,97 +1,98 @@
 import React from "react";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-
+import { Link, useLocation } from "react-router-dom";
 
 export default function AdminTopNav() {
+    const {avatar} = JSON.parse(localStorage.getItem('user'));
+    const {fullname} = JSON.parse(localStorage.getItem('user'));
+
+    const handleLogout = () => {
+        localStorage.removeItem('user');
+        window.location.href = "/";
+    };
+
+    const location = useLocation();
+
     return (
-        <div class="top_nav">
-            <div class="nav_menu">
+        <div className="top_nav">
+            <div className="nav_menu">
                 <nav>
-                    <div class="nav toggle">
-                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    <div className="nav toggle">
+                        <a id="menu_toggle"><i className="fa fa-bars"></i></a>
                     </div>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="images/img.jpg" alt="" />John Doe
-                                <span class=" fa fa-angle-down"></span>
+                    <ul className="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="user-profile dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                                <img src={avatar} alt={fullname} /> {fullname}
+                                <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="javascript:;"> Profile</a></li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span class="badge bg-red pull-right">50%</span>
-                                        <span>Settings</span>
-                                    </a>
-                                </li>
-                                <li><a href="javascript:;">Help</a></li>
-                                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                            <ul class="dropdown-menu">
+                                <li><Link to={'/userprofile'} >Profile</Link></li>
+                                <li><Link to={'/changepassword'}>Change Password</Link></li>
+                                <li><Link onClick={handleLogout}><i class="fa fa-sign-out pull-right"></i> Log Out</Link></li>
                             </ul>
                         </li>
 
-                        <li role="presentation" class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                                <i class="fa fa-envelope-o"></i>
-                                <span class="badge bg-green">6</span>
+
+                        <li role="presentation" className="dropdown">
+                            <a className="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                                <i className="fa fa-envelope-o"></i>
+                                <span className="badge bg-green">6</span>
                             </a>
-                            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                            <ul id="menu1" className="dropdown-menu list-unstyled msg_list" role="menu">
                                 <li>
                                     <a>
-                                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                        <span className="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                                         <span>
                                             <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
+                                            <span className="time">3 mins ago</span>
                                         </span>
-                                        <span class="message">
+                                        <span className="message">
                                             Film festivals used to be do-or-die moments for movie makers. They were where...
                                         </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a>
-                                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                        <span className="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                                         <span>
                                             <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
+                                            <span className="time">3 mins ago</span>
                                         </span>
-                                        <span class="message">
+                                        <span className="message">
                                             Film festivals used to be do-or-die moments for movie makers. They were where...
                                         </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a>
-                                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                        <span className="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                                         <span>
                                             <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
+                                            <span className="time">3 mins ago</span>
                                         </span>
-                                        <span class="message">
+                                        <span className="message">
                                             Film festivals used to be do-or-die moments for movie makers. They were where...
                                         </span>
                                     </a>
                                 </li>
                                 <li>
                                     <a>
-                                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                        <span className="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                                         <span>
                                             <span>John Smith</span>
-                                            <span class="time">3 mins ago</span>
+                                            <span className="time">3 mins ago</span>
                                         </span>
-                                        <span class="message">
+                                        <span className="message">
                                             Film festivals used to be do-or-die moments for movie makers. They were where...
                                         </span>
                                     </a>
                                 </li>
                                 <li>
-                                    <div class="text-center">
+                                    <div className="text-center">
                                         <a>
                                             <strong>See All Alerts</strong>
-                                            <i class="fa fa-angle-right"></i>
+                                            <i className="fa fa-angle-right"></i>
                                         </a>
                                     </div>
                                 </li>

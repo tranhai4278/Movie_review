@@ -2,6 +2,8 @@ import axios from "axios";
 import Handle from "rc-slider/lib/Handles/Handle";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import './Admin.css'; 
+
 
 function AdminMovieList() {
   const searchRef = useRef();

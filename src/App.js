@@ -24,12 +24,12 @@ import {
   AdminTopNav,
   AdminFooter,
   Search,
-  SearchCast
+  SearchCast,
+  AdminMovieList
 } from "./components/Index";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AdminMovieList from "./components/AdminMovieList";
 import AdminLayout from "./layout/AdminLayout";
 
 function App() {
@@ -91,37 +91,11 @@ function App() {
             </Routes>
           </Container>
 
-          <div>
-            <div className="nav-md">
-              <div className="body">
-                <div className="main_container">
-                <Row style={{ backgroundColor: "white" }}>
-                  <Col md={2} sm={12} xs={12}>
-                    <Routes>
-                      <Route path="/admin" element={<AdminSidebar />} />
-                    </Routes>
-                  </Col>
-                  <Col md={10} sm={12} xs={12}>
-                    <Routes>
-                      <Route path="/admin" element={<AdminTopNav />} />
-                    </Routes>
-                    <Routes>
-                      <Route path="/admin" element={<Table />} />
-                    </Routes>
-                    <Routes>
-                      <Route path="/admin" element={<AdminFooter />} />
-                    </Routes>
-                  </Col>
-                </Row>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {window.location.pathname.startsWith("/admin") ? null : <Footer />}
         </div>
         <div style={{ backgroundColor: "white", overflowX:"none" }}>
           <Routes>
+            <Route path="admin" element={<AdminLayout><AdminMovieList /></AdminLayout>} />
             <Route path="admin/movie-list" element={<AdminLayout><AdminMovieList /></AdminLayout>} />
             <Route path="admin/movie/:movieId" element={<AdminLayout><AdminMovieList /></AdminLayout>} />
           </Routes>
