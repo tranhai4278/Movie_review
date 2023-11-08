@@ -22,8 +22,9 @@ import Table from "./Table";
 import AdminTopNav from "./AdminTopNav";
 import AdminFooter from "./AdminFooter";
 import Search from "./Search";
+import SearchCast from "./SearchCast";
 export {
     Home, Header, Footer, Login, Signup, ResetPassword, ResetPassword2, Sidebar, BreadCrumb, UserProfile, 
     ChangePassword, MovieGrid, Filter, MovieList, MovieDetail, Wishlist1, WishlistGrid, MovieRated, CastDetail,
-    AdminSidebar, Table, AdminTopNav, AdminFooter, Search
+    AdminSidebar, Table, AdminTopNav, AdminFooter, Search, SearchCast
 }

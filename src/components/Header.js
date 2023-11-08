@@ -1,5 +1,5 @@
-import { React, useState} from 'react';
-import { Link, useNavigate  } from 'react-router-dom';
+import { React, useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Navbar, Nav, Button, FormControl, Container } from 'react-bootstrap';
 
 const menuItem = {
@@ -14,12 +14,25 @@ const linkStyle = {
   textDecoration: 'none'
 };
 
+const IconStyle = {
+  color: 'white',
+  padding: '10px',
+  cursor: 'pointer',
+  fontSize: '18px',
+
+}
+
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchType, setSearchType] = useState('movie');
   const navigate = useNavigate();
+  const [userId, setUserId] = useState(localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).id : -1);
 
   const handleSearch = () => {
-    navigate(`/movie?search=${searchQuery}`);
+    if (searchType==='movie')
+      navigate(`/movie?search=${searchQuery}`);
+      if (searchType==='cast')
+      navigate(`/cast?search=${searchQuery}`);
   };
 
   const handleKeyDown = (e) => {
@@ -28,7 +41,17 @@ export default function Header() {
       handleSearch();
     }
   };
-  
+
+  const location = useLocation();
+
+  const loginStyle = {
+    padding: '10px 8px', margin: '8px', textDecoration: 'none'
+  };
+
+  const signupStyle = {
+    display: 'inline-block', padding: '10px 18px', margin: '21px 8px', borderRadius: '20px', textDecoration: 'none', backgroundColor: '#286090', color: 'white'
+  };
+
   return (
     <header className="ht-header">
       <Container>
@@ -47,20 +70,35 @@ export default function Header() {
             </Nav>
 
             <Nav className="flex-child-menu navbar-right">
-              <Link to="/login" style={{ padding: '10px 8px', margin: '8px', textDecoration: 'none' }}>
-                LOG IN
-              </Link>
-              <Link to="/signup" style={linkStyle}>
-                <Button variant="primary" className="signupLink" style={{ padding: '10px 18px', margin: '21px 8px', borderRadius: '20px' }}>
-                  SIGN UP
-                </Button>
-              </Link>
+              {userId === -1 ? (
+                <Nav className="flex-child-menu navbar-right">
+                  <Link to={'/login'} style={location.pathname === '/login' ? signupStyle : loginStyle}>
+                    LOG IN
+                  </Link>
+                  <Link to={'/signup'} style={location.pathname === '/login' ? loginStyle : signupStyle}>
+                    SIGN UP
+                  </Link>
+                </Nav>
+              ) : (
+                <Nav className="flex-child-menu navbar-right">
+                  <Nav className="flex-child-menu menu-right" style={{ display: 'flex', marginTop: '16px' }}>
+                    <Nav.Link href="/wishlist" style={{ margin: '6px' }}>
+                    <i className="fa fa-heart" style={{ ...IconStyle, color: location.pathname === '/wishlist' ? 'red' : 'white' }}></i>
+                    </Nav.Link>
+                    <Nav.Link href="/userprofile" style={{ margin: '6px' }}><i className="fa fa-user" style={IconStyle}></i></Nav.Link>
+                  </Nav>
+                </Nav>
+              )}
+
             </Nav>
+
+
+
           </Navbar.Collapse>
         </Navbar>
 
-        <div className="top-search" style={{ border: 'none' }}>
-          <FormControl as="select">
+        <div className="top-search" style={{ border: 'none', width: '80%', margin: 'auto' }}>
+          <FormControl as="select"  onChange={(e) => setSearchType(e.target.value)}>
             <option value="movie">Movie</option>
             <option value="cast">Cast</option>
           </FormControl>
