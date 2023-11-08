@@ -12,7 +12,8 @@
 }
 
 #adminMovie input,
-#adminMovie textarea {
+#adminMovie textarea,
+#adminMovie select {
   color: black;
   background-color: white;
 }

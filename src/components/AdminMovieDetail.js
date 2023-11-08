@@ -6,8 +6,44 @@ import { useParams } from "react-router-dom";
 function AdminMovieDetail() {
   const [movieDetailOrigin, setMovieDetailOrigin] = useState({});
   const [movieDetailChange, setMovieDetailChange] = useState({});
+  const [movieGenres, setMovieGenres] = useState([]);
+  const [genres, setGenres] = useState([]);
   const [saveChangeMsg, setSaveChangeMsg] = useState("");
+  const [addGenreErrorMsg, setAddGenreErrorMsg] = useState("");
   const { movieId } = useParams();
+  const [selectGenreValue, setSelectGenreValue] = useState(1);
+
+  useEffect(() => {
+    fetchMovieGenre();
+  }, []);
+
+  const fetchMovieGenre = () => {
+    axios
+      // fetch all genre_id by movie_id
+      .get(`http://localhost:9999/movie_genre?movie_id=${movieId}`)
+      .then((response) => response.data)
+      .then((dataF) => {
+        const query = dataF.reduce(
+          (query, curItem) => query + "id=" + curItem.genre_id + "&",
+          ""
+        );
+        // fetch all genre item by genre_id
+        axios
+          .get(`http://localhost:9999/genre?${query}`)
+          .then((response) => response.data)
+          .then((data) => {
+            setMovieGenres(
+              dataF.map((item) => ({
+                ...item,
+                genreName: data?.find(
+                  (itemGenre) => itemGenre.id === item.genre_id
+                )?.name,
+              }))
+            );
+          });
+      });
+  };
+
   useEffect(() => {
     axios
       .get(`http://localhost:9999/movie/${movieId}`)
@@ -15,6 +51,15 @@ function AdminMovieDetail() {
       .then((data) => {
         setMovieDetailOrigin(data);
         setMovieDetailChange(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:9999/genre`)
+      .then((response) => response.data)
+      .then((data) => {
+        setGenres(data);
       });
   }, []);
 
@@ -43,6 +88,33 @@ function AdminMovieDetail() {
     const isConfirm = window.confirm("Are you sure discard change");
     if (isConfirm) {
       setMovieDetailChange(movieDetailOrigin);
+    }
+  };
+
+  const handleDeteleMovieGenre = (id) => {
+    axios.delete(`http://localhost:9999/movie_genre/${id}`).then((response) => {
+      fetchMovieGenre();
+    });
+  };
+
+  const handleAddMovieGenre = () => {
+    if (
+      selectGenreValue &&
+      !movieGenres.some((item) => item.genre_id === selectGenreValue)
+    ) {
+      axios
+        .post("http://localhost:9999/movie_genre", {
+          movie_id: Number(movieId),
+          genre_id: Number(selectGenreValue),
+        })
+        .then((response) => {
+          fetchMovieGenre();
+        });
+    } else {
+      setAddGenreErrorMsg("Genre is exits");
+      setTimeout(() => {
+        setAddGenreErrorMsg("");
+      }, 3000);
     }
   };
 
@@ -169,6 +241,49 @@ function AdminMovieDetail() {
               onClick={handleDiscardChange}
             >
               Discard Change
+            </button>
+          </div>
+          <div className="form-group col-md-6" style={{ marginTop: 50 }}>
+            <label>Genre:</label>
+            <p style={{ color: "black" }}>
+              {" "}
+              {console.log(movieGenres)}
+              {movieGenres?.map((item, index) => (
+                <span key={item.id}>
+                  {item?.genreName}
+                  <i
+                    className="fa fa-close text-danger"
+                    onClick={() => handleDeteleMovieGenre(item.id)}
+                  ></i>
+                  {index < movieGenres?.length - 1 && ", "}
+                </span>
+              ))}
+            </p>
+            <select
+              class="form-control"
+              onChange={(e) => setSelectGenreValue(Number(e.target.value))}
+            >
+              {genres?.map((item) => (
+                <option
+                  selected={item.id === selectGenreValue}
+                  key={item.id}
+                  value={item.id}
+                >
+                  {item.name}
+                </option>
+              ))}
+            </select>
+            {addGenreErrorMsg && (
+              <div class="alert alert-danger fade in" style={{ margin: 0 }}>
+                <strong>Fail!</strong> {addGenreErrorMsg}
+              </div>
+            )}
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={handleAddMovieGenre}
+            >
+              Add
             </button>
           </div>
         </div>
