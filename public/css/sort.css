@@ -6,7 +6,6 @@
 
 .fa.fa-caret-up:hover,
 .fa.fa-caret-down:hover {
-  font-size: 24px;
   cursor: pointer;
   color: rgb(255, 0, 0, 0.5);
 }
