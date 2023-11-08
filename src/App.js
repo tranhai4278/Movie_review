@@ -28,10 +28,12 @@ import {
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AdminMovieList from "./components/AdminMovieList";
+import AdminLayout from "./layout/AdminLayout";
 
 function App() {
   return (
-    <div style={{ backgroundColor: "#020d18" }}>
+    <div style={{ backgroundColor: "#020d18", overflowX: 'hidden' }}>
       <BrowserRouter>
         <div>
           {window.location.pathname.startsWith("/admin") ? null : <Header />}
@@ -129,6 +131,12 @@ function App() {
           </div>
 
           {window.location.pathname.startsWith("/admin") ? null : <Footer />}
+        </div>
+        <div style={{ backgroundColor: "white", overflowX:"none" }}>
+          <Routes>
+            <Route path="admin/movie-list" element={<AdminLayout><AdminMovieList /></AdminLayout>} />
+            <Route path="admin/movie/:movieId" element={<AdminLayout><AdminMovieList /></AdminLayout>} />
+          </Routes>
         </div>
       </BrowserRouter>
     </div>

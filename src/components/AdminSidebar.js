@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 export default function AdminSidebar() {
     return (
         
-        <div className="left_col scroll-view" style={{position: 'fixed'}}>
+        <div className="left_col scroll-view" style={{position: 'fixed', height: "100vh"}}>
           <div className="navbar nav_title" style={{border: '0'}} >
             <Link href="index.html" className="site_title"><i className="fa fa-paw"></i> <span>Gentelella Alela!</span></Link>
           </div>

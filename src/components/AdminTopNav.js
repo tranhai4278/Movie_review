@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 export default function AdminTopNav() {
     return (
-        <div class="top_nav" style={{marginLeft:'-28px'}}>
+        <div class="top_nav">
             <div class="nav_menu">
                 <nav>
                     <div class="nav toggle">
