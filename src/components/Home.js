@@ -5,13 +5,37 @@ import React, { useState, useEffect } from 'react';
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
+  const [rates, setRates] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:9999/movie`)
-      .then((response) => response.data)
-      .then((data) => setMovies(data));
+      .get("http://localhost:9999/rate")
+      .then((res) => setRates(res.data))
+      .catch((err) => console.error(err));
   }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:9999/movie")
+      .then((response) => response.data)
+      .then((data) => {
+        const randomMovies = getRandomMovies(data, 4);
+        setMovies(randomMovies);
+      });
+  }, []);
+
+  const getRandomMovies = (array, n) => {
+    const shuffled = array.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, n);
+  };
+  const getAverageRating = (movieId) => {
+    const movieRatings = rates.filter((rate) => rate.movie_id === movieId);
+    if (movieRatings.length === 0) {
+      return "N/A";
+    }
+    const totalRating = movieRatings.reduce((acc, rate) => acc + rate.rating, 0);
+    const averageRating = totalRating / movieRatings.length;
+    return averageRating.toFixed(1);
+  };
   return (
     <>
       <div className="slider movie-items">
@@ -35,33 +59,32 @@ export default function Home() {
 
 
             <div className="slick-multiItemSlider">
-
-              <Col md={3} className="movie-item">
-                <div className="mv-img">
-                  <Link >
-                    <img
-                      src="images/uploads/slider1.jpg"
-                      alt=""
-                      width="285"
-                      height="437"
-                    />
-                  </Link>
-                </div>
-                <div className="title-in">
-                  <div className="cate">
-                    <span className="blue">
-                      <Link >Sci-fi</Link>
-                    </span>
+              {movies.map((movie) => (
+                <Col md={3} className="movie-item" style={{ width: '270px' }}>
+                  <div className="mv-img">
+                    <Link >
+                      <img
+                        src={movie.img_url}
+                        alt=""
+                      />
+                    </Link>
                   </div>
-                  <h6>
-                    <Link >Interstellar</Link>
-                  </h6>
-                  <p>
-                    <i className="ion-android-star"></i>
-                    <span>7.4</span> /10
-                  </p>
-                </div>
-              </Col>
+                  <div className="title-in">
+                    <div className="cate">
+                      <span className="blue">
+                        <Link ></Link>
+                      </span>
+                    </div>
+                    <h6>
+                      <Link >{movie.name}</Link>
+                    </h6>
+                    <p>
+                      <i className="ion-android-star"></i>
+                      <span>{getAverageRating(movie.id)}</span> /10
+                    </p>
+                  </div>
+                </Col>
+              ))}
             </div>
           </Row>
         </Container>

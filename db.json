@@ -2,7 +2,7 @@
   "movie": [
     {
       "id": 1,
-      "name": "Người Nhện: Không Còn Nhà",
+      "name": "Người Nhện: Không Còn Nhà ",
       "status": true,
       "description": "Peter Parker đã bị lộ mặt và không còn có thể tách biệt cuộc sống bình thường của mình với những yêu cầu cao của việc trở thành một Siêu anh hùng. Khi anh ta yêu cầu sự giúp đỡ từ Doctor Strange, mọi thứ càng trở nên nguy hiểm hơn, buộc anh ta phải khám phá ra ý nghĩa thực sự của việc trở thành Người Nhện.",
       "release_year": "2021",
@@ -14,7 +14,7 @@
       "id": 2,
       "name": "Người Nhện: Du Hành Vũ Trụ Nhện",
       "status": true,
-      "description": "Miles Morales tái xuất trong phần tiếp theo của bom tấn hoạt hình từng đoạt giải Oscar - Spider-Man: Across the Spider-Verse. Sau khi gặp lại Gwen Stacy, chàng Spider-Man thân thiện đến từ Brooklyn phải du hành qua đa vũ trụ và gặp một nhóm Người Nhện chịu trách nhiệm bảo vệ các thế giới song song. Nhưng khi nhóm siêu anh hùng xung đột về cách xử lý mối đe dọa mới, Miles buộc phải đọ sức với các Người Nhện khác và phải xác định lại ý nghĩa của việc trở thành một người hùng để có thể cứu những người cậu yêu thương nhất.",
+      "description": "Miles Morales tái xuất trong phần tiếp theo của bom tấn hoạt hình từng đoạt giải Oscar - Spider-Man: Across the Spider-Verse. Sau khi gặp lại Gwen Stacy, chàng Spider-Man thân thiện đến từ Brooklyn phải du hành qua đa vũ trụ và gặp một nhóm Người Nhện chịu trách nhiệm bảo vệ các thế giới song song. Nhưng khi nhóm siêu anh hùng xung đột về cách xử lý một mối đe dọa mới, Miles buộc phải đọ sức với các Người Nhện khác và phải xác định lại ý nghĩa của việc trở thành một người hùng để có thể cứu những người cậu yêu thương nhất.",
       "release_year": "2023",
       "director": "Ban Dow",
       "img_url": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bX547n5W9ZIKCeAE44Vf2nfw4w.jpg",
@@ -66,6 +66,11 @@
       "id": 5,
       "movie_id": 3,
       "genre_id": 3
+    },
+    {
+      "id": 6,
+      "movie_id": 4,
+      "genre_id": 4
     }
   ],
   "genre": [
@@ -84,6 +89,12 @@
     {
       "id": 3,
       "name": "Khoa học viễn tưởng",
+      "description": "todo",
+      "status": true
+    },
+    {
+      "id": 4,
+      "name": "Phim gay cấn",
       "description": "todo",
       "status": true
     }
@@ -188,56 +199,478 @@
     },
     {
       "id": 6,
-      "movie_id": 4,
-      "genre_id": 1
+      "username": "linhxinhdep",
+      "password": "123456",
+      "email": "linhxinh@gmail.com",
+      "fullname": "",
+      "country": "",
+      "gender": "",
+      "phonenumber": "",
+      "isPrimeum": false,
+      "avatar": "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png",
+      "role": "USER",
+      "status": "active"
     },
     {
       "id": 7,
-      "movie_id": 4,
-      "genre_id": 3
-    },
-    {
-      "id": 8,
-      "movie_id": 5,
-      "genre_id": 2
-    },
-    {
-      "id": 9,
-      "movie_id": 6,
-      "genre_id": 1
-    },
-    {
-      "id": 10,
-      "movie_id": 6,
-      "genre_id": 2
-    },
-    {
-      "id": 11,
-      "movie_id": 7,
-      "genre_id": 3
-    },
-    {
-      "id": 12,
-      "movie_id": 7,
-      "genre_id": 4
+      "username": "linhxinhdep",
+      "password": "123456",
+      "email": "linhxinh@gmail.com",
+      "fullname": "",
+      "country": "",
+      "gender": "",
+      "phonenumber": "",
+      "isPrimeum": false,
+      "avatar": "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png",
+      "role": "USER",
+      "status": "active"
     }
   ],
-  "genre": [
+  "rate": [
     {
       "id": 1,
-      "name": "Action"
+      "movie_id": 1,
+      "user_id": 2,
+      "rating": 4,
+      "create_at": "2023-10-29",
+      "status": true
     },
     {
       "id": 2,
-      "name": "Adventure"
+      "movie_id": 1,
+      "user_id": 3,
+      "rating": 5,
+      "create_at": "2023-10-30",
+      "status": true
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "rating": 10,
+      "create_at": "2023-11-03",
+      "status": true,
+      "id": 3
+    },
+    {
+      "movie_id": 2,
+      "user_id": 1,
+      "rating": 7,
+      "create_at": "2023-11-03",
+      "status": true,
+      "id": 4
+    },
+    {
+      "movie_id": 1,
+      "user_id": {},
+      "rating": 7,
+      "create_at": "2023-11-06",
+      "status": "todo",
+      "id": 5
+    }
+  ],
+  "comment": [
+    {
+      "id": 1,
+      "movie_id": 1,
+      "user_id": 2,
+      "content": "phim hơi chán cho 1 sao thôi :P",
+      "create_at": "2023-10-29",
+      "status": true,
+      "parent_comment_id": null
+    },
+    {
+      "id": 2,
+      "movie_id": 1,
+      "user_id": 3,
+      "content": "Phim hay mà vote 5 sao đuê, report thằng gây war cho phim",
+      "create_at": "2023-10-30",
+      "status": true,
+      "parent_comment_id": 1
     },
     {
       "id": 3,
-      "name": "Science Fiction"
+      "movie_id": 1,
+      "user_id": 3,
+      "content": "Phim hay mà vote 5 sao đuê, report thằng gây war cho phim",
+      "create_at": "2023-10-30",
+      "status": true,
+      "parent_comment_id": 1
     },
     {
       "id": 4,
-      "name": "Drama"
+      "movie_id": 1,
+      "user_id": 3,
+      "content": "Phim hay mà vote 5 sao đuê, report thằng gây war cho phim",
+      "create_at": "2023-10-30",
+      "status": true,
+      "parent_comment_id": null
+    },
+    {
+      "id": 5,
+      "movie_id": 1,
+      "user_id": 3,
+      "content": "Phim hay mà vote 5 sao đuê, report thằng gây war cho phim",
+      "create_at": "2023-10-30",
+      "status": true,
+      "parent_comment_id": 4
+    },
+    {
+      "id": 6,
+      "movie_id": 1,
+      "user_id": 3,
+      "content": "Phim hay mà vote 5 sao đuê, report thằng gây war cho phim",
+      "create_at": "2023-10-30",
+      "status": true,
+      "parent_comment_id": null
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": null,
+      "id": 7
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": null,
+      "id": 8
+    },
+    {
+      "content": "132",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 2,
+      "id": 9
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "qưeqweqwe",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": null,
+      "id": 10
+    },
+    {
+      "content": "qewqwe",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 1,
+      "id": 11
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": null,
+      "id": 12
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "qưe",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 1,
+      "id": 13
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "123213123213213123uhadyawbu eq",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 1,
+      "id": 14
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "sda",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 1,
+      "id": 15
+    },
+    {
+      "content": "sadasd",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 15,
+      "id": 16
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "qưeqwewqewq",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 2,
+      "id": 17
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "qưe",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 3,
+      "id": 18
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "qưeqwe",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 17,
+      "id": 19
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "eqwe",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 17,
+      "id": 20
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "qưewqe",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 19,
+      "id": 21
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "qew",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 17,
+      "id": 22
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "qưeqwe",
+      "create_at": "2023-11-02",
+      "status": true,
+      "parent_comment_id": 21,
+      "id": 23
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "qưeqew",
+      "create_at": "2023-11-03",
+      "status": true,
+      "parent_comment_id": 4,
+      "id": 24
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "qưeqweqwe",
+      "create_at": "2023-11-03",
+      "status": true,
+      "parent_comment_id": 5,
+      "id": 25
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "13",
+      "create_at": "2023-11-03",
+      "status": true,
+      "parent_comment_id": 25,
+      "id": 26
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "",
+      "create_at": "2023-11-03",
+      "status": true,
+      "parent_comment_id": null,
+      "id": 27
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "qew",
+      "create_at": "2023-11-03",
+      "status": true,
+      "parent_comment_id": null,
+      "id": 28
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "213",
+      "create_at": "2023-11-03",
+      "status": true,
+      "parent_comment_id": null,
+      "id": 29
+    },
+    {
+      "movie_id": 1,
+      "user_id": 1,
+      "content": "qưe",
+      "create_at": "2023-11-03",
+      "status": true,
+      "parent_comment_id": 27,
+      "id": 30
+    },
+    {
+      "movie_id": "2",
+      "user_id": 1,
+      "content": "12",
+      "create_at": "2023-11-03",
+      "status": true,
+      "parent_comment_id": null,
+      "id": 31
+    },
+    {
+      "movie_id": "2",
+      "user_id": 1,
+      "content": "ưqe",
+      "create_at": "2023-11-03",
+      "status": true,
+      "parent_comment_id": 31,
+      "id": 32
+    },
+    {
+      "movie_id": "2",
+      "user_id": 1,
+      "content": "dưqe\nưqe",
+      "create_at": "2023-11-03",
+      "status": true,
+      "parent_comment_id": null,
+      "id": 33
+    },
+    {
+      "movie_id": "2",
+      "user_id": 1,
+      "content": "qwewq ed\nqư eq e\nqư e qưe\n",
+      "create_at": "2023-11-03",
+      "status": true,
+      "parent_comment_id": null,
+      "id": 34
+    },
+    {
+      "movie_id": "2",
+      "user_id": 1,
+      "content": "ewq",
+      "create_at": "2023-11-03",
+      "status": true,
+      "parent_comment_id": 31,
+      "id": 35
+    },
+    {
+      "movie_id": "1",
+      "user_id": 1,
+      "content": "hello",
+      "create_at": "2023-11-06",
+      "status": "todo",
+      "parent_comment_id": 1,
+      "id": 36
+    },
+    {
+      "movie_id": "1",
+      "user_id": 1,
+      "content": "wqeqweqwewqewqe",
+      "create_at": "2023-11-06",
+      "status": "todo",
+      "parent_comment_id": 1,
+      "id": 37
+    },
+    {
+      "movie_id": "1",
+      "user_id": 1,
+      "content": "adsasd",
+      "create_at": "2023-11-06",
+      "status": "todo",
+      "parent_comment_id": 29,
+      "id": 38
+    },
+    {
+      "movie_id": "1",
+      "user_id": 1,
+      "content": "qewqwe",
+      "create_at": "2023-11-06",
+      "status": "todo",
+      "parent_comment_id": 29,
+      "id": 39
+    },
+    {
+      "movie_id": "1",
+      "user_id": 4,
+      "content": "qwewqe",
+      "create_at": "2023-11-06",
+      "status": "todo",
+      "parent_comment_id": 28,
+      "id": 40
+    }
+  ],
+  "report": [
+    {
+      "id": 1,
+      "user_id": 2,
+      "comment_id": 1,
+      "reason": "phim hay mà đánh giá 1 sao, chứng tỏ gây war",
+      "create_at": "2023-10-30",
+      "status": "Chờ xử lí"
+    }
+  ],
+  "advertising": [
+    {
+      "id": 1,
+      "img_url": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/bX547n5W9ZIKCeAE44Vf2nfw4w.jpg",
+      "description": "todo",
+      "title": "todo",
+      "place": "todo",
+      "start_date": "2023-09-30",
+      "end_date": "2023-10-30",
+      "price": "1.000.000VND"
+    }
+  ],
+  "wishlist": [
+    {
+      "id": 1,
+      "movie_id": 1,
+      "user_id": 1
+    },
+    {
+      "id": 2,
+      "movie_id": 2,
+      "user_id": 1
+    },
+    {
+      "id": 3,
+      "movie_id": 1,
+      "user_id": 2
+    },
+    {
+      "id": 4,
+      "movie_id": 2,
+      "user_id": 3
+    },
+    {
+      "movie_id": 1,
+      "user_id": 4,
+      "id": 5
     }
   ]
 }
