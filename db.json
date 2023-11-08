@@ -454,7 +454,7 @@
       "user_id": {},
       "rating": 7,
       "create_at": "2023-11-06",
-      "status": "todo",
+      "status": true,
       "id": 5
     },
     {
@@ -797,7 +797,7 @@
       "user_id": 1,
       "content": "hello",
       "create_at": "2023-11-06",
-      "status": "todo",
+      "status": true,
       "parent_comment_id": 1,
       "id": 36
     },
@@ -806,7 +806,7 @@
       "user_id": 1,
       "content": "wqeqweqwewqewqe",
       "create_at": "2023-11-06",
-      "status": "todo",
+      "status": true,
       "parent_comment_id": 1,
       "id": 37
     },
@@ -815,7 +815,7 @@
       "user_id": 1,
       "content": "adsasd",
       "create_at": "2023-11-06",
-      "status": "todo",
+      "status": true,
       "parent_comment_id": 29,
       "id": 38
     },
@@ -824,7 +824,7 @@
       "user_id": 1,
       "content": "qewqwe",
       "create_at": "2023-11-06",
-      "status": "todo",
+      "status": true,
       "parent_comment_id": 29,
       "id": 39
     },
@@ -833,7 +833,7 @@
       "user_id": 4,
       "content": "qwewqe",
       "create_at": "2023-11-06",
-      "status": "todo",
+      "status": true,
       "parent_comment_id": 28,
       "id": 40
     },
@@ -842,7 +842,7 @@
       "user_id": 1,
       "content": "jdcb",
       "create_at": "2023-11-08",
-      "status": "todo",
+      "status": true,
       "parent_comment_id": null,
       "id": 41
     },
@@ -851,7 +851,7 @@
       "user_id": 2,
       "content": "dhc",
       "create_at": "2023-11-08",
-      "status": "todo",
+      "status": true,
       "parent_comment_id": 1,
       "id": 42
     },
@@ -860,7 +860,7 @@
       "user_id": 2,
       "content": "bg",
       "create_at": "2023-11-08",
-      "status": "todo",
+      "status": true,
       "parent_comment_id": 1,
       "id": 43
     },
@@ -869,7 +869,7 @@
       "user_id": 1,
       "content": "phim hay\n",
       "create_at": "2023-11-08",
-      "status": "todo",
+      "status": true,
       "parent_comment_id": null,
       "id": 44
     },
@@ -878,7 +878,7 @@
       "user_id": 1,
       "content": "phim hay, rất gay cấn",
       "create_at": "2023-11-08",
-      "status": "todo",
+      "status": true,
       "parent_comment_id": null,
       "id": 45
     }
@@ -891,6 +891,22 @@
       "reason": "phim hay mà đánh giá 1 sao, chứng tỏ gây war",
       "create_at": "2023-10-30",
       "status": "Chờ xử lí"
+    },
+    {
+      "user_id": 1,
+      "comment_id": 31,
+      "reason": "vh",
+      "create_at": "2023-11-08",
+      "status": "Chờ xử lí",
+      "id": 2
+    },
+    {
+      "user_id": 1,
+      "comment_id": 31,
+      "reason": "vhjncj",
+      "create_at": "2023-11-08",
+      "status": "Chờ xử lí",
+      "id": 3
     }
   ],
   "advertising": [
@@ -970,6 +986,16 @@
       "movie_id": 4,
       "user_id": 1,
       "id": 16
+    }
+  ],
+  "subscribe": [
+    {
+      "id": 1,
+      "email": "hoangmaidung@gmail.com"
+    },
+    {
+      "email": "maidung@gmail.com",
+      "id": 2
     }
   ]
 }

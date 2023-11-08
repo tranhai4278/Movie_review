@@ -3,32 +3,29 @@ import { Link, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import { toast } from 'react-toastify';
+
 export default function CastDetail() {
   const { id } = useParams();
-  console.log(id);
   const [cast, setCast] = useState(null);
   const [movieCasts, setMovieCasts] = useState([]);
   const [usersRate, setUsersRate] = useState([]);
-  const numberOfMovies = movieCasts.length;
   const [sortingCriteria, setSortingCriteria] = useState("");
   const [ratingsMap, setRatingsMap] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     axios.get(`http://localhost:9999/cast/${id}`)
       .then((response) => {
         const data = response.data;
         setCast(data);
-        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching data: " + error);
       });
   }, [id]);
 
-
   useEffect(() => {
     axios
-      // fetch all cast_id by movie_id
       .get(`http://localhost:9999/movie_detail?cast_id=${id}`)
       .then((response) => response.data)
       .then((data) => {
@@ -36,7 +33,6 @@ export default function CastDetail() {
           (query, curItem) => query + "id=" + curItem.movie_id + "&",
           ""
         );
-        // fetch all cast item by cast_id
         axios
           .get(`http://localhost:9999/movie?${query}`)
           .then((response) => response.data)
@@ -44,11 +40,9 @@ export default function CastDetail() {
             if (searchTerm.length === 0) {
               setMovieCasts(data);
             } else {
-
               setMovieCasts(data.filter(p => p.name.toLowerCase().startsWith(searchTerm.toLowerCase())))
             }
-          }
-          );
+          });
       });
   }, [id, searchTerm]);
 
@@ -57,20 +51,17 @@ export default function CastDetail() {
       .then((response) => {
         const data = response.data;
         setUsersRate(data);
-        console.log(data);
       })
       .catch((error) => {
         console.error("Error fetching data: " + error);
       });
   }, [id]);
 
-
   useEffect(() => {
     axios.get(`http://localhost:9999/rate`)
       .then((response) => {
         const data = response.data;
 
-        // Tính toán tổng rating và số lượt đánh giá cho từng bộ phim
         const ratings = {};
         data.forEach((rating) => {
           const movieId = rating.movie_id;
@@ -88,25 +79,20 @@ export default function CastDetail() {
       });
   }, [id]);
 
-  // Use useEffect to re-sort the movies when sortingCriteria changes
   useEffect(() => {
     sortMovies(sortingCriteria);
   }, [sortingCriteria]);
 
-
-  // Hàm để tính toán rating trung bình của một bộ phim
   const calculateAverageRating = (movie) => {
     const ratingInfo = ratingsMap[movie.id];
     if (ratingInfo) {
       return (ratingInfo.totalRating / ratingInfo.totalUsers).toFixed(1);
     }
-    return "N/A"; // hoặc giá trị mặc định khác
+    return 0;
   };
 
   const sortMovies = (criteria) => {
     let sortedMovies = [...movieCasts];
-
-
 
     if (criteria === "rating-desc") {
       sortedMovies.sort((a, b) => calculateAverageRating(b) - calculateAverageRating(a));
@@ -121,10 +107,6 @@ export default function CastDetail() {
     setMovieCasts(sortedMovies);
   };
 
-
-
-
-
   return (
     <div style={{ paddingTop: "220px", paddingBottom: "60px" }}>
       <Row className="ipad-width">
@@ -132,9 +114,7 @@ export default function CastDetail() {
           <div className="mv-ceb">
             <Image src={cast ? cast.img : ""} alt="" fluid />
           </div>
-          <Row>
-
-          </Row>
+          <Row></Row>
         </Col>
         <Col md={8} sm={12} xs={12}>
           <div className="movie-single-ct">
@@ -188,7 +168,6 @@ export default function CastDetail() {
                           style={{ marginTop: "48px" }}
                         >
                           <h4>About {cast ? cast.name : ""} </h4>
-
                         </Col>
                         <Col
                           md={12}
@@ -197,19 +176,16 @@ export default function CastDetail() {
                         >
                           <p>{cast ? cast.description : ""}</p>
                         </Col>
-
                       </Col>
                       <div className="col-md-4 col-xs-12 col-sm-12"></div>
                     </Row>
                   </div>
-
                   <div id="film" className="tab">
                     <Row>
                       <div className="topbar-filter">
                         <p>
-                          Found <span>{numberOfMovies} movies</span> in total
+                          Found <span>{movieCasts.length} movies</span> in total
                         </p>
-
                         <Form.Label>Filter by:</Form.Label>
                         <Form.Select onChange={(e) => setSortingCriteria(e.target.value)}>
                           <option value="">Select</option>
@@ -225,48 +201,53 @@ export default function CastDetail() {
                         onChange={(e) => setSearchTerm(e.target.value)}
                         style={{
                           backgroundColor: '#000',
-                          color: '#fff'
+                          color: '#fff',
+                          width: '30%'
                         }}
                       />
                       <hr />
                       <Row style={{ marginLeft: "0px" }}>
-                        {movieCasts?.map((movie) => (
-                          <Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: "0px" }}>
-                            <img src={movie.img_url} alt="" />
-                            <div className="hvr-inner">
-                              <a href={`/moviedetail/${movie.id}`}>Xem thêm <i className="ion-android-arrow-dropright"></i></a>
-                            </div>
-                            <div className="mv-item-infor">
-                              <h6>
-                                <a href={"/moviedetail/${movie.id}"}>{movie.name}</a>
-                              </h6>
-                              <p>
-                                ⭐<span style={{ color: "white", fontSize: "18px" }}>
-                                  {(
-                                    usersRate
-                                      .filter((rating) => rating.movie_id === movie.id)
-                                      .reduce((totalRate, currentItem) => totalRate + currentItem.rating, 0) /
-                                    usersRate
-                                      .filter((rating) => rating.movie_id === movie.id)
-                                      .length
-                                  ).toFixed(1)}
-                                </span>{" "}
-                                / 10
-                                <br />
-                                <span className="rv" style={{ color: "#337AB7" }}>
-                                  {
-                                    usersRate
-                                      .filter((rating) => rating.movie_id === movie.id)
-                                      .length
-                                  } Đánh giá
-                                </span>
-                              </p>
-                            </div>
-                          </Col>
-                        ))}
+                        {movieCasts?.map((movie) => {
+                          const averageRating =
+                            usersRate
+                              .filter((rating) => rating.movie_id === movie.id)
+                              .length > 0
+                              ? (
+                                  usersRate
+                                    .filter((rating) => rating.movie_id === movie.id)
+                                    .reduce((totalRate, currentItem) => totalRate + currentItem.rating, 0) /
+                                  usersRate
+                                    .filter((rating) => rating.movie_id === movie.id)
+                                    .length
+                                ).toFixed(1)
+                              : 0;
+
+                          return (
+                            <Col md={3} className="movie-item-style-2 movie-item-style-1" style={{ margin: "0px" }}>
+                              <img src={movie.img_url} alt="" />
+                              <div className="hvr-inner">
+                                <a href={`/moviedetail/${movie.id}`}>Xem thêm <i className="ion-android-arrow-dropright"></i></a>
+                              </div>
+                              <div className="mv-item-infor">
+                                <h6>
+                                  <a href={`/moviedetail/${movie.id}`}>{movie.name}</a>
+                                </h6>
+                                <p>
+                                  ⭐<span style={{ color: "white", fontSize: "18px" }}>{isNaN(averageRating) ? 0 : averageRating}</span> / 10
+                                  <br />
+                                  <span className="rv" style={{ color: "#337AB7" }}>
+                                    {
+                                      usersRate
+                                        .filter((rating) => rating.movie_id === movie.id)
+                                        .length
+                                    } Đánh giá
+                                  </span>
+                                </p>
+                              </div>
+                            </Col>
+                          );
+                        })}
                       </Row>
-
-
                     </Row>
                   </div>
                 </div>

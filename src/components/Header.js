@@ -94,7 +94,7 @@ export default function Header() {
           </Navbar.Collapse>
         </Navbar>
 
-        <div className="top-search" style={{ border: 'none' }}>
+        <div className="top-search" style={{ border: 'none', width: '80%', margin: 'auto' }}>
           <FormControl as="select">
             <option value="movie">Movie</option>
             <option value="cast">Cast</option>

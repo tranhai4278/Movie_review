@@ -5,9 +5,10 @@ import axios from 'axios';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-export default function Search() {
+const Search = () => {
     const [movies, setMovies] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [search, setSearch] = useState('');
     const location = useLocation();
     const [genres, setGenres] = useState([]);
     const [selectedGenres, setSelectedGenres] = useState([]);
@@ -20,9 +21,6 @@ export default function Search() {
     const [sortOption, setSortOption] = useState(''); // Default sort by popularity
     const getCurrentYear = new Date().getFullYear();
 
-    /**
-     * Init: fetch total rating data by movie_id
-     */
     useEffect(() => {
         axios
             .get(`http://localhost:9999/rate`)
@@ -45,9 +43,8 @@ export default function Search() {
                 const moviesResponse = await axios.get('http://localhost:9999/movie');
                 const movies = moviesResponse.data;
 
-                let filteredMovies = movies.filter((p) => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
+                let filteredMovies = movies.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
 
-                // Apply genre filter
                 if (selectedGenres.length > 0) {
                     const movieGenresRes = await axios.get('http://localhost:9999/movie_genre');
                     const movieGenres = movieGenresRes.data;
@@ -55,11 +52,9 @@ export default function Search() {
                         .filter((mg) => selectedGenres.includes(mg.genre_id))
                         .map((mg) => mg.movie_id);
 
-                    // Get distinct movies based on movie_id
                     filteredMovies = filteredMovies.filter((movie) => filteredMovieIds.includes(movie.id));
                 }
 
-                // Apply release year filter
                 filteredMovies = filteredMovies.filter(
                     (movie) => movie.release_year >= startYear && movie.release_year <= endYear
                 );
@@ -69,16 +64,14 @@ export default function Search() {
                     const averageRating = ratings.length > 0
                         ? (ratings.reduce((total, cur) => (total + cur.rating), 0) / ratings.length).toFixed(1)
                         : 0;
-    
+
                     return { ...movie, rate: averageRating };
                 });
 
-                // Apply rating filter
                 filteredMovies = filteredMovies.filter(
                     (movie) => movie.rate >= minRating && movie.rate <= maxRating
                 );
 
-                // Apply sorting
                 switch (sortOption) {
                     case 'ratingDesc':
                         filteredMovies.sort((a, b) => b.rate - a.rate);
@@ -97,6 +90,7 @@ export default function Search() {
                 }
 
                 setMovies(filteredMovies);
+                setVisibleMovies(8);
             } catch (error) {
                 console.error(error);
             }
@@ -105,11 +99,10 @@ export default function Search() {
         fetchData();
     }, [location.search, selectedGenres, startYear, endYear, usersRate, minRating, maxRating, sortOption]);
 
-    // Function to load more movies when scrolled to the bottom
     const handleScroll = () => {
         const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
 
-        if (scrollTop + clientHeight >= scrollHeight - 300) {
+        if (scrollTop + clientHeight >= scrollHeight - 240) {
             setVisibleMovies((prevVisibleMovies) => prevVisibleMovies + 8);
         }
     };
@@ -122,8 +115,71 @@ export default function Search() {
         };
     }, [handleScroll]);
 
+    const fetchMoviesBySearchTerm = async (newSearchTerm) => {
+        try {
+            const moviesResponse = await axios.get('http://localhost:9999/movie');
+            const movies = moviesResponse.data;
+
+            let filteredMovies = movies.filter((p) => p.name.toLowerCase().includes(newSearchTerm.toLowerCase()));
+
+            if (selectedGenres.length > 0) {
+                const movieGenresRes = await axios.get('http://localhost:9999/movie_genre');
+                const movieGenres = movieGenresRes.data;
+                const filteredMovieIds = movieGenres
+                    .filter((mg) => selectedGenres.includes(mg.genre_id))
+                    .map((mg) => mg.movie_id);
+
+                filteredMovies = filteredMovies.filter((movie) => filteredMovieIds.includes(movie.id));
+            }
+
+            filteredMovies = filteredMovies.filter(
+                (movie) => movie.release_year >= startYear && movie.release_year <= endYear
+            );
+
+            filteredMovies = filteredMovies.map((movie) => {
+                const ratings = usersRate.filter(item => item.movie_id === movie.id);
+                const averageRating = ratings.length > 0
+                    ? (ratings.reduce((total, cur) => (total + cur.rating), 0) / ratings.length).toFixed(1)
+                    : 0;
+
+                return { ...movie, rate: averageRating };
+            });
+
+            filteredMovies = filteredMovies.filter(
+                (movie) => movie.rate >= minRating && movie.rate <= maxRating
+            );
+
+            switch (sortOption) {
+                case 'ratingDesc':
+                    filteredMovies.sort((a, b) => b.rate - a.rate);
+                    break;
+                case 'ratingAsc':
+                    filteredMovies.sort((a, b) => a.rate - b.rate);
+                    break;
+                case 'yearDesc':
+                    filteredMovies.sort((a, b) => new Date(b.release_year) - new Date(a.release_year));
+                    break;
+                case 'yearAsc':
+                    filteredMovies.sort((a, b) => new Date(a.release_year) - new Date(b.release_year));
+                    break;
+                default:
+                    break;
+            }
+
+            setMovies(filteredMovies);
+            setVisibleMovies(8);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const handleSearchInputChange = (e) => {
+        const newSearchTerm = e.target.value;
+        setSearch(newSearchTerm);
+        fetchMoviesBySearchTerm(newSearchTerm);
+    };
+
     const handleGenreChange = (genreId) => {
-        // Toggle selected genres
         setSelectedGenres((prevGenres) => {
             if (prevGenres.includes(genreId)) {
                 return prevGenres.filter((id) => id !== genreId);
@@ -137,10 +193,21 @@ export default function Search() {
         setMinRating(value[0]);
         setMaxRating(value[1]);
     };
-
+    
     return (
         <Row>
-            <Col md={8} style={{ paddingTop: '280px' }}>
+            <Col md={8} style={{ paddingTop: '240px' }}>
+                <Form.Control
+                    type="text"
+                    placeholder="Search..."
+                    onChange={handleSearchInputChange}
+                    style={{
+                        backgroundColor: '#000',
+                        color: '#fff',
+                        width: '30%',
+                        marginBottom: '20px'
+                    }}
+                />
                 <div className="topbar-filter">
                     <p>Found <span>{movies.length} movies</span> in total</p>
                     <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
@@ -169,7 +236,7 @@ export default function Search() {
                     </Row>
                 </div>
             </Col>
-            <Col md={4} style={{ paddingTop: '280px' }}>
+            <Col md={4} style={{ paddingTop: '240px' }}>
                 <div className="sidebar">
                     <div className="search-form">
                         <h4 className="sb-title">Search for movie</h4>
@@ -227,8 +294,8 @@ export default function Search() {
                                                     placeholder="Start Year"
                                                     value={startYear}
                                                     onChange={(e) => setStartYear(e.target.value)}
-                                                    min="1900"  // Set the minimum allowed year
-                                                    max={getCurrentYear}  // Set the maximum allowed year
+                                                    min="1900"
+                                                    max={getCurrentYear}
                                                 />
                                             </Col>
                                             <Col md={6}>
@@ -237,8 +304,8 @@ export default function Search() {
                                                     placeholder="End Year"
                                                     value={endYear}
                                                     onChange={(e) => setEndYear(e.target.value)}
-                                                    min="1900"  // Set the minimum allowed year
-                                                    max={getCurrentYear}  // Set the maximum allowed year
+                                                    min="1900"
+                                                    max={getCurrentYear}
                                                 />
                                             </Col>
                                         </Row>
@@ -254,4 +321,6 @@ export default function Search() {
             </Col>
         </Row>
     );
-}
+};
+
+export default Search;

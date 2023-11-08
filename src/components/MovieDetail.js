@@ -513,7 +513,7 @@ export default function MovieDetail() {
                                 user_id: 1,
                                 content: myComment,
                                 create_at: getCurrentDate(),
-                                status: "todo",
+                                status: true,
                                 parent_comment_id: null,
                               })
                             }
@@ -546,7 +546,7 @@ export default function MovieDetail() {
                         >
                           <img src={item.img} alt="" />
                           <div className="hvr-inner">
-                            <a href={`cast/${item.id}`}>
+                            <a href={`/castdetail/${item.id}`}>
                               Read more
                               <i className="ion-android-arrow-dropright"></i>
                             </a>
