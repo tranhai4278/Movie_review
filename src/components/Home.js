@@ -6,7 +6,30 @@ import React, { useState, useEffect } from 'react';
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [rates, setRates] = useState([]);
+  const [movie, setMovie] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [movieGenres, setMovieGenres] = useState([]);
+  const [casts, setCasts] = useState([]);
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:9999/cast")
+      .then((response) => response.data)
+      .then((data) => {
+        const limitedCast = data.slice(0, 3);
+        setCasts(limitedCast);
+      });
+  }, []);
+  useEffect(() => {
+    axios.get('http://localhost:9999/genre')
+      .then((response) => {
+        const filteredGenres = response.data.filter((genre) => genre.status === true);
+        setGenres(filteredGenres);
+      })
+      .catch((error) => {
+        console.error('Lỗi khi tải danh sách thể loại:', error);
+      });
+  }, []);
   useEffect(() => {
     axios
       .get("http://localhost:9999/rate")
@@ -15,14 +38,28 @@ export default function Home() {
   }, []);
   useEffect(() => {
     axios
+      .get("http://localhost:9999/movie_genre")
+      .then((res) => setMovieGenres(res.data))
+      .catch((err) => console.error(err));
+  }, []);
+  useEffect(() => {
+    axios
       .get("http://localhost:9999/movie")
       .then((response) => response.data)
       .then((data) => {
-        const randomMovies = getRandomMovies(data, 4);
-        setMovies(randomMovies);
+        const limitedMovies = data.slice(0, 4);
+        setMovies(limitedMovies);
       });
   }, []);
-
+  useEffect(() => {
+    axios
+      .get("http://localhost:9999/movie")
+      .then((response) => response.data)
+      .then((data) => {
+        const randomMovies = getRandomMovies(data, 12);
+        setMovie(randomMovies);
+      });
+  }, []);
   const getRandomMovies = (array, n) => {
     const shuffled = array.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, n);
@@ -36,6 +73,7 @@ export default function Home() {
     const averageRating = totalRating / movieRatings.length;
     return averageRating.toFixed(1);
   };
+
   return (
     <>
       <div className="slider movie-items">
@@ -71,12 +109,19 @@ export default function Home() {
                   </div>
                   <div className="title-in">
                     <div className="cate">
-                      <span className="blue">
-                        <Link ></Link>
-                      </span>
+
+                      {movieGenres
+                        .filter((mg) => mg.movie_id === movie.id)
+                        .map((mg) => (
+                          <span className="blue">
+                            <Link key={mg.id}>{genres.find((genre) => genre.id === mg.genre_id)?.name}</Link>
+                            <br></br>
+                          </span>
+                        ))}
+
                     </div>
                     <h6>
-                      <Link >{movie.name}</Link>
+                      <Link to={`/moviedetail/${movie.id}`} >{movie.name}</Link>
                     </h6>
                     <p>
                       <i className="ion-android-star"></i>
@@ -94,272 +139,43 @@ export default function Home() {
           <div className="row ipad-width">
             <div className="col-md-8">
               <div className="title-hd">
-                <h2>in theater</h2>
-                <Link className="viewall">
+                <h2>Recomend</h2>
+                <Link to={`/movie?search=`} className="viewall">
                   View all <i className="ion-ios-arrow-right"></i>
                 </Link>
               </div>
               <div className="tabs">
-                <ul className="tab-links">
-                  <li className="active">
-                    <Link href="#tab1">#Popular</Link>
-                  </li>
-                  <li>
-                    <Link href="#tab2"> #Coming soon</Link>
-                  </li>
-                  <li>
-                    <Link href="#tab3"> #Top rated </Link>
-                  </li>
-                  <li>
-                    <Link href="#tab4"> #Most reviewed</Link>
-                  </li>
-                </ul>
                 <div className="tab-content">
                   <div id="tab1" className="tab active">
                     <div className="row">
-                      <div className="slick-multiItem">
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item1.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link to={'/moviedetail'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Interstellar</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item2.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link to={'/moviedetail'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >The revenant</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
+                      {movie.map((movie) => (
+                        <Col md={3} className="movie-item-style-2 movie-item-style-1">
+                          <div className="slide-it">
+                            <div className="movie-item">
+                              <div className="mv-img">
+                                <img
+                                  src={movie.img_url}
+                                  alt=""
+                                  width="185"
+                                  height="284"
+                                />
+                              </div>
+                              <div className="hvr-inner">
+                                <Link to={`/moviedetail/${movie.id}`}>Read more<i className="ion-android-arrow-dropright"></i></Link>
+                              </div>
+                              <div className="title-in">
+                                <h6>
+                                  <Link >{movie.name}</Link>
+                                </h6>
+                                <p>
+                                  <i className="ion-android-star"></i>
+                                  <span>{getAverageRating(movie.id)}</span> /10
+                                </p>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item3.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link to={'/moviedetail'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Die hard</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item4.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              {/* <Link href="moviesingle.html">
-                                  {" "}
-                                  Read more{" "}
-                                  </i>{" "}
-                                </Link> */}
-                              <Link to={'/moviedetail'}>Read more<i className="ion-android-arrow-dropright"></i></Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >The walk</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item5.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Interstellar</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item6.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >The revenant</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item7.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Die hard</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item8.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >The walk</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item3.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Die hard</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                        </Col>
+                      ))}
                     </div>
                   </div>
                   <div id="tab2" className="tab">
@@ -393,410 +209,6 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item6.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >The revenant</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item7.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Die hard</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item8.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >The walk</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item3.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Die hard</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="tab3" className="tab">
-                    <div className="row">
-                      <div className="slick-multiItem">
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item1.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Interstellar</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item2.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >The revenant</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item3.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Die hard</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item4.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >The walk</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item3.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Die hard</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="tab4" className="tab">
-                    <div className="row">
-                      <div className="slick-multiItem">
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item5.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Interstellar</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item6.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >The revenant</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item7.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Die hard</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item8.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >The walk</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="slide-it">
-                          <div className="movie-item">
-                            <div className="mv-img">
-                              <img
-                                src="images/uploads/mv-item3.jpg"
-                                alt=""
-                                width="185"
-                                height="284"
-                              />
-                            </div>
-                            <div className="hvr-inner">
-                              <Link href="moviesingle.html">
-                                {" "}
-                                Read more{" "}
-                                <i className="ion-android-arrow-dropright"></i>{" "}
-                              </Link>
-                            </div>
-                            <div className="title-in">
-                              <h6>
-                                <Link >Die hard</Link>
-                              </h6>
-                              <p>
-                                <i className="ion-android-star"></i>
-                                <span>7.4</span> /10
-                              </p>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -815,67 +227,24 @@ export default function Home() {
                 </div>
                 <div className="celebrities">
                   <h4 className="sb-title">Spotlight Celebrities</h4>
-                  <div className="celeb-item">
-                    <Link >
-                      <img
-                        src="images/uploads/ava1.jpg"
-                        alt=""
-                        width="70"
-                        height="70"
-                      />
-                    </Link>
-                    <div className="celeb-author">
-                      <h6>
-                        <Link >Samuel N. Jack</Link>
-                      </h6>
+                  {casts.map((c) => (
+                    <div className="celeb-item">
+                      <Link >
+                        <img
+                          src={c.img}
+                          alt=""
+                          width="70"
+                          height="70"
+                        />
+                      </Link>
+                      <div className="celeb-author">
+                        <h6>
+                          <Link >{c.name}</Link>
+                        </h6>
+                      </div>
                     </div>
-                  </div>
-                  <div className="celeb-item">
-                    <Link >
-                      <img
-                        src="images/uploads/ava2.jpg"
-                        alt=""
-                        width="70"
-                        height="70"
-                      />
-                    </Link>
-                    <div className="celeb-author">
-                      <h6>
-                        <Link >Benjamin Carroll</Link>
-                      </h6>
-                    </div>
-                  </div>
-                  <div className="celeb-item">
-                    <Link >
-                      <img
-                        src="images/uploads/ava3.jpg"
-                        alt=""
-                        width="70"
-                        height="70"
-                      />
-                    </Link>
-                    <div className="celeb-author">
-                      <h6>
-                        <Link >Beverly Griffin</Link>
-                      </h6>
-                    </div>
-                  </div>
-                  <div className="celeb-item">
-                    <Link >
-                      <img
-                        src="images/uploads/ava4.jpg"
-                        alt=""
-                        width="70"
-                        height="70"
-                      />
-                    </Link>
-                    <div className="celeb-author">
-                      <h6>
-                        <Link >Justin Weaver</Link>
-                      </h6>
-                    </div>
-                  </div>
-                  <Link className="btn">
+                  ))}
+                  <Link to={`/cast?search=`} className="btn">
                     See all celebrities<i className="ion-ios-arrow-right"></i>
                   </Link>
                 </div>
