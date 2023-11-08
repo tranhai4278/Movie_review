@@ -24,11 +24,15 @@ const IconStyle = {
 
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchType, setSearchType] = useState('movie');
   const navigate = useNavigate();
   const [userId, setUserId] = useState(localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).id : -1);
 
   const handleSearch = () => {
-    navigate(`/movie?search=${searchQuery}`);
+    if (searchType==='movie')
+      navigate(`/movie?search=${searchQuery}`);
+      if (searchType==='cast')
+      navigate(`/cast?search=${searchQuery}`);
   };
 
   const handleKeyDown = (e) => {
@@ -47,7 +51,6 @@ export default function Header() {
   const signupStyle = {
     display: 'inline-block', padding: '10px 18px', margin: '21px 8px', borderRadius: '20px', textDecoration: 'none', backgroundColor: '#286090', color: 'white'
   };
-
 
   return (
     <header className="ht-header">
@@ -95,7 +98,7 @@ export default function Header() {
         </Navbar>
 
         <div className="top-search" style={{ border: 'none', width: '80%', margin: 'auto' }}>
-          <FormControl as="select">
+          <FormControl as="select"  onChange={(e) => setSearchType(e.target.value)}>
             <option value="movie">Movie</option>
             <option value="cast">Cast</option>
           </FormControl>

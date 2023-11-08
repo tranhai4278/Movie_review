@@ -319,6 +319,132 @@
       "dob": "1996-09-01",
       "country": "Oakland, California, USA",
       "status": true
+    },
+    {
+      "id": 3,
+      "name": "Tom Holland",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/yxYOaalFh8SUwNE5C0wzOwF89Ny.jpg",
+      "description": "Thomas 'Tom' Stanley Holland is an English actor and dancer. He is best known for playing Peter Parker / Spider-Man in the Marvel Cinematic Universe and has appeared as the character in six films: Captain America: Civil War (2016), Spider-Man: Homecoming (2017), Avengers: Infinity War (2018), Avengers: Endgame (2019), Spider-Man: Far From Home (2019), and Spider-Man: No Way Home (2021). He is also known for playing the title role in Billy Elliot the Musical at the Victoria Palace Theatre, London, as well as for starring in the 2012 film The Impossible.",
+      "dob": "1996-06-01",
+      "country": "Surrey, England, UK",
+      "status": true
+    },
+    {
+      "id": 4,
+      "name": "Zendaya",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/6TE2AlOUqcrs7CyJiWYgodmee1r.jpg",
+      "description": "Zendaya Maree Stoermer Coleman (born September 1, 1996) is an American actress and singer. She began her career as a child model and backup dancer. She rose to mainstream prominence for her role as Rocky Blue on the Disney Channel sitcom Shake It Up (2010–2013). In 2013, Zendaya was a contestant on the 16th season of the dance competition series Dancing with the Stars. She produced and starred as the titular spy, K.C. Cooper, in the sitcom K.C. Undercover (2015–2018). Her film roles include the musical drama The Greatest Showman (2017), the superhero film Spider-Man: Homecoming (2017) and its sequels, the computer-animated musical comedy Smallfoot (2018), the romantic drama Malcolm & Marie (2021), the live-action/animation hybrid sports comedy Space Jam: A New Legacy (2021), and the science fiction epic Dune (2021).",
+      "dob": "1996-09-01",
+      "country": "Oakland, California, USA",
+      "status": true
+    },
+    {
+      "id": 5,
+      "name": "Tom Holland",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/yxYOaalFh8SUwNE5C0wzOwF89Ny.jpg",
+      "description": "Thomas 'Tom' Stanley Holland is an English actor and dancer. He is best known for playing Peter Parker / Spider-Man in the Marvel Cinematic Universe and has appeared as the character in six films: Captain America: Civil War (2016), Spider-Man: Homecoming (2017), Avengers: Infinity War (2018), Avengers: Endgame (2019), Spider-Man: Far From Home (2019), and Spider-Man: No Way Home (2021). He is also known for playing the title role in Billy Elliot the Musical at the Victoria Palace Theatre, London, as well as for starring in the 2012 film The Impossible.",
+      "dob": "1996-06-01",
+      "country": "Surrey, England, UK",
+      "status": true
+    },
+    {
+      "id": 6,
+      "name": "Zendaya",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/6TE2AlOUqcrs7CyJiWYgodmee1r.jpg",
+      "description": "Zendaya Maree Stoermer Coleman (born September 1, 1996) is an American actress and singer. She began her career as a child model and backup dancer. She rose to mainstream prominence for her role as Rocky Blue on the Disney Channel sitcom Shake It Up (2010–2013). In 2013, Zendaya was a contestant on the 16th season of the dance competition series Dancing with the Stars. She produced and starred as the titular spy, K.C. Cooper, in the sitcom K.C. Undercover (2015–2018). Her film roles include the musical drama The Greatest Showman (2017), the superhero film Spider-Man: Homecoming (2017) and its sequels, the computer-animated musical comedy Smallfoot (2018), the romantic drama Malcolm & Marie (2021), the live-action/animation hybrid sports comedy Space Jam: A New Legacy (2021), and the science fiction epic Dune (2021).",
+      "dob": "1996-09-01",
+      "country": "Oakland, California, USA",
+      "status": true
+    },
+    {
+      "id": 7,
+      "name": "Tom Holland",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/yxYOaalFh8SUwNE5C0wzOwF89Ny.jpg",
+      "description": "Thomas 'Tom' Stanley Holland is an English actor and dancer. He is best known for playing Peter Parker / Spider-Man in the Marvel Cinematic Universe and has appeared as the character in six films: Captain America: Civil War (2016), Spider-Man: Homecoming (2017), Avengers: Infinity War (2018), Avengers: Endgame (2019), Spider-Man: Far From Home (2019), and Spider-Man: No Way Home (2021). He is also known for playing the title role in Billy Elliot the Musical at the Victoria Palace Theatre, London, as well as for starring in the 2012 film The Impossible.",
+      "dob": "1996-06-01",
+      "country": "Surrey, England, UK",
+      "status": true
+    },
+    {
+      "id": 8,
+      "name": "Zendaya",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/6TE2AlOUqcrs7CyJiWYgodmee1r.jpg",
+      "description": "Zendaya Maree Stoermer Coleman (born September 1, 1996) is an American actress and singer. She began her career as a child model and backup dancer. She rose to mainstream prominence for her role as Rocky Blue on the Disney Channel sitcom Shake It Up (2010–2013). In 2013, Zendaya was a contestant on the 16th season of the dance competition series Dancing with the Stars. She produced and starred as the titular spy, K.C. Cooper, in the sitcom K.C. Undercover (2015–2018). Her film roles include the musical drama The Greatest Showman (2017), the superhero film Spider-Man: Homecoming (2017) and its sequels, the computer-animated musical comedy Smallfoot (2018), the romantic drama Malcolm & Marie (2021), the live-action/animation hybrid sports comedy Space Jam: A New Legacy (2021), and the science fiction epic Dune (2021).",
+      "dob": "1996-09-01",
+      "country": "Oakland, California, USA",
+      "status": true
+    },
+    {
+      "id": 9,
+      "name": "Tom Holland",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/yxYOaalFh8SUwNE5C0wzOwF89Ny.jpg",
+      "description": "Thomas 'Tom' Stanley Holland is an English actor and dancer. He is best known for playing Peter Parker / Spider-Man in the Marvel Cinematic Universe and has appeared as the character in six films: Captain America: Civil War (2016), Spider-Man: Homecoming (2017), Avengers: Infinity War (2018), Avengers: Endgame (2019), Spider-Man: Far From Home (2019), and Spider-Man: No Way Home (2021). He is also known for playing the title role in Billy Elliot the Musical at the Victoria Palace Theatre, London, as well as for starring in the 2012 film The Impossible.",
+      "dob": "1996-06-01",
+      "country": "Surrey, England, UK",
+      "status": true
+    },
+    {
+      "id": 10,
+      "name": "Zendaya",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/6TE2AlOUqcrs7CyJiWYgodmee1r.jpg",
+      "description": "Zendaya Maree Stoermer Coleman (born September 1, 1996) is an American actress and singer. She began her career as a child model and backup dancer. She rose to mainstream prominence for her role as Rocky Blue on the Disney Channel sitcom Shake It Up (2010–2013). In 2013, Zendaya was a contestant on the 16th season of the dance competition series Dancing with the Stars. She produced and starred as the titular spy, K.C. Cooper, in the sitcom K.C. Undercover (2015–2018). Her film roles include the musical drama The Greatest Showman (2017), the superhero film Spider-Man: Homecoming (2017) and its sequels, the computer-animated musical comedy Smallfoot (2018), the romantic drama Malcolm & Marie (2021), the live-action/animation hybrid sports comedy Space Jam: A New Legacy (2021), and the science fiction epic Dune (2021).",
+      "dob": "1996-09-01",
+      "country": "Oakland, California, USA",
+      "status": true
+    },
+    {
+      "id": 11,
+      "name": "Tom Holland",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/yxYOaalFh8SUwNE5C0wzOwF89Ny.jpg",
+      "description": "Thomas 'Tom' Stanley Holland is an English actor and dancer. He is best known for playing Peter Parker / Spider-Man in the Marvel Cinematic Universe and has appeared as the character in six films: Captain America: Civil War (2016), Spider-Man: Homecoming (2017), Avengers: Infinity War (2018), Avengers: Endgame (2019), Spider-Man: Far From Home (2019), and Spider-Man: No Way Home (2021). He is also known for playing the title role in Billy Elliot the Musical at the Victoria Palace Theatre, London, as well as for starring in the 2012 film The Impossible.",
+      "dob": "1996-06-01",
+      "country": "Surrey, England, UK",
+      "status": true
+    },
+    {
+      "id": 12,
+      "name": "Zendaya",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/6TE2AlOUqcrs7CyJiWYgodmee1r.jpg",
+      "description": "Zendaya Maree Stoermer Coleman (born September 1, 1996) is an American actress and singer. She began her career as a child model and backup dancer. She rose to mainstream prominence for her role as Rocky Blue on the Disney Channel sitcom Shake It Up (2010–2013). In 2013, Zendaya was a contestant on the 16th season of the dance competition series Dancing with the Stars. She produced and starred as the titular spy, K.C. Cooper, in the sitcom K.C. Undercover (2015–2018). Her film roles include the musical drama The Greatest Showman (2017), the superhero film Spider-Man: Homecoming (2017) and its sequels, the computer-animated musical comedy Smallfoot (2018), the romantic drama Malcolm & Marie (2021), the live-action/animation hybrid sports comedy Space Jam: A New Legacy (2021), and the science fiction epic Dune (2021).",
+      "dob": "1996-09-01",
+      "country": "Oakland, California, USA",
+      "status": true
+    },
+    {
+      "id": 13,
+      "name": "Tom Holland",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/yxYOaalFh8SUwNE5C0wzOwF89Ny.jpg",
+      "description": "Thomas 'Tom' Stanley Holland is an English actor and dancer. He is best known for playing Peter Parker / Spider-Man in the Marvel Cinematic Universe and has appeared as the character in six films: Captain America: Civil War (2016), Spider-Man: Homecoming (2017), Avengers: Infinity War (2018), Avengers: Endgame (2019), Spider-Man: Far From Home (2019), and Spider-Man: No Way Home (2021). He is also known for playing the title role in Billy Elliot the Musical at the Victoria Palace Theatre, London, as well as for starring in the 2012 film The Impossible.",
+      "dob": "1996-06-01",
+      "country": "Surrey, England, UK",
+      "status": true
+    },
+    {
+      "id": 14,
+      "name": "Zendaya",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/6TE2AlOUqcrs7CyJiWYgodmee1r.jpg",
+      "description": "Zendaya Maree Stoermer Coleman (born September 1, 1996) is an American actress and singer. She began her career as a child model and backup dancer. She rose to mainstream prominence for her role as Rocky Blue on the Disney Channel sitcom Shake It Up (2010–2013). In 2013, Zendaya was a contestant on the 16th season of the dance competition series Dancing with the Stars. She produced and starred as the titular spy, K.C. Cooper, in the sitcom K.C. Undercover (2015–2018). Her film roles include the musical drama The Greatest Showman (2017), the superhero film Spider-Man: Homecoming (2017) and its sequels, the computer-animated musical comedy Smallfoot (2018), the romantic drama Malcolm & Marie (2021), the live-action/animation hybrid sports comedy Space Jam: A New Legacy (2021), and the science fiction epic Dune (2021).",
+      "dob": "1996-09-01",
+      "country": "Oakland, California, USA",
+      "status": true
+    },
+    {
+      "id": 15,
+      "name": "Tom Holland",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/yxYOaalFh8SUwNE5C0wzOwF89Ny.jpg",
+      "description": "Thomas 'Tom' Stanley Holland is an English actor and dancer. He is best known for playing Peter Parker / Spider-Man in the Marvel Cinematic Universe and has appeared as the character in six films: Captain America: Civil War (2016), Spider-Man: Homecoming (2017), Avengers: Infinity War (2018), Avengers: Endgame (2019), Spider-Man: Far From Home (2019), and Spider-Man: No Way Home (2021). He is also known for playing the title role in Billy Elliot the Musical at the Victoria Palace Theatre, London, as well as for starring in the 2012 film The Impossible.",
+      "dob": "1996-06-01",
+      "country": "Surrey, England, UK",
+      "status": true
+    },
+    {
+      "id": 16,
+      "name": "Zendaya",
+      "img": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/6TE2AlOUqcrs7CyJiWYgodmee1r.jpg",
+      "description": "Zendaya Maree Stoermer Coleman (born September 1, 1996) is an American actress and singer. She began her career as a child model and backup dancer. She rose to mainstream prominence for her role as Rocky Blue on the Disney Channel sitcom Shake It Up (2010–2013). In 2013, Zendaya was a contestant on the 16th season of the dance competition series Dancing with the Stars. She produced and starred as the titular spy, K.C. Cooper, in the sitcom K.C. Undercover (2015–2018). Her film roles include the musical drama The Greatest Showman (2017), the superhero film Spider-Man: Homecoming (2017) and its sequels, the computer-animated musical comedy Smallfoot (2018), the romantic drama Malcolm & Marie (2021), the live-action/animation hybrid sports comedy Space Jam: A New Legacy (2021), and the science fiction epic Dune (2021).",
+      "dob": "1996-09-01",
+      "country": "Oakland, California, USA",
+      "status": true
     }
   ],
   "user": [
@@ -996,6 +1122,10 @@
     {
       "email": "maidung@gmail.com",
       "id": 2
+    },
+    {
+      "email": "maidung@gmail.com",
+      "id": 3
     }
   ]
 }

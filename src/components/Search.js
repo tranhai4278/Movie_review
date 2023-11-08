@@ -8,7 +8,6 @@ import 'rc-slider/assets/index.css';
 const Search = () => {
     const [movies, setMovies] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [search, setSearch] = useState('');
     const location = useLocation();
     const [genres, setGenres] = useState([]);
     const [selectedGenres, setSelectedGenres] = useState([]);
@@ -43,7 +42,7 @@ const Search = () => {
                 const moviesResponse = await axios.get('http://localhost:9999/movie');
                 const movies = moviesResponse.data;
 
-                let filteredMovies = movies.filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
+                let filteredMovies = movies.filter((p) => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
                 if (selectedGenres.length > 0) {
                     const movieGenresRes = await axios.get('http://localhost:9999/movie_genre');
@@ -175,7 +174,6 @@ const Search = () => {
 
     const handleSearchInputChange = (e) => {
         const newSearchTerm = e.target.value;
-        setSearch(newSearchTerm);
         fetchMoviesBySearchTerm(newSearchTerm);
     };
 

@@ -35,7 +35,7 @@ export default function Footer() {
       })
       .then(res => {
         if (res.status === 201)
-          toast.success("Subcribe successfully")
+          toast.success("Subscribe successfully")
       })
       .catch(err => console.error(err))
   };
