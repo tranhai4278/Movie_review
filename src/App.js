@@ -25,7 +25,6 @@ import {
   AdminFooter,
   Search,
   SearchCast,
-  AdminMovieList,
 } from "./components/Index";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
