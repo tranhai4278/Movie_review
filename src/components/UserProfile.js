@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParamsm } from "react-router-dom";
 import axios from 'axios'
 import { toast } from 'react-toastify';
 
@@ -21,7 +21,11 @@ export default function UserProfile() {
             .then((response) => {
                 const data = response.data;
                 setUserData(data);
-                console.log(data);
+                setEmail(data.email || '');
+                setFullname(data.fullname|| '');
+                setCountry(data.country || '');
+                setGender(data.gender || '')
+                setPhonenumber(data.phonenumber || '');
             })
             .catch((error) => {
                 console.error("Error fetching data: " + error);
@@ -33,12 +37,11 @@ export default function UserProfile() {
             .then((response) => {
                 const data = response.data;
                 setData(data);
-                console.log(data);
             })
             .catch((error) => {
                 console.error("Error fetching data: " + error);
             });
-    });
+    }, []);
 
 
     // Handle country selection
@@ -56,7 +59,7 @@ export default function UserProfile() {
         const normalizedEmail = email.toLowerCase();
         let isFound = false;
         data.forEach(user => {
-            if (user.email.toLowerCase() === normalizedEmail) {
+            if (user.email.toLowerCase() === normalizedEmail & user.id !== id) {
                 isFound = true;
             }
         });
@@ -111,7 +114,7 @@ export default function UserProfile() {
                 if (response.status == 200) {
                     // Handle success, e.g., show a success message
                     toast.success("Profile updated successfully!");
-
+                    localStorage.setItem("user", JSON.stringify(updatedUserData));
                 } else {
                     // Handle errors, e.g., show an error message
                     toast.error("Error updating profile");

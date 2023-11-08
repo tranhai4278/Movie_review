@@ -12,6 +12,7 @@ export default function MovieDetail() {
   const starStyle = {
     fontSize: "36px",
     color: "#f5b50a",
+    cursor: "pointer"
   };
 
   const rateStyle = {
@@ -51,24 +52,20 @@ export default function MovieDetail() {
   // render Start for rating
   const [renderStars, setRenderStarts] = useState([]);
 
-  const [userId, setUserId] = useState({});
+  const [userId, setUserId] = useState(localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).id : -1);
+
   const [wishlist, setWishlist] = useState([]);
   /**
    * Init: fetch movie data by movie_id
    */
   useEffect(() => {
-    setUserId(JSON.parse(localStorage.getItem("user")).id)
     axios
       .get(`http://localhost:9999/movie/${id}`)
       .then((response) => response.data)
       .then((data) => setMovie(data));
   }, [id]);
 
-  useEffect(() => {
-    axios.get("http://localhost:9999/wishlist")
-        .then((res) => setWishlist(res.data))
-        .catch((err) => console.error(err));
-}, []);
+
   /**
    * Init: fetch total genre by movie_id
    */
@@ -167,6 +164,11 @@ export default function MovieDetail() {
    * submit my comment
    */
   const handleSubmitComment = (data) => {
+    if (userId === -1) {
+      // User is not logged in, redirect to the login page
+      window.location.href = "/login";
+      return; // Stop execution to prevent adding to wishlist
+    }
     if (data.content.trim() === "") {
       setErrBlankComment("Please enter comment before submit");
     } else {
@@ -235,6 +237,11 @@ export default function MovieDetail() {
   }, [myRate]);
 
   const handleRating = (rating) => {
+    if (userId === -1) {
+      // User is not logged in, redirect to the login page
+      window.location.href = "/login";
+      return; // Stop execution to prevent adding to wishlist
+    }
     if (myRate.rating !== 0) {
       axios
         .put(`http://localhost:9999/rate/${myRate.id}`, {
@@ -250,41 +257,66 @@ export default function MovieDetail() {
           user_id: userId,
           rating,
           create_at: getCurrentDate(),
-          status: "todo",
+          status: true,
         })
         .then((response) => response.data)
         .then((data) => setMyRate(data));
     }
   };
 
-  const handleWishlist = async (movieId) => {
-    try {
-        // Check if the movie is in http://localhost:9999/wishlist
-        const response = await axios.get(`http://localhost:9999/wishlist?movie_id=${movieId}&user_id=${userId}`);
-        console.log(response);
-        if (response.data.length === 0) {
-            // Movie is not in the wishlist, add it
-            await axios.post('http://localhost:9999/wishlist', { 
-              movie_id: movieId,
-              user_id: userId});
-            console.log(`Movie with ID ${movieId} added to wishlist.`);
-        } else {
-          const removeId = response.data[0].id
-            // Movie is already in the wishlist, remove it
-            await axios.delete(`http://localhost:9999/wishlist/${removeId}`);
-            console.log(`Movie with ID ${movieId} removed from wishlist.`);
-        }
-    } catch (error) {
-        console.error('Error handling wishlist:', error);
-    }
-};
+  /**
+   * Handle wishlist 
+   */
 
+  useEffect(() => {
+    const fetchWishlist = async () => {
+      try {
+        // Fetch wishlist data for the user
+        const response = await axios.get(`http://localhost:9999/wishlist?user_id=${userId}`);
+        setWishlist(response.data);
+      } catch (error) {
+        console.error('Error fetching wishlist:', error);
+      }
+    };
+
+    fetchWishlist();
+  }, [userId]);
+
+  const isInWishlist = (movieId) => {
+    return wishlist.some((item) => item.movie_id === movieId);
+  };
+
+  const handleWishlist = async (movieId) => {
+    if (userId === -1) {
+      // User is not logged in, redirect to the login page
+      window.location.href = "/login";
+      return; // Stop execution to prevent adding to wishlist
+    }
+    try {
+      if (!isInWishlist(movieId)) {
+        // Movie is not in the wishlist, add it
+        await axios.post('http://localhost:9999/wishlist', { movie_id: movieId, user_id: userId });
+        console.log(`Movie with ID ${movieId} added to wishlist.`);
+      } else {
+        // Movie is already in the wishlist, remove it
+        const removeItem = wishlist.find((item) => item.movie_id === movieId);
+        await axios.delete(`http://localhost:9999/wishlist/${removeItem.id}`);
+        console.log(`Movie with ID ${movieId} removed from wishlist.`);
+      }
+
+      // Fetch the updated wishlist after adding/removing a movie
+      const updatedWishlist = await axios.get(`http://localhost:9999/wishlist?user_id=${userId}`);
+      setWishlist(updatedWishlist.data);
+    } catch (error) {
+      console.error('Error handling wishlist:', error);
+    }
+  };
   return (
     <div style={{ paddingTop: "220px" }}>
       <Row className="ipad-width2">
         <Col md={4} sm={12} xs={12}>
           <div className="movie-img sticky-sb">
-            <Image src={movie?.img_url} alt="" fluid />
+            <Image src={movie?.img_url} width={342} alt="" fluid />
             <div className="movie-btn">
               <div
                 className="btn-transform transform-vertical red"
@@ -316,9 +348,9 @@ export default function MovieDetail() {
               {movie?.name} <span>{movie?.release_year}</span>
             </h1>
             <div className="social-btn">
-            <a href="#" onClick={() => handleWishlist(movie.id)} className="parent-btn">
-              <i className="ion-heart"></i> Add to Favorite
-            </a>
+              <a href="#" onClick={() => handleWishlist(movie.id)} className="parent-btn">
+                <i className="ion-heart" style={{ color: isInWishlist(movie.id) ? 'red' : '#eec1c1', fontSize: '16px', backgroundColor: isInWishlist(movie.id) ? '#981818' : 'transparent' }}></i> Add to Favorite
+              </a>
               <div className="hover-bnt">
                 <a href="javascript:void(0)" className="parent-btn">
                   <i className="ion-android-share-alt"></i>share
@@ -363,13 +395,16 @@ export default function MovieDetail() {
                   <Col md={9} xs={12}>
                     <p>
                       <span style={{ color: "white", fontSize: "18px" }}>
-                        {(
-                          usersRate?.reduce(
-                            (totalRate, currentItem) =>
-                              totalRate + currentItem.rating,
-                            0
-                          ) / usersRate?.length
-                        ).toFixed(1)}
+                        {(usersRate?.length > 0
+                          ? (
+                            usersRate.reduce(
+                              (totalRate, currentItem) =>
+                                totalRate + currentItem.rating,
+                              0
+                            ) / usersRate.length
+                          ).toFixed(1)
+                          : 0
+                        )}
                       </span>{" "}
                       /10
                       <br />
@@ -441,8 +476,8 @@ export default function MovieDetail() {
                             </p>
                           </Col>
                           <Col md={3} className="sb-it">
-                            <h6 style={{ color: "white" }}>Release Date:</h6>
-                            <p>May 1, 2015 (U.S.A)</p>
+                            <h6 style={{ color: "white" }}>Release Year:</h6>
+                            <p>{movie.release_year}</p>
                           </Col>
                           <Col md={3} className="sb-it">
                             <h6 style={{ color: "white" }}>Run Time:</h6>
@@ -478,7 +513,7 @@ export default function MovieDetail() {
                                 user_id: 1,
                                 content: myComment,
                                 create_at: getCurrentDate(),
-                                status: "todo",
+                                status: true,
                                 parent_comment_id: null,
                               })
                             }
@@ -511,7 +546,7 @@ export default function MovieDetail() {
                         >
                           <img src={item.img} alt="" />
                           <div className="hvr-inner">
-                            <a href={`cast/${item.id}`}>
+                            <a href={`/castdetail/${item.id}`}>
                               Read more
                               <i className="ion-android-arrow-dropright"></i>
                             </a>

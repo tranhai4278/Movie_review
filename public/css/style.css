@@ -4301,7 +4301,6 @@ ul {
   align-items: inherit;
   width: 170px;
   position: relative;
-  margin-right: 23px;
 }
 .movie-item-style-1 img {
   margin-right: 0;
@@ -5654,7 +5653,7 @@ ul {
   padding-top: 225px;
 }
 .user-hero .hero-ct h1 {
-  margin-left: -120px;
+  margin-left: -205px;
 }
 .user-hero ul.breadcumb {
   text-align: left;

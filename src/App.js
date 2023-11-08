@@ -99,14 +99,14 @@ function App() {
           <Container>
             <Routes>
               <Route path="/moviedetail/:id" element={<MovieDetail />} />
-              <Route path="/castdetail" element={<CastDetail />} />
+              <Route path="/castdetail/:id" element={<CastDetail />} />
             </Routes>
           </Container>
 
           <div>
             <div className="nav-md">
               <div className="body">
-                <div class="main_container">
+                <div className="main_container">
                 <Row style={{ backgroundColor: "white" }}>
                   <Col md={2} sm={12} xs={12}>
                     <Routes>

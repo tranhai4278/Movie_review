@@ -163,7 +163,7 @@ export default function Signup() {
               variant="danger"
               type="submit"
               size="lg"
-              style={{ padding: "10px 120px" }}
+              style={{ padding: "10px 120px", marginTop: '12px' }}
             >
               Sign up
             </Button>

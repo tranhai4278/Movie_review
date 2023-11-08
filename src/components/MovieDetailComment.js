@@ -1,8 +1,9 @@
+import React, { useState } from "react";
 import { Button, Col, Form, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useState } from "react"; // Import useState
 import { getCurrentDate } from "./MovieDetailService";
-
+import axios from "axios";
+import { toast } from 'react-toastify';
 function MovieDetailComment({
   data,
   isParent = false,
@@ -10,17 +11,18 @@ function MovieDetailComment({
   movieId,
   userId,
 }) {
-  const [showReplyForm, setShowReplyForm] = useState(false); // State để kiểm tra xem nút "replies" đã được nhấn chưa
-  const [newReply, setNewReply] = useState(""); // State để lưu nội dung bình luận mới
-  const [showMore, setShowMore] = useState("Show More"); // State để lưu nội dung bình luận mới
+  const [showReplyForm, setShowReplyForm] = useState(false);
+  const [newReply, setNewReply] = useState("");
+  const [showMore, setShowMore] = useState("Show More");
+  const [showReportForm, setShowReportForm] = useState(false);
+  const [newReport, setNewReport] = useState("");
+  const [message, setMessage] = useState("");
 
-  // Hàm để xử lý khi nhấn nút "replies"
   const handleShowReplyForm = (e) => {
     e.preventDefault();
-    setShowReplyForm(!showReplyForm); // Đảo ngược trạng thái khi nút "replies" được nhấn
+    setShowReplyForm(!showReplyForm);
   };
 
-  // Hàm để xử lý khi thay đổi nội dung bình luận mới
   const handleNewReplyChange = (e) => {
     setNewReply(e.target.value);
   };
@@ -30,24 +32,57 @@ function MovieDetailComment({
     setShowMore(showMore === "Show More" ? "Show Less" : "Show More");
   };
 
-  // Hàm để xử lý khi nhấn phím "Enter" trong ô nhập bình luận mới
   const handleNewReplyKeyPress = (e, parentCommentId) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // Ngăn ngừng hiển thị dòng mới khi ấn "Enter"
+      e.preventDefault();
       if (newReply.trim() !== "") {
         handleSubmitComment({
           movie_id: movieId,
           user_id: userId,
           content: newReply,
           create_at: getCurrentDate(),
-          status: "todo",
+          status: true,
           parent_comment_id: parentCommentId,
-        }); // Gọi hàm handleSubmitComment và truyền nội dung bình luận mới
-        setNewReply(""); // Xóa nội dung bình luận mới
-        setShowReplyForm(false); // Ẩn Form.Group
+        });
+        setNewReply("");
+        setShowReplyForm(false);
       }
     }
   };
+
+  const handleShowReportForm = (e) => {
+    e.preventDefault();
+    setShowReportForm(true);
+  };
+
+  const handleReportSubmit = (e, commentId) => {
+    e.preventDefault();
+
+    // Validate the report reason
+    if (newReport.trim() === "") {
+      setMessage("Please enter a reason for the report.");
+      return;
+    }
+
+    // Assuming you have a function to submit the report to the server
+    axios
+      .post(`http://localhost:9999/report`, {
+        user_id: userId, // Assuming you have the user's ID
+        comment_id: commentId,
+        reason: newReport,
+        create_at: getCurrentDate(),
+        status: "Chờ xử lí",
+      })
+      .then(res => {
+        if (res.status === 201)
+        toast.success("Report submitted successfully")
+    }).catch(err => console.error(err))
+
+    // Close the report form after submission
+    setShowReportForm(false);
+  };
+
+
 
   return (
     <Col
@@ -72,27 +107,43 @@ function MovieDetailComment({
         <a href="java" className="reply-link" onClick={handleShowReplyForm}>
           replies
         </a>
-        {isParent && data.replies.length !== 0 && (
-          <a
-            style={{ padding: "0 16px" }}
-            href="javascript"
-            onClick={handleShowMore}
-          >
-            {showMore}
-          </a>
+        <a href="" style={{ padding: "0 16px" }} onClick={handleShowReportForm}>
+          report
+        </a>
+        {/* Report Form */}
+        {showReportForm && (
+          <Form>
+            <Form.Group controlId="reportReason">
+              <Form.Control
+                type="text"
+                placeholder="Enter reason for report"
+                value={newReport} // You can change this to a different state if needed
+                onChange={(e) => setNewReport(e.target.value)}
+              />
+            </Form.Group>
+            {message ? <p className="text-danger">{message}</p> : ''}
+            <Button variant="primary" onClick={(e) => handleReportSubmit(e, data.id)}>
+              Submit Report
+            </Button>
+          </Form>
         )}
       </div>
       <p style={{ marginBottom: "4px", whiteSpace: "pre-line" }}>
         {data.content}
       </p>
-      {showReplyForm && ( // Hiển thị Form.Group nếu showReplyForm là true
+      {isParent && data.replies.length !== 0 && (
+        <a href="javascript" onClick={handleShowMore}>
+          {showMore}
+        </a>
+      )}
+      {showReplyForm && (
         <Form.Group controlId="comment">
           <Form.Control
             type="text"
             placeholder="Your Comment"
             value={newReply}
             onChange={handleNewReplyChange}
-            onKeyPress={(e) => handleNewReplyKeyPress(e, data.id)} // Gọi hàm handleNewReplyKeyPress khi nhấn phím
+            onKeyPress={(e) => handleNewReplyKeyPress(e, data.id)}
           />
         </Form.Group>
       )}
@@ -109,6 +160,8 @@ function MovieDetailComment({
           ))}
         </div>
       )}
+
+
     </Col>
   );
 }

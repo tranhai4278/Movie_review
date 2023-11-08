@@ -1,48 +1,87 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Button, Form, Container, Row, Col } from 'react-bootstrap';
+import { toast } from 'react-toastify';
+import axios from "axios";
 
 export default function Footer() {
+  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState('');
+
+  const isEmailValid = (email) => {
+    const emailPattern = /\b[A-Za-z0-9._%+-]+@gmail.com\b/;
+    return emailPattern.test(email);
+  };
+
+  const subscribe = (e) => {
+    e.preventDefault();
+
+    // Validate the report reason
+    if (email.trim() === "") {
+      setMessage("Please enter an email to subscribe!");
+      return;
+    }
+
+    if (email !== '' && !isEmailValid(email)) {
+      setMessage('Invalid email format');
+      return;
+    } 
+    setMessage('');
+    
+    // Assuming you have a function to submit the report to the server
+    axios
+      .post(`http://localhost:9999/subscribe`, {
+        email: email
+      })
+      .then(res => {
+        if (res.status === 201)
+          toast.success("Subcribe successfully")
+      })
+      .catch(err => console.error(err))
+  };
+
   return (
     <footer className="ht-footer" id="footer">
       <Container>
         <Row className="flex-parent-ft">
           <Col className="flex-child-ft item1">
-            <Link href="index-2.html"><img className="logo" width="250" src="images/logo1.png" alt="" /></Link>
+            <Link to="index-2.html"><img className="logo" width="250" src="images/logo1.png" alt="" /></Link>
             <p>Group 2 SE1741 - FPT University</p>
-            <p>Call us: <Link href="#">(+84) 834235369</Link></p>
+            <p>Call us: <Link to="#">(+84) 834235369</Link></p>
           </Col>
           <Col className="flex-child-ft item2">
             <h4>Resources</h4>
             <ul>
-              <li><Link href="#">About</Link></li>
-              <li><Link href="#">Fermovie</Link></li>
-              <li><Link href="#">Contact Us</Link></li>
-              <li><Link href="#">Help Center</Link></li>
+              <li><Link to="#">About</Link></li>
+              <li><Link to="#">Fermovie</Link></li>
+              <li><Link to="#">Contact Us</Link></li>
+              <li><Link to="#">Help Center</Link></li>
             </ul>
           </Col>
           <Col className="flex-child-ft item3">
             <h4>Legal</h4>
             <ul>
-              <li><Link href="#">Terms of Use</Link></li>
-              <li><Link href="#">Privacy Policy</Link></li>
-              <li><Link href="#">Security</Link></li>
+              <li><Link to="#">Terms of Use</Link></li>
+              <li><Link to="#">Privacy Policy</Link></li>
+              <li><Link to="#">Security</Link></li>
             </ul>
           </Col>
           <Col className="flex-child-ft item4">
             <h4>Account</h4>
             <ul>
-              <li><Link href="#">My Account</Link></li>
-              <li><Link href="#">Wishlist</Link></li>
-              <li><Link href="#">Collections</Link></li>
+              <li><Link to="#">My Account</Link></li>
+              <li><Link to="#">Wishlist</Link></li>
+              <li><Link to="#">Collections</Link></li>
             </ul>
           </Col>
           <Col className="flex-child-ft item5">
             <h4>Newsletter</h4>
             <p>Subscribe to our newsletter system now to get the latest news from us.</p>
             <Form>
-              <Form.Control type="text" placeholder="Enter your email..." />
-              <Button variant="primary" style={{marginTop:'16px'}}>Subscribe now <i className="ion-ios-arrow-forward"></i></Button>
+              <Form.Control type="text" placeholder="Enter your email..." value={email}
+                onChange={(e) => setEmail(e.target.value)}/>
+              {message ? <p className="text-danger" style={{margin: '0'}}>{message}</p> : ''}
+              <Button variant="primary" style={{marginTop:'16px'}} onClick={(e) => subscribe(e)}>Subscribe now <i className="ion-ios-arrow-forward"></i></Button>
             </Form>
           </Col>
         </Row>
@@ -51,10 +90,10 @@ export default function Footer() {
         <Container>
           <Row>
             <Col className="ft-left">
-              <p><Link target="_blank" href="#">Fermovie</Link></p>
+              <p><Link target="_blank" to="#">Fermovie</Link></p>
             </Col>
             <Col className="backtotop">
-              <p><Link href="#" id="back-to-top">Back to top <i className="ion-ios-arrow-thin-up"></i></Link></p>
+              <p><Link to="#" id="back-to-top">Back to top <i className="ion-ios-arrow-thin-up"></i></Link></p>
             </Col>
           </Row>
         </Container>
@@ -62,5 +101,3 @@ export default function Footer() {
     </footer>
   );
 };
-
-
